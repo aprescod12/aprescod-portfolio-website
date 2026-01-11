@@ -1,8 +1,14 @@
 @import "tailwindcss";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
+html,
+body {
+  height: 100%;
+}
 
 body {
-  @apply bg-white text-neutral-900;
+  background: white;
+  color: rgb(23 23 23);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
