@@ -13,7 +13,7 @@ export default function Footer() {
           <div className="flex gap-5">
             <a
               className="hover:text-white transition-colors"
-              href="#"
+              href="https://www.linkedin.com/in/amiri-prescod/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_self_contact_details%3B0zVeVcROSOaK1367QKVCcQ%3D%3D"
               target="_blank"
               rel="noreferrer"
             >
@@ -21,13 +21,13 @@ export default function Footer() {
             </a>
             <a
               className="hover:text-white transition-colors"
-              href="#"
+              href="https://github.com/aprescod12"
               target="_blank"
               rel="noreferrer"
             >
               GitHub
             </a>
-            <a className="hover:text-white transition-colors" href="mailto:your@email.com">
+            <a className="hover:text-white transition-colors" href="mailto:ajrprescod@gmail.com">
               Email
             </a>
           </div>

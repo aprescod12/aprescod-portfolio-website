@@ -19,9 +19,9 @@ const projects: Project[] = [
   {
     title: "Bat Tracking System (Jetson + Multi-Camera)",
     description:
-      "Building a multi-camera pipeline with synchronization and state estimation to infer motion/orientation.",
+      "Developed a multi-sensor baseball swing analysis system combining dual cameras and an inertial measurement unit (IMU) to capture and reconstruct swings in 3D. The project focused on real-time motion tracking, sensor synchronization, and extracting key swing metrics to support data-driven athletic training.",
     impact:
-      "Improves measurement accuracy and supports performance feedback using consistent tracking.",
+      "",
     tags: ["Computer Vision", "Edge AI", "State Estimation"],
     link: "#",
   },
@@ -35,13 +35,13 @@ const projects: Project[] = [
     link: "#",
   },
   {
-    title: "Signal Processing Exploration",
+    title: "Particle Photon Security System Project",
     description:
-      "Prototyping approaches to clean and interpret noisy physiological signals for downstream analysis.",
+      "Designed a finite state machine–based security system using the Particle Photon microcontroller, simulating real-world alarm behavior such as arming, disarming, and intrusion detection. The project highlights embedded systems fundamentals, state-driven logic, and reliable event handling in a resource-constrained environment.",
     impact:
-      "Creates more usable inputs for analytics/ML and reduces false readings in challenging environments.",
-    tags: ["Signal Processing", "Data", "Prototyping"],
-    link: "#",
+      "",
+    tags: ["Embedded Systems", "Finite State Machines", "IoT Fundamentals"],
+    link: "https://github.com/aprescod12/particle-photon-security-system/tree/main",
   },
 ];
 
@@ -106,7 +106,7 @@ export default function ProjectsPage() {
       <section className="mt-10 rounded-2xl border border-white/10 bg-white/5 p-6">
         <h3 className="font-semibold tracking-tight">Want to see code?</h3>
         <p className="mt-2 text-sm text-zinc-300 leading-relaxed">
-          Add your GitHub link in the footer and replace each project “View →” link with a repo or demo.
+          Click the GitHub link in the footer to view all my repos and/or click “View →” below each project to see that repo specifically. =)
         </p>
       </section>
     </Container>

@@ -1,12 +1,108 @@
 // app/page.tsx
 // Purpose: Recruiter-first homepage with a strong headline, credibility blocks, and clear CTAs.
 
+import Image from "next/image";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 
 export default function HomePage() {
   return (
     <Container>
+      {/* PHOTO STRIP: horizontal, scrollable image row */}
+<section className="mb-10">
+  {/* Optional label so it feels intentional */}
+  <p className="mb-3 text-xs uppercase tracking-wider text-zinc-400">
+    A glimpse into my work & athletics
+  </p>
+
+  {/* Subtle hint for desktop users */}
+  <p className="mt-2 text-xs text-zinc-400">
+    Scroll →
+  </p>
+
+  {/* Horizontal scroll container */}
+  <div
+    className="
+      flex gap-4 overflow-x-auto pb-2
+      scroll-smooth
+      [-ms-overflow-style:none]
+      [scrollbar-width:none]
+      [&::-webkit-scrollbar]:hidden
+    "
+  >
+    {/* Image 1 */}
+    <div className="relative h-56 w-80 flex-shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+      <Image
+        src="/home/websitegradpic.jpg"
+        alt="Amiri Prescod — project or lab photo"
+        fill
+        priority
+        className="object-cover transition-transform duration-300 hover:scale-[1.03]"
+      />
+    </div>
+
+    {/* Image 2 */}
+    <div className="relative h-56 w-80 flex-shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+      <Image
+        src="/home/webformal1.jpg"
+        alt="Amiri Prescod — track and field"
+        fill
+        priority
+        className="object-cover transition-transform duration-300 hover:scale-[1.03]"
+      />
+    </div>
+
+    {/* Image 3 */}
+    <div className="relative h-56 w-80 flex-shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+      <Image
+        src="/home/websitetrack2.jpg"
+        alt="Amiri Prescod — another highlight"
+        fill
+        priority
+        className="object-cover transition-transform duration-300 hover:scale-[1.03]"
+      />
+    </div>
+
+    {/* Image 4 */}
+    <div className="relative h-56 w-80 flex-shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+      <Image
+        src="/home/webformalpic2.jpg"
+        alt="Amiri Prescod — another highlight"
+        fill
+        priority
+        className="object-cover transition-transform duration-300 hover:scale-[1.03]"
+      />
+    </div>
+
+    {/* Image 5 */}
+    <div className="relative h-56 w-80 flex-shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+      <Image
+        src="/home/websitetrack.jpg"
+        alt="Amiri Prescod — another highlight"
+        fill
+        priority
+        className="object-cover transition-transform duration-300 hover:scale-[1.03]"
+      />
+    </div>
+
+    {/* Image 6 */}
+    <div className="relative h-56 w-80 flex-shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+      <Image
+        src="/home/websitetrack3.jpg"
+        alt="Amiri Prescod — another highlight"
+        fill
+        priority
+        className="object-cover transition-transform duration-300 hover:scale-[1.03]"
+      />
+    </div>
+  </div>
+
+  {/* Optional: subtle caption line (remove if you want it cleaner) */}
+    <p className="mt-3 text-sm text-zinc-400">
+      Engineering + athletics — disciplined execution in both.
+    </p>
+</section>
+
       {/* HERO: first impression (headline + positioning + CTAs) */}
       <section className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/10 to-white/0 p-8 md:p-12">
         {/* Decorative glow (purely visual) */}
@@ -14,7 +110,7 @@ export default function HomePage() {
 
         {/* Your positioning line */}
         <p className="text-sm text-zinc-300">
-          Amiri Prescod • International student-athlete • Med-tech + AI
+          Amiri Prescod • International Student-Athlete • Med-tech + AI
         </p>
 
         {/* Strong recruiter headline */}
