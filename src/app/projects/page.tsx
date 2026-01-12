@@ -11,6 +11,8 @@ const featured: Project = {
     "Working on a wearable-friendly fNIRS system with a focus on hardware integration, signal fidelity, and real-world usability.",
   impact:
     "Designed for practical measurement workflows and improved repeatability in experimental data collection.",
+  collaborated:
+    "",
   tags: ["Biomedical", "Embedded", "Hardware"],
   link: "#",
 };
@@ -22,6 +24,8 @@ const projects: Project[] = [
       "Developed a multi-sensor baseball swing analysis system combining dual cameras and an inertial measurement unit (IMU) to capture and reconstruct swings in 3D. The project focused on real-time motion tracking, sensor synchronization, and extracting key swing metrics to support data-driven athletic training.",
     impact:
       "",
+    collaborated:
+      "Christopher Powers, Dmitrii Kapranov, Julian Frank, Michael Kokolis",
     tags: ["Computer Vision", "Edge AI", "State Estimation"],
     link: "#",
   },
@@ -31,6 +35,8 @@ const projects: Project[] = [
       "Exploring low-power sensing with heart-rate monitoring and fall detection for longer battery life.",
     impact:
       "Designed to be reliable and power-efficient for continuous real-world monitoring.",
+    collaborated:
+      "",
     tags: ["ESP32", "Low Power", "Sensors"],
     link: "#",
   },
@@ -39,6 +45,8 @@ const projects: Project[] = [
     description:
       "Designed a finite state machine–based security system using the Particle Photon microcontroller, simulating real-world alarm behavior such as arming, disarming, and intrusion detection. The project highlights embedded systems fundamentals, state-driven logic, and reliable event handling in a resource-constrained environment.",
     impact:
+      "",
+    collaborated:
       "",
     tags: ["Embedded Systems", "Finite State Machines", "IoT Fundamentals"],
     link: "https://github.com/aprescod12/particle-photon-security-system/tree/main",

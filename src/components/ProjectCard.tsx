@@ -8,6 +8,7 @@ export type Project = {
     tags: string[];
     link?: string;
     impact?: string; // Optional: adds a recruiter-friendly “why it matters” line
+    collaborated: string;
   };
   
   export default function ProjectCard({ project }: { project: Project }) {
@@ -33,6 +34,13 @@ export type Project = {
         {project.impact ? (
           <p className="mt-3 text-sm text-zinc-200">
             <span className="text-zinc-400">Impact:</span> {project.impact}
+          </p>
+        ) : null}
+
+        {/* Why it matters (recruiter-friendly impact line) */}
+        {project.collaborated ? (
+          <p className="mt-3 text-sm text-zinc-200">
+            <span className="text-zinc-400">Collaborated With:</span> {project.collaborated}
           </p>
         ) : null}
   
