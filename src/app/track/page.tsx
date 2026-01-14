@@ -138,7 +138,7 @@ export default function TrackPage() {
 
             {/* Small caption line */}
             <p className="mt-3 text-xs text-zinc-400">
-              Swipe/scroll on mobile, or use arrows to cycle.
+              Use arrows to cycle.
             </p>
           </div>
         </div>
