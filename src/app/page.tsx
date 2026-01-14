@@ -33,7 +33,7 @@ export default function HomePage() {
     {/* Image 1 */}
     <div className="relative h-56 w-80 flex-shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
       <Image
-        src="/home/websitegradpic.jpg"
+        src="/home/websitegradpic.JPG"
         alt="Amiri Prescod — project or lab photo"
         fill
         priority
@@ -44,7 +44,7 @@ export default function HomePage() {
     {/* Image 2 */}
     <div className="relative h-56 w-80 flex-shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
       <Image
-        src="/home/webformal1.jpg"
+        src="/home/webformal1.JPG"
         alt="Amiri Prescod — track and field"
         fill
         priority
@@ -66,7 +66,7 @@ export default function HomePage() {
     {/* Image 4 */}
     <div className="relative h-56 w-80 flex-shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
       <Image
-        src="/home/webformalpic2.jpg"
+        src="/home/webformalpic2.JPG"
         alt="Amiri Prescod — another highlight"
         fill
         priority
@@ -77,7 +77,7 @@ export default function HomePage() {
     {/* Image 5 */}
     <div className="relative h-56 w-80 flex-shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
       <Image
-        src="/home/websitetrack.jpg"
+        src="/home/websitetrack.JPG"
         alt="Amiri Prescod — another highlight"
         fill
         priority

@@ -16,7 +16,7 @@ export default function TrackPage() {
       { src: "/track/1.jpg", alt: "Amiri Prescod competing — track photo 1" },
       { src: "/track/2.jpg", alt: "Amiri Prescod competing — track photo 2" },
       { src: "/track/3.jpg", alt: "Amiri Prescod competing — track photo 3" },
-      { src: "/track/4.2.jpg", alt: "Amiri Prescod competing — track photo 4" },
+      { src: "/track/4.2.JPG", alt: "Amiri Prescod competing — track photo 4" },
     ],
     []
   );
