@@ -37,7 +37,7 @@ export default function Navbar() {
 
           {/* Resume button: opens PDF in new tab (recruiter-friendly) */}
           <a
-            href="/Amiri-Prescod-Resume.pdf" // File must exist in /public
+            href="/Amiri-Prescod-Resume1.pdf" // File must exist in /public
             target="_blank" // Opens in a new tab so they stay on your site
             rel="noreferrer" // Security best practice with target=_blank
             className="inline-flex items-center justify-center rounded-xl bg-blue-500 px-4 py-2 text-sm font-medium text-white hover:bg-blue-400 transition-colors"

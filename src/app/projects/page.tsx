@@ -30,15 +30,15 @@ const projects: Project[] = [
     link: "#",
   },
   {
-    title: "Wearable Safety Device (ESP32)",
+    title: "Medical Monitoring & Safety Device (ESP32 Wearable System Prototype)",
     description:
-      "Exploring low-power sensing with heart-rate monitoring and fall detection for longer battery life.",
+      "A breadboard-based prototype that simulates a wearable medical device, measuring heart rate and SpO₂, detecting fall events via an accelerometer, and using deep-sleep power management to model battery-efficient wearable operation.",
     impact:
-      "Designed to be reliable and power-efficient for continuous real-world monitoring.",
+      "",
     collaborated:
       "",
     tags: ["ESP32", "Low Power", "Sensors"],
-    link: "#",
+    link: "https://github.com/aprescod12/medical-monitoring-safety-device",
   },
   {
     title: "Particle Photon Security System Project",
