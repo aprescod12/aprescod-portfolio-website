@@ -110,14 +110,15 @@ export default function HomePage() {
 
         {/* Your positioning line */}
         <p className="text-sm text-zinc-300">
-          Amiri Prescod • International Student-Athlete • Med-tech + AI
+          Amiri Prescod • International Student-Athlete • Engineering
         </p>
 
         {/* Strong recruiter headline */}
         <h1 className="mt-3 text-4xl font-semibold tracking-tight md:text-6xl">
-          Engineering <span className="text-blue-400">medical devices</span>{" "}
-          with <span className="text-blue-400">AI-ready</span> data in mind.
-        </h1>
+  Engineering <span className="text-blue-400">intelligent systems</span>{" "}
+  with <span className="text-blue-400">data-driven</span> design.
+</h1>
+
 
         {/* One-paragraph summary (keep it skimmable) */}
         <p className="mt-4 max-w-2xl text-zinc-300 leading-relaxed">
