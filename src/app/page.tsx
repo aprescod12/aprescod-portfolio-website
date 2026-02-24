@@ -123,7 +123,7 @@ export default function HomePage() {
         {/* One-paragraph summary (keep it skimmable) */}
         <p className="mt-4 max-w-2xl text-zinc-300 leading-relaxed">
           I build and learn across embedded systems, sensing, and data-driven methods—
-          aiming to ship reliable, real-world technology that improves health outcomes.
+          aiming to ship reliable, real-world technology.
         </p>
 
         {/* Primary actions (recruiters want fast navigation) */}
