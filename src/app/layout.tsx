@@ -1,6 +1,4 @@
 // app/layout.tsx
-// This wraps every page in your app (navbar/footer + global styles)
-
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -16,16 +14,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      {/* The body contains the whole app */}
-      <body className="min-h-screen">
-        {/* Top navigation appears on every page */}
+    <html lang="en" className="h-full">
+      <body className="min-h-dvh flex flex-col">
         <Navbar />
 
-        {/* Main content area; children is the current page */}
-        <main className="min-h-[calc(100vh-160px)]">{children}</main>
+        {/* This will always expand to fill remaining height */}
+        <main className="flex-1 w-full">{children}</main>
 
-        {/* Footer appears on every page */}
         <Footer />
       </body>
     </html>
