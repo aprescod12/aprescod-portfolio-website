@@ -13,7 +13,7 @@ export type Project = {
     slug?: string;
   
     // If present, the /projects/[slug] page will render videos
-    videos?: { src: string; caption?: string }[];
+    videos?: { src?: string; youtubeId?: string; caption?: string }[];
   };
 
   export const featuredSlug = "fnirs-flex-pcb";
@@ -42,8 +42,8 @@ export type Project = {
         tags: ["Embedded Systems", "Finite State Machines", "Real-Time Systems", "Scheduling Algorithms"],
         link: "https://github.com/aprescod12/esp32-elevator-simulator",
         videos: [
-          { src: "/videos/esp32-elevator-1.mp4", caption: "Button Presses and LED Reaction." },
-          { src: "/videos/esp32-elevator-2.mp4", caption: "The Arduino Serial Monitor demonstrated Button Press Recognition and Elevator State Updates." },
+          { youtubeId: "tgXctCg14ZQ", caption: "Button Presses and LED Reaction." },
+          { youtubeId: "rMUoFo9LxEs", caption: "The Arduino Serial Monitor demonstrated Button Press Recognition and Elevator State Updates." },
         ],
       },
     {

@@ -47,14 +47,21 @@ export default async function ProjectDemoPage({
               className="rounded-3xl border border-white/10 bg-white/5 p-6"
             >
               <div className="flex justify-center">
-                <div className="w-full max-w-2xl aspect-video">
-                <video
-                    controls
-                    className="w-full h-full rounded-2xl shadow-lg object-contain bg-black/40"
-                >
-                    <source src={v.src} type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
+                <div className="w-full max-w-2xl aspect-video overflow-hidden rounded-2xl border border-white/10 bg-black/30 shadow-lg">
+                  {v.youtubeId ? (
+                    <iframe
+                      className="h-full w-full"
+                      src={`https://www.youtube.com/embed/${v.youtubeId}`}
+                      title={v.caption ?? `${project.title} demo video`}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  ) : v.src ? (
+                    <video controls className="h-full w-full object-contain">
+                      <source src={v.src} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  ) : null}
                 </div>
               </div>
 
@@ -67,9 +74,7 @@ export default async function ProjectDemoPage({
           ))}
         </div>
       ) : (
-        <p className="mt-14 text-sm text-zinc-400">
-          Demo videos coming soon.
-        </p>
+        <p className="mt-14 text-sm text-zinc-400">Demo videos coming soon.</p>
       )}
     </div>
   );
