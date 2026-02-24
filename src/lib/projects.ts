@@ -38,7 +38,7 @@ export type Project = {
         title: "ESP32 4-Floor Elevator Simulator",
         slug: "esp32-elevator",
         description:
-          "Engineered an ESP32-based elevator simulation featuring a SCAN scheduling algorithm, finite state control, and real-time floor servicing logic. The system integrates hardware-level input handling, LED-based status indicators, and non-blocking embedded timing to model realistic elevator behavior.",
+          "Architected a deterministic, interrupt-driven elevator control system on ESP32 implementing a SCAN scheduling algorithm within an explicit finite state machine framework. Designed non-blocking, event-driven timing using hardware interrupts to ensure predictable state transitions under real-time constraints. Abstracted hardware inputs and LED status outputs from control logic to maintain modularity and scalability while modeling realistic multi-floor servicing behavior.",
         tags: ["Embedded Systems", "Finite State Machines", "Real-Time Systems", "Scheduling Algorithms"],
         link: "https://github.com/aprescod12/esp32-elevator-simulator",
         videos: [
