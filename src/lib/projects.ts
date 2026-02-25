@@ -46,6 +46,20 @@ export type Project = {
           { youtubeId: "rMUoFo9LxEs", caption: "The Arduino Serial Monitor demonstrated Button Press Recognition and Elevator State Updates." },
         ],
       },
+      {
+        title: "ESP32 Alarm Clock System",
+        slug: "esp32-alarm",
+        description:
+          "Engineered a WiFi-enabled alarm clock on the ESP32 featuring NTP time synchronization, I2S audio output, and OLED display rendering. Designed a deterministic finite state machine (OFF, ARMED, RINGING, SNOOZED, SILENCED) to manage alarm behavior with non-blocking button handling and coordinated peripheral control (I2C, I2S, GPIO).",
+        tags: ["Embedded Systems", "Finite State Machines", "WiFi", "I2S"],
+        link: "https://github.com/aprescod12/alarm-clock-system",
+        videos: [
+          { youtubeId: "kkGcaMSYXD4", caption: "The System Alarm going off and the Specified Time." },
+          { youtubeId: "ksUBhCYbksk", caption: "The System Going into a 1 Minute Snooze Mode on Button Press." },
+          { youtubeId: "-uvissk0dHE", caption: "The System going into Silenced Mode on Button Press." },
+          { youtubeId: "iNDnfd_8_3s", caption: "Demonstrating the Toggle Screen Button." },
+        ],
+      },
     {
       title: "Bat Tracking System (Jetson + Multi-Camera)",
       description:
