@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 
 export const metadata = {
   title: "Amiri Prescod | Portfolio",
-  description: "Portfolio Website for Amiri Prescod",
+  description: "Amiri Prescod is an Engineering Student at Villanova University",
 };
 
 export default function RootLayout({
