@@ -63,9 +63,9 @@ export default function TrackPage() {
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition-colors">
             <p className="text-sm text-zinc-300">Personal Best / Season Best</p>
             <p className="mt-2 text-xl font-semibold">
-              PBs: 6.75s, 10.48s, 21.39s
+              PBs: 6.75s, 10.43s, 21.39s
             </p>
-            <p className="mt-2 text-sm text-zinc-300">SBs: N/A, N/A, N/A</p>
+            <p className="mt-2 text-sm text-zinc-300">SBs: N/A, 10.43s, N/A</p>
           </div>
 
           {/* Metric 3 */}
@@ -171,7 +171,7 @@ export default function TrackPage() {
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition-colors">
             <p className="font-medium">6x Big East Medalist</p>
             <p className="mt-2 text-sm text-zinc-300">
-              Holder of 6 Big East Conference medals across primary events: 2 Gold, 1 Silver, 3 Bronzes.
+              Holder of 8 Big East Conference medals across primary events: 2 Gold, 1 Silver, 5 Bronzes.
             </p>
           </div>
 
@@ -179,7 +179,7 @@ export default function TrackPage() {
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition-colors">
             <p className="font-medium">Consistent Point Scorer</p>
             <p className="mt-2 text-sm text-zinc-300">
-              Earned points for the Wildcats at Conference meets in 7 races.
+              Earned points for the Wildcats at Conference meets in 9 races.
             </p>
           </div>
         </div>

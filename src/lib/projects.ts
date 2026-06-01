@@ -35,6 +35,13 @@ export type Project = {
       ],
     },
     {
+      title: "Track and Field Training App",
+      description:
+        " React Native (Expo) mobile application designed for athletes to log and manage track workouts and lift sessions. The app features dynamic workout tracking, conditional UI flows (track vs. lift modes), and structured data storage using Supabase. Built with Expo Router for scalable navigation and a modular component architecture for maintenance.",
+      tags: ["React Naative", "Supabase", "Full-Stack Development"],
+      link: "https://github.com/aprescod12/track-training-app",
+    },
+    {
         title: "ESP32 4-Floor Elevator Simulator",
         slug: "esp32-elevator",
         description:
@@ -66,7 +73,7 @@ export type Project = {
         "Developed a multi-sensor baseball swing analysis system combining dual cameras and an inertial measurement unit (IMU) to capture and reconstruct swings in 3D. The project focused on real-time motion tracking, sensor synchronization, and extracting key swing metrics to support data-driven athletic training.",
       collaborated: "Christopher Powers, Dmitrii Kapranov, Julian Frank, Michael Kokolis",
       tags: ["Computer Vision", "Edge AI", "State Estimation"],
-      link: "#",
+      link: "/Baseball Training Final Report.pdf",
     },
     {
       title: "Medical Monitoring & Safety Device (ESP32 Wearable System Prototype)",
