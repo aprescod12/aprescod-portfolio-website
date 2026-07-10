@@ -6,9 +6,22 @@ import SectionHeading from "@/components/SectionHeading";
 import ProjectCard from "@/components/ProjectCard";
 import { getProjectLinkLabel, projects } from "@/lib/projects";
 
+const selectedProjectTitles = [
+  "Track & Field Training App",
+  "Baseball Bat Tracking System (Jetson + Multi-Camera)",
+  "ESP32 4-Floor Elevator Simulator",
+  "ESP32 Alarm Clock System",
+];
+
 export default function ProjectsPage() {
   const featured = projects.find((project) => project.featured);
   const rest = projects.filter((project) => !project.featured);
+  const selected = selectedProjectTitles.flatMap((title) => {
+    const project = rest.find((item) => item.title === title);
+    return project ? [project] : [];
+  });
+  const selectedTitles = new Set(selected.map((project) => project.title));
+  const additional = rest.filter((project) => !selectedTitles.has(project.title));
   const featuredResourceLabel = featured ? getProjectLinkLabel(featured) : null;
 
   return (
@@ -116,22 +129,43 @@ export default function ProjectsPage() {
 
       <section>
         <div className="mb-6 max-w-2xl">
-          <p className="text-xs uppercase tracking-wider text-zinc-400">Project portfolio</p>
+          <p className="text-xs uppercase tracking-wider text-zinc-400">Core portfolio</p>
           <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white">
             Selected engineering work
           </h2>
           <p className="mt-2 text-sm leading-relaxed text-zinc-300">
-            Additional projects spanning embedded control, biomedical research, mobile development,
-            computer vision, and connected systems.
+            The strongest end-to-end case studies, prioritized for technical depth, system design,
+            and relevance to embedded, biomedical, and software roles.
           </p>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {rest.map((project) => (
+        <div className="grid gap-4 md:grid-cols-2">
+          {selected.map((project) => (
             <ProjectCard key={project.title} project={project} />
           ))}
         </div>
       </section>
+
+      {additional.length ? (
+        <section className="mt-16 border-t border-white/10 pt-12">
+          <div className="mb-6 max-w-2xl">
+            <p className="text-xs uppercase tracking-wider text-zinc-400">Broader experience</p>
+            <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white">
+              Additional work and research
+            </h2>
+            <p className="mt-2 text-sm leading-relaxed text-zinc-300">
+              Supporting research, web development, and earlier embedded work that adds breadth to
+              the primary project case studies.
+            </p>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {additional.map((project) => (
+              <ProjectCard key={project.title} project={project} />
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       <section className="mt-10 rounded-2xl border border-white/10 bg-white/5 p-6">
         <h3 className="font-semibold tracking-tight">Public project resources</h3>
