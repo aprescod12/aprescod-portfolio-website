@@ -101,6 +101,13 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <body className="min-h-dvh flex flex-col">
+        <a
+          href="#main-content"
+          className="sr-only z-[100] rounded-lg bg-blue-500 px-4 py-3 text-sm font-medium text-white focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:outline-none focus:ring-2 focus:ring-blue-200"
+        >
+          Skip to main content
+        </a>
+
         <Script
           id="ld-json-person"
           type="application/ld+json"
@@ -111,7 +118,9 @@ export default function RootLayout({
         />
 
         <Navbar />
-        <main className="flex-1 w-full">{children}</main>
+        <main id="main-content" tabIndex={-1} className="flex-1 w-full">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>
