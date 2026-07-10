@@ -160,7 +160,7 @@ export default function HomePhotoCarousel() {
       onFocusCapture={() => setInteractionPaused(true)}
       onBlurCapture={handleBlur}
       onPointerDown={() => setInteractionPaused(true)}
-      onPointerUp={() => setInteractionPaused(false)}
+      onPointerUp={(event) => setInteractionPaused(event.pointerType === "mouse")}
       onPointerCancel={() => setInteractionPaused(false)}
     >
       <div className="flex flex-wrap items-end justify-between gap-4">
@@ -217,7 +217,11 @@ export default function HomePhotoCarousel() {
       <div
         ref={carouselRef}
         onScroll={handleScroll}
-        className="mt-5 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className={[
+          "mt-5 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2",
+          "[-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
+          reduceMotion ? "scroll-auto" : "scroll-smooth",
+        ].join(" ")}
       >
         {photos.map((photo, index) => (
           <div
@@ -243,7 +247,10 @@ export default function HomePhotoCarousel() {
       </div>
 
       <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
-        <p className="text-xs text-zinc-500" aria-live="polite">
+        <p
+          className="text-xs text-zinc-500"
+          aria-live={userPaused || interactionPaused ? "polite" : "off"}
+        >
           Photo {activeIndex + 1} of {photos.length}
         </p>
 
