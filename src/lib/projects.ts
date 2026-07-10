@@ -1,6 +1,6 @@
 // src/lib/projects.ts
 
-export type ProjectLinkType = "code" | "report" | "demo" | "site" | "external";
+export type ProjectLinkType = "code" | "report" | "demo" | "external";
 
 export type ProjectCaseStudy = {
   overview: string;
@@ -21,10 +21,8 @@ export type Project = {
   year?: string;
   availabilityNote?: string;
 
-  link?: string; // Primary GitHub repository, report, demo, site, or external destination
+  link?: string; // GitHub repository, report, demo, or external destination
   linkType?: ProjectLinkType;
-  secondaryLink?: string;
-  secondaryLinkType?: ProjectLinkType;
   impact?: string;
   collaborated?: string;
   featured?: boolean;
@@ -221,6 +219,7 @@ export const projects: Project[] = [
   },
   {
     title: "Engineering Portfolio Website",
+    slug: "engineering-portfolio-website",
     description:
       "Designed and developed a responsive engineering portfolio using Next.js, React, TypeScript, and Tailwind CSS. Built a reusable, data-driven project system with dynamically generated case-study pages, standardized project resources, responsive layouts, and an accessible continuously scrolling photo carousel.",
     category: "Web Development",
@@ -228,10 +227,25 @@ export const projects: Project[] = [
     context: "Personal project",
     year: "2026",
     tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-    link: "https://amiriprescod.vercel.app/",
-    linkType: "site",
-    secondaryLink: "https://github.com/aprescod12/aprescod-portfolio-website",
-    secondaryLinkType: "code",
+    link: "https://github.com/aprescod12/aprescod-portfolio-website",
+    linkType: "code",
+    caseStudy: {
+      overview:
+        "This site was designed as a central portfolio for presenting biomedical, embedded, software, and athletics work through a consistent visual system and reusable project architecture.",
+      engineeringFocus: [
+        "Built a data-driven project model and dynamic Next.js routes so structured project content generates consistent internal case-study pages.",
+        "Created reusable navigation, project-card, layout, and resource-link patterns to keep the interface consistent as new work is added.",
+        "Implemented a responsive photo carousel with automatic progression, manual scrolling, pause behavior, image recycling, and reduced-motion support.",
+      ],
+      systemDetails: [
+        "Next.js App Router with React and TypeScript",
+        "Tailwind CSS for responsive layout and interface styling",
+        "Reusable project data, card, navigation, and case-study components",
+        "Vercel deployment with public source control on GitHub",
+      ],
+      note:
+        "The live product is the website you are currently viewing.",
+    },
   },
   {
     title: "Particle Photon Security System",
@@ -251,20 +265,12 @@ const projectLinkLabels: Record<ProjectLinkType, string> = {
   code: "View code",
   report: "View report",
   demo: "Watch demo",
-  site: "View live site",
   external: "Open project",
 };
 
 export function getProjectLinkLabel(project: Project) {
   if (!project.link) return null;
   return project.linkType ? projectLinkLabels[project.linkType] : "Open project";
-}
-
-export function getSecondaryProjectLinkLabel(project: Project) {
-  if (!project.secondaryLink) return null;
-  return project.secondaryLinkType
-    ? projectLinkLabels[project.secondaryLinkType]
-    : "Open project";
 }
 
 // Helpers
