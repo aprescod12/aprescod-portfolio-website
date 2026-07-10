@@ -4,6 +4,42 @@ import { notFound } from "next/navigation";
 import Container from "@/components/Container";
 import { demoSlugs, getProjectBySlug, getProjectLinkLabel } from "@/lib/projects";
 
+const architectureDiagrams: Record<
+  string,
+  { src: string; alt: string; disclaimer: string }
+> = {
+  "track-field-training-app": {
+    src: "/projects/track-field-system-flow.svg",
+    alt: "System-flow diagram showing the Track and Field Training App's Expo client, application workflows, local session persistence, and Supabase backend.",
+    disclaimer:
+      "AI-generated system diagram based on the project's verified architecture and implementation.",
+  },
+  "medical-monitoring-safety-device": {
+    src: "/projects/medical-monitoring-system-flow.svg",
+    alt: "Architecture diagram showing biomedical sensors and user input flowing through an ESP32 to biometric processing, fall detection, OLED feedback, alert behavior, and low-power control.",
+    disclaimer:
+      "AI-generated system diagram based on the project's verified architecture and implementation.",
+  },
+  "baseball-bat-tracking": {
+    src: "/projects/baseball-tracking-system-flow.svg",
+    alt: "Architecture diagram showing dual-camera and IMU capture, synchronization, NVIDIA Jetson processing, sensor fusion, 3D motion reconstruction, and swing-analysis outputs.",
+    disclaimer:
+      "AI-generated system diagram adapted from the project report and verified project architecture.",
+  },
+  "esp32-elevator": {
+    src: "/projects/elevator-system-flow.svg",
+    alt: "Architecture diagram showing floor-call buttons, ESP32 control, interrupt-driven request handling, finite-state logic, SCAN scheduling, non-blocking timing, LED indicators, and serial monitoring.",
+    disclaimer:
+      "AI-generated system diagram based on the project's verified architecture and implementation.",
+  },
+  "esp32-alarm": {
+    src: "/projects/alarm-clock-system-flow.svg",
+    alt: "Architecture diagram showing Wi-Fi and NTP synchronization, physical alarm controls, ESP32 processing, finite-state alarm logic, OLED feedback, and I2S audio output.",
+    disclaimer:
+      "AI-generated system diagram based on the project's verified architecture and implementation.",
+  },
+};
+
 export function generateStaticParams() {
   return demoSlugs.map((slug) => ({ slug }));
 }
@@ -19,6 +55,9 @@ export default async function ProjectCaseStudyPage({
   if (!project) return notFound();
 
   const resourceLabel = getProjectLinkLabel(project);
+  const architectureDiagram = project.slug
+    ? architectureDiagrams[project.slug]
+    : undefined;
   const snapshotItems = [
     { label: "Category", value: project.category },
     { label: "Status", value: project.status },
@@ -111,7 +150,10 @@ export default async function ProjectCaseStudyPage({
               <ul className="mt-4 space-y-3 text-sm leading-relaxed text-zinc-300">
                 {project.caseStudy.systemDetails.map((detail) => (
                   <li key={detail} className="flex gap-3">
-                    <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-blue-400" />
+                    <span
+                      aria-hidden="true"
+                      className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-blue-400"
+                    />
                     <span>{detail}</span>
                   </li>
                 ))}
@@ -119,16 +161,16 @@ export default async function ProjectCaseStudyPage({
             </div>
           </section>
 
-          {project.slug === "track-field-training-app" ? (
+          {architectureDiagram ? (
             <section className="mt-14">
               <p className="text-xs uppercase tracking-wider text-zinc-400">System flow</p>
               <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white">
-                Architecture and data flow
+                Architecture and system flow
               </h2>
               <figure className="mt-6 overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-3 md:p-4">
                 <Image
-                  src="/projects/track-field-system-flow.svg"
-                  alt="System-flow diagram showing the Track and Field Training App's Expo client, application workflows, local session persistence, and Supabase backend."
+                  src={architectureDiagram.src}
+                  alt={architectureDiagram.alt}
                   width={1536}
                   height={900}
                   sizes="(max-width: 1024px) 100vw, 1152px"
@@ -136,7 +178,7 @@ export default async function ProjectCaseStudyPage({
                   unoptimized
                 />
                 <figcaption className="px-2 pb-1 pt-3 text-xs leading-relaxed text-zinc-500">
-                  AI-generated system diagram based on the project&apos;s verified architecture and implementation.
+                  {architectureDiagram.disclaimer}
                 </figcaption>
               </figure>
             </section>
