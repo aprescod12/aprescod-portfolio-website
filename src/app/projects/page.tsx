@@ -4,11 +4,12 @@ import Link from "next/link";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 import ProjectCard from "@/components/ProjectCard";
-import { projects } from "@/lib/projects";
+import { getProjectLinkLabel, projects } from "@/lib/projects";
 
 export default function ProjectsPage() {
   const featured = projects.find((project) => project.featured);
   const rest = projects.filter((project) => !project.featured);
+  const featuredResourceLabel = featured ? getProjectLinkLabel(featured) : null;
 
   return (
     <Container>
@@ -48,25 +49,34 @@ export default function ProjectsPage() {
                 ))}
               </div>
 
-              <div className="mt-7">
-                {featured.slug ? (
-                  <Link
-                    href={`/projects/${featured.slug}`}
-                    className="inline-flex items-center justify-center rounded-xl bg-blue-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-400"
-                  >
-                    View case study →
-                  </Link>
-                ) : featured.link ? (
-                  <a
-                    href={featured.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center justify-center rounded-xl bg-blue-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-400"
-                  >
-                    View project ↗
-                  </a>
-                ) : null}
-              </div>
+              {featured.slug || (featured.link && featuredResourceLabel) ? (
+                <div className="mt-7 flex flex-wrap gap-3">
+                  {featured.slug ? (
+                    <Link
+                      href={`/projects/${featured.slug}`}
+                      className="inline-flex items-center justify-center rounded-xl bg-blue-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-400"
+                    >
+                      View case study →
+                    </Link>
+                  ) : null}
+
+                  {featured.link && featuredResourceLabel ? (
+                    <a
+                      href={featured.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      className={[
+                        "inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-medium text-white transition-colors",
+                        featured.slug
+                          ? "border border-white/15 hover:bg-white/5"
+                          : "bg-blue-500 hover:bg-blue-400",
+                      ].join(" ")}
+                    >
+                      {featuredResourceLabel} ↗
+                    </a>
+                  ) : null}
+                </div>
+              ) : null}
             </div>
 
             <aside className="rounded-2xl border border-white/10 bg-zinc-950/40 p-5">
@@ -124,9 +134,10 @@ export default function ProjectsPage() {
       </section>
 
       <section className="mt-10 rounded-2xl border border-white/10 bg-white/5 p-6">
-        <h3 className="font-semibold tracking-tight">Want to see code?</h3>
+        <h3 className="font-semibold tracking-tight">Public project resources</h3>
         <p className="mt-2 text-sm text-zinc-300 leading-relaxed">
-          Projects with demos have a “Code ↗” link on the card. Otherwise, click “View →” to open the repo.
+          Each available action points to the most relevant public artifact: an internal case study,
+          source-code repository, or project report.
         </p>
       </section>
     </Container>
