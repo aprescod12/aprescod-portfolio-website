@@ -2,6 +2,13 @@
 
 export type ProjectLinkType = "code" | "report" | "demo" | "external";
 
+export type ProjectCaseStudy = {
+  overview: string;
+  engineeringFocus: string[];
+  systemDetails: string[];
+  note?: string;
+};
+
 export type Project = {
   title: string;
   description: string;
@@ -22,6 +29,9 @@ export type Project = {
 
   // If present, the project card will link to /projects/[slug].
   slug?: string;
+
+  // Structured content for the internal project case-study page.
+  caseStudy?: ProjectCaseStudy;
 
   // If present, the /projects/[slug] page will render videos.
   videos?: { src?: string; youtubeId?: string; caption?: string }[];
@@ -64,6 +74,21 @@ export const projects: Project[] = [
     ],
     link: "https://github.com/aprescod12/esp32-elevator-simulator",
     linkType: "code",
+    caseStudy: {
+      overview:
+        "This ESP32 prototype models a four-floor elevator that accepts requests, tracks direction, services queued floors, and represents movement and door state through LEDs and serial output.",
+      engineeringFocus: [
+        "Implemented SCAN-style scheduling so pending floor requests are serviced in the active direction before the system reverses.",
+        "Used a finite state machine and non-blocking timing to keep request handling responsive during travel and door sequences.",
+        "Separated button input, scheduling logic, state transitions, and output control to keep the system modular and testable.",
+      ],
+      systemDetails: [
+        "ESP32 WROOM 32 microcontroller",
+        "Four floor-call buttons and four floor-indicator LEDs",
+        "Dedicated door-status LED",
+        "Serial monitoring for calls, direction, floor position, and pending requests",
+      ],
+    },
     videos: [
       { youtubeId: "tgXctCg14ZQ", caption: "Button Presses and LED Reaction." },
       {
@@ -83,6 +108,21 @@ export const projects: Project[] = [
     tags: ["Embedded Systems", "Finite State Machines", "WiFi", "I2S"],
     link: "https://github.com/aprescod12/alarm-clock-system",
     linkType: "code",
+    caseStudy: {
+      overview:
+        "This ESP32 alarm clock combines network-synchronized time, an OLED interface, physical controls, and I2S audio within a state-driven embedded architecture.",
+      engineeringFocus: [
+        "Modeled alarm behavior as explicit OFF, ARMED, RINGING, SNOOZED, and SILENCED states.",
+        "Coordinated WiFi and NTP time synchronization with OLED rendering, button input, and audio output.",
+        "Used non-blocking control logic so display updates and button interactions remain responsive across alarm states.",
+      ],
+      systemDetails: [
+        "ESP32 WROOM microcontroller",
+        "SSD1306 OLED display over I2C",
+        "I2S audio output and speaker",
+        "Four physical controls for screen toggle, snooze, silence, and alarm off",
+      ],
+    },
     videos: [
       {
         youtubeId: "kkGcaMSYXD4",
@@ -104,6 +144,7 @@ export const projects: Project[] = [
   },
   {
     title: "Baseball Bat Tracking System (Jetson + Multi-Camera)",
+    slug: "baseball-bat-tracking",
     description:
       "Developed a multi-sensor baseball swing analysis system combining dual cameras and an inertial measurement unit (IMU) to capture and reconstruct swings in 3D. The project focused on real-time motion tracking, sensor synchronization, and extracting key swing metrics to support data-driven athletic training.",
     category: "Computer Vision",
@@ -113,9 +154,25 @@ export const projects: Project[] = [
     tags: ["Computer Vision", "Edge AI", "State Estimation"],
     link: "/Baseball Training Final Report.pdf",
     linkType: "report",
+    caseStudy: {
+      overview:
+        "This capstone project explored a multi-sensor approach to baseball swing analysis by combining two camera views with inertial measurements and edge computing.",
+      engineeringFocus: [
+        "Coordinated dual-camera and IMU data as complementary inputs for motion analysis.",
+        "Focused on reconstructing swing movement in three dimensions rather than relying on a single two-dimensional view.",
+        "Structured the system around extracting measurable swing information for data-informed athletic training.",
+      ],
+      systemDetails: [
+        "NVIDIA Jetson edge-computing platform",
+        "Dual-camera capture system",
+        "Inertial measurement unit",
+        "Computer-vision, sensor-synchronization, and state-estimation workflow",
+      ],
+    },
   },
   {
     title: "Medical Monitoring & Safety Device (ESP32 Wearable System Prototype)",
+    slug: "medical-monitoring-safety-device",
     featured: true,
     description:
       "A breadboard-based prototype that simulates a wearable medical device, measuring heart rate and SpO₂, detecting fall events via an accelerometer, and using deep-sleep power management to model battery-efficient wearable operation.",
@@ -126,6 +183,23 @@ export const projects: Project[] = [
     tags: ["ESP32", "Low Power", "Sensors"],
     link: "https://github.com/aprescod12/medical-monitoring-safety-device",
     linkType: "code",
+    caseStudy: {
+      overview:
+        "Developed as a Medical Device Technology course project, this breadboard prototype models the sensing, safety, interface, and power-management behavior of a wearable or home-care monitoring device.",
+      engineeringFocus: [
+        "Integrated optical sensing for heart-rate and estimated SpO₂ measurement with real-time OLED feedback.",
+        "Added accelerometer-based fall-event detection and on-device alert behavior.",
+        "Used deep-sleep cycling and interrupt-driven input to explore responsive, lower-power operation.",
+      ],
+      systemDetails: [
+        "ESP32 microcontroller",
+        "MAX3010x optical pulse-oximeter sensor",
+        "ADXL345 three-axis accelerometer",
+        "SSD1306 OLED display and interrupt-driven push button",
+      ],
+      note:
+        "This is an educational prototype, not a clinical-grade device, and it has not undergone medical calibration, validation, or regulatory review.",
+    },
   },
   {
     title: "Particle Photon Security System",
