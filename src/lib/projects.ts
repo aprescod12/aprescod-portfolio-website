@@ -51,12 +51,28 @@ export const projects: Project[] = [
   },
   {
     title: "Track & Field Training App",
+    slug: "track-field-training-app",
     description:
-      "React Native (Expo) mobile application designed for athletes to log and manage track workouts and lift sessions. The app features dynamic workout tracking, conditional UI flows (track vs. lift modes), and structured data storage using Supabase. Built with Expo Router for scalable navigation and a modular component architecture for maintenance.",
+      "Cross-platform React Native application for planning and logging track and lift sessions, reviewing workout history, managing calendar events, and organizing athlete-specific performance data with Supabase-backed user accounts.",
     category: "Mobile Development",
     tags: ["React Native", "Supabase", "Full-Stack Development"],
     link: "https://github.com/aprescod12/track-training-app",
     linkType: "code",
+    caseStudy: {
+      overview:
+        "This application brings track training, strength work, calendar planning, workout history, and athlete-specific performance workflows into one mobile experience designed around the needs of track and field athletes.",
+      engineeringFocus: [
+        "Built a file-based Expo Router architecture with tab, stack, modal, authentication, detail, history, calendar, statistics, and profile routes.",
+        "Integrated Supabase authentication and user-scoped database queries with persistent sessions across native and web platforms.",
+        "Designed separate track and lift logging models for sets, repetitions, times, weights, notes, exercise search, custom exercises, personal records, and achievement processing.",
+      ],
+      systemDetails: [
+        "React Native and Expo with TypeScript",
+        "Expo Router navigation across tab, stack, modal, and dynamic routes",
+        "Supabase authentication and database-backed athlete data",
+        "AsyncStorage on native platforms and localStorage on the web for session persistence",
+      ],
+    },
   },
   {
     title: "ESP32 4-Floor Elevator Simulator",
