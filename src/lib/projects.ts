@@ -55,6 +55,8 @@ export const projects: Project[] = [
     description:
       "Built a cross-platform training app for logging track and lift sessions, reviewing workout history, managing calendar events, and storing user-specific data through Supabase.",
     category: "Mobile Development",
+    status: "Ongoing",
+    context: "Personal project",
     tags: ["React Native", "Expo", "Supabase", "TypeScript"],
     link: "https://github.com/aprescod12/track-training-app",
     linkType: "code",
