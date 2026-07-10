@@ -4,6 +4,14 @@ export type Project = {
   title: string;
   description: string;
   tags: string[];
+
+  // Optional metadata used to give project cards and case studies more context.
+  category?: string;
+  status?: string;
+  context?: string;
+  year?: string;
+  availabilityNote?: string;
+
   link?: string; // GitHub repository, report, or external destination
   impact?: string;
   collaborated?: string;
@@ -20,15 +28,19 @@ export const projects: Project[] = [
   {
     title: "fNIRS Device (Flexible PCB)",
     description:
-      "Working on a wearable-friendly fNIRS system with a focus on hardware integration, signal fidelity, and real-world usability.",
-    impact:
-      "Designed for practical measurement workflows and improved repeatability in experimental data collection.",
+      "Contributing to faculty-led fNIRS research involving wearable sensing, hardware integration, and signal acquisition.",
+    category: "Biomedical Research",
+    status: "Ongoing",
+    context: "Faculty-led research",
+    availabilityNote:
+      "Technical details and supporting materials are not publicly shared.",
     tags: ["Biomedical", "Embedded", "Hardware"],
   },
   {
     title: "Track & Field Training App",
     description:
       "React Native (Expo) mobile application designed for athletes to log and manage track workouts and lift sessions. The app features dynamic workout tracking, conditional UI flows (track vs. lift modes), and structured data storage using Supabase. Built with Expo Router for scalable navigation and a modular component architecture for maintenance.",
+    category: "Mobile Development",
     tags: ["React Native", "Supabase", "Full-Stack Development"],
     link: "https://github.com/aprescod12/track-training-app",
   },
@@ -37,6 +49,9 @@ export const projects: Project[] = [
     slug: "esp32-elevator",
     description:
       "Architected a deterministic, interrupt-driven elevator control system on ESP32 implementing a SCAN scheduling algorithm within an explicit finite state machine framework. Designed non-blocking, event-driven timing using hardware interrupts to ensure predictable state transitions under real-time constraints. Abstracted hardware inputs and LED status outputs from control logic to maintain modularity and scalability while modeling realistic multi-floor servicing behavior.",
+    category: "Embedded Systems",
+    status: "Completed",
+    year: "2026",
     tags: [
       "Embedded Systems",
       "Finite State Machines",
@@ -58,6 +73,8 @@ export const projects: Project[] = [
     slug: "esp32-alarm",
     description:
       "Engineered a WiFi-enabled alarm clock on the ESP32 featuring NTP time synchronization, I2S audio output, and OLED display rendering. Designed a deterministic finite state machine (OFF, ARMED, RINGING, SNOOZED, SILENCED) to manage alarm behavior with non-blocking button handling and coordinated peripheral control (I2C, I2S, GPIO).",
+    category: "Embedded Systems",
+    status: "Completed",
     tags: ["Embedded Systems", "Finite State Machines", "WiFi", "I2S"],
     link: "https://github.com/aprescod12/alarm-clock-system",
     videos: [
@@ -83,6 +100,9 @@ export const projects: Project[] = [
     title: "Baseball Bat Tracking System (Jetson + Multi-Camera)",
     description:
       "Developed a multi-sensor baseball swing analysis system combining dual cameras and an inertial measurement unit (IMU) to capture and reconstruct swings in 3D. The project focused on real-time motion tracking, sensor synchronization, and extracting key swing metrics to support data-driven athletic training.",
+    category: "Computer Vision",
+    status: "Completed",
+    context: "Team project",
     collaborated: "Christopher Powers, Dmitrii Kapranov, Julian Frank, Michael Kokolis",
     tags: ["Computer Vision", "Edge AI", "State Estimation"],
     link: "/Baseball Training Final Report.pdf",
@@ -92,6 +112,10 @@ export const projects: Project[] = [
     featured: true,
     description:
       "A breadboard-based prototype that simulates a wearable medical device, measuring heart rate and SpO₂, detecting fall events via an accelerometer, and using deep-sleep power management to model battery-efficient wearable operation.",
+    category: "Biomedical Systems",
+    status: "Completed",
+    context: "Course project",
+    year: "2025",
     tags: ["ESP32", "Low Power", "Sensors"],
     link: "https://github.com/aprescod12/medical-monitoring-safety-device",
   },
@@ -99,6 +123,10 @@ export const projects: Project[] = [
     title: "Particle Photon Security System",
     description:
       "Designed a finite state machine–based security system using the Particle Photon microcontroller, simulating real-world alarm behavior such as arming, disarming, and intrusion detection. The project highlights embedded systems fundamentals, state-driven logic, and reliable event handling in a resource-constrained environment.",
+    category: "Embedded Systems",
+    status: "Completed",
+    context: "Course project",
+    year: "2024",
     tags: ["Embedded Systems", "Finite State Machines", "IoT Fundamentals"],
     link: "https://github.com/aprescod12/particle-photon-security-system",
   },
