@@ -115,9 +115,6 @@ export default function HomePhotoCarousel() {
           <p className="text-xs uppercase tracking-wider text-zinc-400">
             A glimpse into my work &amp; athletics
           </p>
-          <p className="mt-2 text-sm text-zinc-400">
-            Continuously scrolling • drag to explore
-          </p>
         </div>
         <Link
           href="/track"
