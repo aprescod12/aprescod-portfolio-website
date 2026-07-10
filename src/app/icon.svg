@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Amiri Prescod portfolio icon</title>
+  <rect width="64" height="64" rx="16" fill="#09090b"/>
+  <rect x="4" y="4" width="56" height="56" rx="13" fill="none" stroke="#3b82f6" stroke-width="2"/>
+  <path d="M17 45 28.5 18h7L47 45h-7.4l-2.2-5.8H26.3L24.1 45H17Zm11.5-11.8h6.8l-3.4-9-3.4 9Z" fill="#fafafa"/>
+  <path d="M44 18h5v27h-5z" fill="#60a5fa"/>
+</svg>
