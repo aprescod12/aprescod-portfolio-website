@@ -102,7 +102,7 @@ export const projects: Project[] = [
       "Developed a multi-sensor baseball swing analysis system combining dual cameras and an inertial measurement unit (IMU) to capture and reconstruct swings in 3D. The project focused on real-time motion tracking, sensor synchronization, and extracting key swing metrics to support data-driven athletic training.",
     category: "Computer Vision",
     status: "Completed",
-    context: "Team project",
+    context: "Capstone project",
     collaborated: "Christopher Powers, Dmitrii Kapranov, Julian Frank, Michael Kokolis",
     tags: ["Computer Vision", "Edge AI", "State Estimation"],
     link: "/Baseball Training Final Report.pdf",
