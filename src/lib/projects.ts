@@ -1,6 +1,6 @@
 // src/lib/projects.ts
 
-export type ProjectLinkType = "code" | "report" | "demo" | "external";
+export type ProjectLinkType = "code" | "report" | "demo" | "site" | "external";
 
 export type ProjectCaseStudy = {
   overview: string;
@@ -21,8 +21,10 @@ export type Project = {
   year?: string;
   availabilityNote?: string;
 
-  link?: string; // GitHub repository, report, demo, or external destination
+  link?: string; // Primary GitHub repository, report, demo, site, or external destination
   linkType?: ProjectLinkType;
+  secondaryLink?: string;
+  secondaryLinkType?: ProjectLinkType;
   impact?: string;
   collaborated?: string;
   featured?: boolean;
@@ -218,6 +220,20 @@ export const projects: Project[] = [
     },
   },
   {
+    title: "Engineering Portfolio Website",
+    description:
+      "Designed and developed a responsive engineering portfolio using Next.js, React, TypeScript, and Tailwind CSS. Built a reusable, data-driven project system with dynamically generated case-study pages, standardized project resources, responsive layouts, and an accessible continuously scrolling photo carousel.",
+    category: "Web Development",
+    status: "Ongoing",
+    context: "Personal project",
+    year: "2026",
+    tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    link: "https://amiriprescod.vercel.app/",
+    linkType: "site",
+    secondaryLink: "https://github.com/aprescod12/aprescod-portfolio-website",
+    secondaryLinkType: "code",
+  },
+  {
     title: "Particle Photon Security System",
     description:
       "Designed a finite state machine–based security system using the Particle Photon microcontroller, simulating real-world alarm behavior such as arming, disarming, and intrusion detection. The project highlights embedded systems fundamentals, state-driven logic, and reliable event handling in a resource-constrained environment.",
@@ -235,12 +251,20 @@ const projectLinkLabels: Record<ProjectLinkType, string> = {
   code: "View code",
   report: "View report",
   demo: "Watch demo",
+  site: "View live site",
   external: "Open project",
 };
 
 export function getProjectLinkLabel(project: Project) {
   if (!project.link) return null;
   return project.linkType ? projectLinkLabels[project.linkType] : "Open project";
+}
+
+export function getSecondaryProjectLinkLabel(project: Project) {
+  if (!project.secondaryLink) return null;
+  return project.secondaryLinkType
+    ? projectLinkLabels[project.secondaryLinkType]
+    : "Open project";
 }
 
 // Helpers
