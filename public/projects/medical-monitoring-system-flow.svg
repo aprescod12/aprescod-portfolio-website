@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="900" viewBox="0 0 1536 900" role="img" aria-labelledby="title desc">
+  <title id="title">Medical Monitoring and Safety Device architecture</title>
+  <desc id="desc">System flow from biomedical sensors and user input through an ESP32 to biometric processing, fall detection, OLED feedback, alerts, and low-power operation.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#07101d"/><stop offset="1" stop-color="#0b1628"/></linearGradient>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0 0L12 6L0 12Z" fill="#94a3b8"/></marker>
+    <style>
+      .title{font:700 42px Inter,system-ui,sans-serif;fill:#f8fafc}.sub{font:400 19px Inter,system-ui,sans-serif;fill:#67e8b4}.head{font:700 17px Inter,system-ui,sans-serif;letter-spacing:1px}.boxTitle{font:700 20px Inter,system-ui,sans-serif;fill:#f8fafc}.body{font:400 16px Inter,system-ui,sans-serif;fill:#cbd5e1}.small{font:400 14px Inter,system-ui,sans-serif;fill:#94a3b8}.flow{stroke:#94a3b8;stroke-width:3;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1536" height="900" rx="32" fill="url(#bg)"/>
+  <text x="64" y="70" class="title">Medical Monitoring &amp; Safety Device</text>
+  <text x="64" y="106" class="sub">ESP32 prototype for biometric sensing, fall-event detection, user feedback, and lower-power operation.</text>
+
+  <g transform="translate(55 165)">
+    <rect width="250" height="535" rx="24" fill="#0b1728" stroke="#60a5fa" stroke-width="2"/>
+    <text x="28" y="42" class="head" fill="#60a5fa">1. INPUTS &amp; SENSORS</text>
+    <rect x="24" y="78" width="202" height="118" rx="18" fill="#0c1b30" stroke="#60a5fa"/>
+    <text x="44" y="120" class="boxTitle">MAX3010x</text><text x="44" y="151" class="body">Heart rate &amp;</text><text x="44" y="176" class="body">estimated SpO2</text>
+    <rect x="24" y="220" width="202" height="118" rx="18" fill="#0c1b30" stroke="#a78bfa"/>
+    <text x="44" y="262" class="boxTitle">ADXL345</text><text x="44" y="293" class="body">Three-axis</text><text x="44" y="318" class="body">acceleration</text>
+    <rect x="24" y="362" width="202" height="118" rx="18" fill="#0c1b30" stroke="#4ade80"/>
+    <text x="44" y="404" class="boxTitle">Push button</text><text x="44" y="435" class="body">Interrupt-driven</text><text x="44" y="460" class="body">user input</text>
+  </g>
+
+  <path d="M305 433H374" class="flow"/>
+  <g transform="translate(380 240)">
+    <rect width="225" height="385" rx="24" fill="#0b1728" stroke="#22d3ee" stroke-width="2"/>
+    <text x="28" y="42" class="head" fill="#22d3ee">2. CORE CONTROLLER</text>
+    <rect x="34" y="92" width="157" height="145" rx="22" fill="#0d2130" stroke="#22d3ee"/>
+    <text x="112" y="150" text-anchor="middle" class="boxTitle">ESP32</text><text x="112" y="182" text-anchor="middle" class="body">I2C + GPIO</text><text x="112" y="207" text-anchor="middle" class="body">interrupts</text>
+    <text x="34" y="285" class="body">• sensor acquisition</text><text x="34" y="316" class="body">• timing &amp; control</text><text x="34" y="347" class="body">• sleep / wake logic</text>
+  </g>
+
+  <path d="M605 433H674" class="flow"/>
+  <g transform="translate(680 165)">
+    <rect width="275" height="535" rx="24" fill="#0b1728" stroke="#4ade80" stroke-width="2"/>
+    <text x="28" y="42" class="head" fill="#4ade80">3. PROCESSING &amp; LOGIC</text>
+    <rect x="24" y="78" width="227" height="100" rx="18" fill="#0d211d" stroke="#4ade80"/>
+    <text x="44" y="118" class="boxTitle">Biometric processing</text><text x="44" y="149" class="body">Heart rate &amp; SpO2</text>
+    <rect x="24" y="198" width="227" height="100" rx="18" fill="#0d211d" stroke="#4ade80"/>
+    <text x="44" y="238" class="boxTitle">Fall-event logic</text><text x="44" y="269" class="body">Motion threshold analysis</text>
+    <rect x="24" y="318" width="227" height="100" rx="18" fill="#0d211d" stroke="#4ade80"/>
+    <text x="44" y="358" class="boxTitle">Input handling</text><text x="44" y="389" class="body">Button and interrupts</text>
+    <rect x="24" y="438" width="227" height="72" rx="18" fill="#0d211d" stroke="#4ade80"/>
+    <text x="44" y="481" class="boxTitle">Deep-sleep control</text>
+  </g>
+
+  <path d="M955 433H1024" class="flow"/>
+  <g transform="translate(1030 165)">
+    <rect width="250" height="535" rx="24" fill="#0b1728" stroke="#60a5fa" stroke-width="2"/>
+    <text x="28" y="42" class="head" fill="#60a5fa">4. OUTPUTS</text>
+    <rect x="24" y="78" width="202" height="160" rx="18" fill="#0c1b30" stroke="#60a5fa"/>
+    <text x="44" y="120" class="boxTitle">OLED display</text><text x="44" y="153" class="body">Vitals, status,</text><text x="44" y="178" class="body">and safety alerts</text>
+    <rect x="24" y="264" width="202" height="135" rx="18" fill="#0c1b30" stroke="#a78bfa"/>
+    <text x="44" y="306" class="boxTitle">Alert behavior</text><text x="44" y="339" class="body">Visual or on-device</text><text x="44" y="364" class="body">notification</text>
+    <rect x="24" y="425" width="202" height="86" rx="18" fill="#0d2130" stroke="#22d3ee"/>
+    <text x="44" y="466" class="boxTitle">User feedback</text><text x="44" y="493" class="small">Responsive monitoring loop</text>
+  </g>
+
+  <g transform="translate(1320 165)">
+    <rect width="170" height="535" rx="24" fill="#101629" stroke="#a78bfa" stroke-width="2"/>
+    <text x="22" y="42" class="head" fill="#a78bfa">SYSTEM FLOW</text>
+    <text x="22" y="92" class="body">1  Acquire sensor data</text><text x="22" y="126" class="body">2  Process vitals</text><text x="22" y="160" class="body">3  Detect motion event</text><text x="22" y="194" class="body">4  Update display</text><text x="22" y="228" class="body">5  Trigger alert</text><text x="22" y="262" class="body">6  Enter sleep cycle</text>
+    <line x1="22" y1="294" x2="148" y2="294" stroke="#334155"/>
+    <text x="22" y="330" class="small">The prototype models</text><text x="22" y="354" class="small">wearable or home-care</text><text x="22" y="378" class="small">monitoring behavior.</text>
+  </g>
+
+  <g transform="translate(245 755)"><rect width="1045" height="82" rx="20" fill="#0b1728" stroke="#334155"/><text x="34" y="34" class="head" fill="#e2e8f0">LEGEND</text><rect x="155" y="22" width="46" height="30" rx="6" fill="#0c1b30" stroke="#60a5fa"/><text x="218" y="44" class="body">I/O</text><rect x="325" y="22" width="46" height="30" rx="6" fill="#0d2130" stroke="#22d3ee"/><text x="388" y="44" class="body">Controller</text><rect x="535" y="22" width="46" height="30" rx="6" fill="#0d211d" stroke="#4ade80"/><text x="598" y="44" class="body">Processing</text><rect x="745" y="22" width="46" height="30" rx="6" fill="#101629" stroke="#a78bfa"/><text x="808" y="44" class="body">System behavior</text><path d="M940 38h65" class="flow"/><text x="1022" y="44" class="body">Data / control flow</text></g>
+</svg>
