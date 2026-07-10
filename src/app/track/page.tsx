@@ -1,287 +1,275 @@
-"use client";
-
-// app/track/page.tsx
-// Purpose: Presents athletics professionally with clear metrics + achievements.
-// Update: Split metrics + a cycling photo slot (carousel) for a more visual, recruiter-friendly layout.
-
-import { useEffect, useMemo, useState } from "react";
-import Image from "next/image";
+import type { Metadata } from "next";
+import Link from "next/link";
 import Container from "@/components/Container";
-import SectionHeading from "@/components/SectionHeading";
+import TrackPhotoCarousel from "@/components/TrackPhotoCarousel";
+import {
+  careerHighlights,
+  coverageLinks,
+  performanceMetrics,
+  personalBests,
+  trackPhotos,
+} from "@/lib/track";
+
+export const metadata: Metadata = {
+  title: "Track & Field | Amiri Prescod",
+  description:
+    "Villanova sprint career, personal bests, BIG EAST achievements, and the connection between athletics and engineering.",
+};
+
+const athletePrinciples = [
+  {
+    number: "01",
+    title: "Measure and adjust",
+    description:
+      "Sprint performance improves through timing, video, feedback, and small technical changes—the same iterative cycle I use when testing engineering systems.",
+  },
+  {
+    number: "02",
+    title: "Execute under pressure",
+    description:
+      "Championship racing taught me to trust preparation, make clear decisions, and perform when the margin for error is extremely small.",
+  },
+  {
+    number: "03",
+    title: "Raise the standard",
+    description:
+      "Team leadership is built through consistent habits, accountability, and contributing to an environment where everyone can perform at a higher level.",
+  },
+];
 
 export default function TrackPage() {
-  // List of photos to cycle through (store these in /public/track)
-  const photos = useMemo(
-    () => [
-      { src: "/track/1.jpg", alt: "Amiri Prescod competing — track photo 1" },
-      { src: "/track/2.jpg", alt: "Amiri Prescod competing — track photo 2" },
-      { src: "/track/3.jpg", alt: "Amiri Prescod competing — track photo 3" },
-      { src: "/track/4.2.JPG", alt: "Amiri Prescod competing — track photo 4" },
-    ],
-    []
-  );
-
-  // Tracks which photo is currently shown
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  // Automatically cycle photos every 7.5 seconds
-  useEffect(() => {
-    const id = window.setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % photos.length);
-    }, 7500);
-
-    // Cleanup timer when component unmounts
-    return () => window.clearInterval(id);
-  }, [photos.length]);
-
-  // Helper functions to move back/forward manually
-  const goPrev = () =>
-    setActiveIndex((prev) => (prev - 1 + photos.length) % photos.length);
-  const goNext = () =>
-    setActiveIndex((prev) => (prev + 1) % photos.length);
-
   return (
     <Container>
-      {/* Page header */}
-      <SectionHeading
-        title="Track & Field"
-        subtitle="Athletics has shaped how I work: consistency, determination, and performance under pressure."
-      />
-
-      {/* SPLIT LAYOUT: Metrics (left) + Cycling Photo Slot (right) */}
-      <section className="grid gap-4 md:grid-cols-6">
-        {/* LEFT: Metrics stack */}
-        <div className="md:col-span-3 grid gap-4">
-          {/* Metric 1 */}
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition-colors">
-            <p className="text-sm text-zinc-300">Primary Events</p>
-            <p className="mt-2 text-xl font-semibold">60m / 100m / 200m</p>
-            <p className="mt-2 text-sm text-zinc-300">Short Sprinter.</p>
-          </div>
-
-          {/* Metric 2 */}
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition-colors">
-            <p className="text-sm text-zinc-300">Personal Best / Season Best</p>
-            <p className="mt-2 text-xl font-semibold">
-              PBs: 6.75s, 10.43s, 21.39s
+      <section className="overflow-hidden rounded-3xl border border-blue-400/20 bg-gradient-to-br from-blue-500/15 via-white/5 to-white/0 p-6 md:p-9">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(360px,0.82fr)] lg:items-center">
+          <div>
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-blue-300">
+              Villanova Track & Field · Sprints
             </p>
-            <p className="mt-2 text-sm text-zinc-300">SBs: N/A, 10.43s, N/A</p>
+            <h1 className="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-white md:text-5xl lg:text-6xl">
+              Sprinting shaped how I prepare, iterate, and perform as an engineer.
+            </h1>
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-zinc-300 md:text-lg">
+              Balancing Villanova sprinting with electrical engineering required disciplined preparation,
+              fast feedback, and consistent execution. Across four collegiate seasons, that approach led
+              to conference titles, program-record performances, and a mindset I now bring to technical
+              work.
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href="https://villanova.com/sports/mens-track-and-field/roster/amiri-prescod/15878"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center rounded-xl bg-blue-500 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-blue-400"
+              >
+                View athlete profile ↗
+              </a>
+              <Link
+                href="/projects/track-field-training-app"
+                className="inline-flex items-center justify-center rounded-xl border border-white/15 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-white/5"
+              >
+                View training app case study →
+              </Link>
+            </div>
           </div>
 
-          {/* Metric 3 */}
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition-colors">
-            <p className="text-sm text-zinc-300">Leadership</p>
-            <p className="mt-2 text-xl font-semibold">Leadership Team Member</p>
-            <p className="mt-2 text-sm text-zinc-300">
-              Setting a Culture of Success.
-            </p>
-          </div>
+          <TrackPhotoCarousel photos={trackPhotos} />
         </div>
 
-        {/* RIGHT: Cycling photo slot */}
-        <div className="md:col-span-3">
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-            {/* Header row: title + small controls */}
-            <div className="flex items-center justify-between">
-              <p className="text-sm font-medium text-zinc-200">
-                Competition Highlights
+        <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {performanceMetrics.map((metric) => (
+            <article
+              key={metric.label}
+              className="rounded-2xl border border-white/10 bg-zinc-950/35 p-5"
+            >
+              <p className="text-3xl font-semibold tracking-tight text-white">{metric.value}</p>
+              <h2 className="mt-2 text-sm font-medium text-zinc-100">{metric.label}</h2>
+              <p className="mt-2 text-xs leading-relaxed text-zinc-400">{metric.detail}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-16">
+        <div className="max-w-3xl">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-400">
+            Performance
+          </p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white md:text-4xl">
+            Personal bests
+          </h2>
+          <p className="mt-4 leading-relaxed text-zinc-300">
+            Verified championship marks across the primary sprint events, separated by indoor and
+            outdoor competition.
+          </p>
+        </div>
+
+        <div className="mt-7 grid gap-4 md:grid-cols-3">
+          {personalBests.map((result) => (
+            <article
+              key={result.event}
+              className="rounded-3xl border border-white/10 bg-white/5 p-6 transition-colors hover:bg-white/[0.07]"
+            >
+              <div className="flex items-center justify-between gap-3">
+                <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-zinc-300">
+                  {result.season}
+                </span>
+                <span className="text-xs uppercase tracking-wider text-zinc-500">Personal best</span>
+              </div>
+
+              <div className="mt-7 flex items-baseline gap-2">
+                <p className="text-5xl font-semibold tracking-tight text-white">{result.time}</p>
+                <span className="text-sm text-zinc-400">seconds</span>
+              </div>
+              <h3 className="mt-3 text-xl font-medium text-zinc-100">{result.event}</h3>
+              <p className="mt-5 text-sm font-medium text-zinc-300">{result.meet}</p>
+              <p className="mt-1 text-sm text-zinc-500">{result.date}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-16 grid gap-10 lg:grid-cols-[minmax(260px,0.55fr)_minmax(0,1.45fr)]">
+        <div>
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-400">
+            Career timeline
+          </p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white md:text-4xl">
+            Championship progression
+          </h2>
+          <p className="mt-4 leading-relaxed text-zinc-300">
+            The strongest results were built across multiple seasons—from early conference scoring to
+            championship wins, record-list performances, and a career-best final year.
+          </p>
+        </div>
+
+        <div className="relative space-y-4 before:absolute before:bottom-7 before:left-[1.15rem] before:top-7 before:w-px before:bg-white/10">
+          {careerHighlights.map((highlight) => (
+            <article
+              key={`${highlight.season}-${highlight.title}`}
+              className="relative grid gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 pl-16 sm:grid-cols-[140px_minmax(0,1fr)] sm:pl-16"
+            >
+              <span className="absolute left-4 top-7 h-3 w-3 rounded-full border-2 border-blue-300 bg-zinc-950 ring-4 ring-zinc-950" />
+              <p className="text-xs font-medium uppercase tracking-wider text-blue-300">
+                {highlight.season}
               </p>
-
-              {/* Manual controls (optional but nice) */}
-              <div className="flex items-center gap-2">
-                <button
-                  type="button"
-                  onClick={goPrev}
-                  className="rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-xs text-zinc-200 hover:bg-white/10 transition-colors"
-                  aria-label="Previous photo"
-                >
-                  ←
-                </button>
-                <button
-                  type="button"
-                  onClick={goNext}
-                  className="rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-xs text-zinc-200 hover:bg-white/10 transition-colors"
-                  aria-label="Next photo"
-                >
-                  →
-                </button>
+              <div>
+                <h3 className="font-semibold tracking-tight text-white">{highlight.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-zinc-300">
+                  {highlight.description}
+                </p>
               </div>
-            </div>
+            </article>
+          ))}
+        </div>
+      </section>
 
-            {/* Image frame */}
-            <div className="mt-3 relative aspect-[16/10] overflow-hidden rounded-xl border border-white/10 bg-zinc-950">
-              {/* The current photo */}
-              <Image
-                src={photos[activeIndex].src}
-                alt={photos[activeIndex].alt}
-                fill
-                className="object-cover transition-transform duration-300 hover:scale-[1.03]"
-                priority
-              />
+      <section className="mt-16 rounded-3xl border border-white/10 bg-white/5 p-7 md:p-9">
+        <div className="max-w-3xl">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-400">
+            Student-athlete mindset
+          </p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white md:text-4xl">
+            The connection between sprinting and engineering
+          </h2>
+          <p className="mt-4 leading-relaxed text-zinc-300">
+            Both disciplines reward deliberate preparation, measurable feedback, and reliable execution.
+            The track made those principles tangible long before I began applying them to embedded,
+            biomedical, and software systems.
+          </p>
+        </div>
 
-              {/* Subtle bottom fade for readability */}
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-zinc-950/80 to-transparent" />
+        <div className="mt-8 grid gap-4 md:grid-cols-3">
+          {athletePrinciples.map((principle) => (
+            <article
+              key={principle.number}
+              className="rounded-2xl border border-white/10 bg-zinc-950/30 p-6"
+            >
+              <p className="text-xs font-medium uppercase tracking-wider text-blue-300">
+                {principle.number}
+              </p>
+              <h3 className="mt-3 text-lg font-semibold tracking-tight text-white">
+                {principle.title}
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-zinc-300">
+                {principle.description}
+              </p>
+            </article>
+          ))}
+        </div>
+      </section>
 
-              {/* Dots indicator */}
-              <div className="absolute bottom-3 left-3 flex gap-1.5">
-                {photos.map((_, i) => (
-                  <span
-                    key={i}
-                    className={[
-                      "h-1.5 w-1.5 rounded-full",
-                      i === activeIndex ? "bg-white" : "bg-white/30",
-                    ].join(" ")}
-                  />
-                ))}
-              </div>
-            </div>
-
-            {/* Small caption line */}
-            <p className="mt-3 text-xs text-zinc-400">
-              Use arrows to cycle.
+      <section className="mt-16 overflow-hidden rounded-3xl border border-blue-400/20 bg-gradient-to-r from-blue-500/15 via-blue-500/5 to-transparent p-7 md:p-9">
+        <div className="grid gap-8 md:grid-cols-[minmax(0,1.3fr)_minmax(260px,0.7fr)] md:items-end">
+          <div>
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-blue-300">
+              Built from firsthand experience
             </p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white md:text-4xl">
+              Track & Field Training App
+            </h2>
+            <p className="mt-4 max-w-2xl leading-relaxed text-zinc-300">
+              My experience planning sprint sessions, strength work, and competition preparation informed
+              a cross-platform app for logging track and lift workouts, managing training calendars, and
+              reviewing athlete-specific performance data.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap gap-3 md:justify-end">
+            <Link
+              href="/projects/track-field-training-app"
+              className="inline-flex items-center justify-center rounded-xl bg-blue-500 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-blue-400"
+            >
+              View case study →
+            </Link>
+            <a
+              href="https://github.com/aprescod12/track-training-app"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center rounded-xl border border-white/15 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-white/5"
+            >
+              View code ↗
+            </a>
           </div>
         </div>
       </section>
 
-      {/* Achievements section (cards read well) */}
-      <section className="mt-12">
-        <SectionHeading
-          title="Achievements"
-        />
-
-        <div className="space-y-3">
-          {/* Achievement card 1 */}
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition-colors">
-            <p className="font-medium">Big East Conference Champion: 60m</p>
-            <p className="mt-2 text-sm text-zinc-300">
-              Won 60m title in 2024 running a PB time of 6.75.
-            </p>
-          </div>
-
-          {/* Achievement card 2 */}
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition-colors">
-            <p className="font-medium">Big East Conference Champion: 100m</p>
-            <p className="mt-2 text-sm text-zinc-300">
-              Won 100m title in 2024 at the Villanova Stadium, running a PB time of 10.48. Proctecting Home Ground \\//
-            </p>
-          </div>
-
-          {/* Achievement card 3 */}
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition-colors">
-            <p className="font-medium">6x Big East Medalist</p>
-            <p className="mt-2 text-sm text-zinc-300">
-              Holder of 8 Big East Conference medals across primary events: 2 Gold, 1 Silver, 5 Bronzes.
-            </p>
-          </div>
-
-          {/* Achievement card 2 */}
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition-colors">
-            <p className="font-medium">Consistent Point Scorer</p>
-            <p className="mt-2 text-sm text-zinc-300">
-              Earned points for the Wildcats at Conference meets in 9 races.
-            </p>
-          </div>
+      <section className="my-16">
+        <div className="max-w-3xl">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-400">
+            Official sources
+          </p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white md:text-4xl">
+            Profile, records, and championship coverage
+          </h2>
+          <p className="mt-4 leading-relaxed text-zinc-300">
+            Official Villanova Athletics sources documenting results, honors, program rankings, and
+            conference championship performances.
+          </p>
         </div>
-      </section>
 
-            {/* LINKS & COVERAGE SECTION */}
-            <section className="mt-12">
-        <SectionHeading
-          title="Links & Coverage"
-          subtitle="External articles and coverage highlighting competitive performances and milestones."
-        />
-
-        <div className="grid gap-4 md:grid-cols-2">
-          {/* Link card 1 */}
-          <a
-            href="https://villanova.com/sports/mens-track-and-field/roster/amiri-prescod/15878"
-            target="_blank"
-            rel="noreferrer"
-            className="block rounded-2xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition-colors"
-          >
-            <p className="font-medium">
-              Athlete Profile
-            </p>
-            <p className="mt-2 text-sm text-zinc-300 leading-relaxed">
-              My Villanova Athletics Athlete Profile showing results, achievements and related articles.
-            </p>
-            <p className="mt-3 text-sm font-medium text-blue-400">
-              Go to Profile →
-            </p>
-          </a>
-
-          {/* Link card 2 */}
-          <a
-            href="https://villanova.com/news/2024/5/11/mens-track-field-bolinsky-dolan-murphy-and-prescod-make-history-lead-wildcats-to-second-place-team-finish-at-big-east-championships-on-saturday-afternoon.aspx"
-            target="_blank"
-            rel="noreferrer"
-            className="block rounded-2xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition-colors"
-          >
-            <p className="font-medium">
-              Big East Outdoor Championships 2024 — 100m
-            </p>
-            <p className="mt-2 text-sm text-zinc-300 leading-relaxed">
-              Meet recap covering the 100m conference title at Villanova Stadium.
-            </p>
-            <p className="mt-3 text-sm font-medium text-blue-400">
-              Read article →
-            </p>
-          </a>
-
-          {/* Link card 3 */}
-          <a
-            href="https://villanova.com/news/2024/2/24/mens-track-field-mens-track-field-wins-four-gold-medals-tallies-seven-podium-performances-at-big-east-championships.aspx"
-            target="_blank"
-            rel="noreferrer"
-            className="block rounded-2xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition-colors"
-          >
-            <p className="font-medium">
-            Big East Outdoor Championships 2024 — 60m
-            </p>
-            <p className="mt-2 text-sm text-zinc-300 leading-relaxed">
-            Meet recap covering the 60m conference title and indoor season dominance.
-            </p>
-            <p className="mt-3 text-sm font-medium text-blue-400">
-              Read Article →
-            </p>
-          </a>
-
-          {/* Link card 4 */}
-<div className="rounded-2xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition-colors">
-  {/* Card title */}
-  <p className="font-medium">
-    All Time Performer
-  </p>
-
-  {/* Card description */}
-  <p className="mt-2 text-sm text-zinc-300 leading-relaxed">
-    Rewriting the Villanova Athletics History Book in the 60m and 100m.
-  </p>
-
-  {/* Action links */}
-  <div className="mt-4 flex flex-wrap gap-4">
-    {/* Link 1 */}
-    <a
-      href="https://s3.us-east-2.amazonaws.com/sidearm.nextgen.sites/villanova.com/documents/2019/10/28/60_meters.pdf"
-      target="_blank"
-      rel="noreferrer"
-      className="text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors"
-    >
-      60m All Time Performance List →
-    </a>
-
-    {/* Link 2 */}
-    <a
-      href="https://s3.us-east-2.amazonaws.com/sidearm.nextgen.sites/villanova.com/documents/2019/10/28/100_meters.pdf"
-      target="_blank"
-      rel="noreferrer"
-      className="text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors"
-    >
-      100m All Time Performance List →
-    </a>
-  </div>
-</div>
+        <div className="mt-7 grid gap-4 md:grid-cols-2">
+          {coverageLinks.map((item) => (
+            <a
+              key={item.title}
+              href={item.href}
+              target="_blank"
+              rel="noreferrer"
+              className="group rounded-2xl border border-white/10 bg-white/5 p-6 transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/[0.08]"
+            >
+              <p className="text-xs font-medium uppercase tracking-wider text-zinc-500">
+                {item.eyebrow}
+              </p>
+              <h3 className="mt-3 text-lg font-semibold tracking-tight text-white">
+                {item.title}
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-zinc-300">{item.description}</p>
+              <p className="mt-5 text-sm font-medium text-blue-400 transition-colors group-hover:text-blue-300">
+                {item.action} ↗
+              </p>
+            </a>
+          ))}
         </div>
       </section>
     </Container>
