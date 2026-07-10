@@ -1,11 +1,20 @@
 // components/ProjectCard.tsx
 
 import Link from "next/link";
-import { getProjectLinkLabel, type Project } from "@/lib/projects";
+import {
+  getProjectLinkLabel,
+  getSecondaryProjectLinkLabel,
+  type Project,
+} from "@/lib/projects";
 
 export default function ProjectCard({ project }: { project: Project }) {
   const resourceLabel = getProjectLinkLabel(project);
-  const hasActions = Boolean(project.slug || (project.link && resourceLabel));
+  const secondaryResourceLabel = getSecondaryProjectLinkLabel(project);
+  const hasActions = Boolean(
+    project.slug ||
+      (project.link && resourceLabel) ||
+      (project.secondaryLink && secondaryResourceLabel)
+  );
 
   return (
     <div
@@ -71,6 +80,17 @@ export default function ProjectCard({ project }: { project: Project }) {
               ].join(" ")}
             >
               {resourceLabel} ↗
+            </a>
+          ) : null}
+
+          {project.secondaryLink && secondaryResourceLabel ? (
+            <a
+              href={project.secondaryLink}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex text-sm font-medium text-zinc-300 transition-colors hover:text-white"
+            >
+              {secondaryResourceLabel} ↗
             </a>
           ) : null}
         </div>
