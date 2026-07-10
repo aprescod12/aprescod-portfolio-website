@@ -1,5 +1,7 @@
 // src/lib/projects.ts
 
+export type ProjectLinkType = "code" | "report" | "demo" | "external";
+
 export type Project = {
   title: string;
   description: string;
@@ -12,7 +14,8 @@ export type Project = {
   year?: string;
   availabilityNote?: string;
 
-  link?: string; // GitHub repository, report, or external destination
+  link?: string; // GitHub repository, report, demo, or external destination
+  linkType?: ProjectLinkType;
   impact?: string;
   collaborated?: string;
   featured?: boolean;
@@ -43,6 +46,7 @@ export const projects: Project[] = [
     category: "Mobile Development",
     tags: ["React Native", "Supabase", "Full-Stack Development"],
     link: "https://github.com/aprescod12/track-training-app",
+    linkType: "code",
   },
   {
     title: "ESP32 4-Floor Elevator Simulator",
@@ -59,6 +63,7 @@ export const projects: Project[] = [
       "Scheduling Algorithms",
     ],
     link: "https://github.com/aprescod12/esp32-elevator-simulator",
+    linkType: "code",
     videos: [
       { youtubeId: "tgXctCg14ZQ", caption: "Button Presses and LED Reaction." },
       {
@@ -77,6 +82,7 @@ export const projects: Project[] = [
     status: "Completed",
     tags: ["Embedded Systems", "Finite State Machines", "WiFi", "I2S"],
     link: "https://github.com/aprescod12/alarm-clock-system",
+    linkType: "code",
     videos: [
       {
         youtubeId: "kkGcaMSYXD4",
@@ -106,6 +112,7 @@ export const projects: Project[] = [
     collaborated: "Christopher Powers, Dmitrii Kapranov, Julian Frank, Michael Kokolis",
     tags: ["Computer Vision", "Edge AI", "State Estimation"],
     link: "/Baseball Training Final Report.pdf",
+    linkType: "report",
   },
   {
     title: "Medical Monitoring & Safety Device (ESP32 Wearable System Prototype)",
@@ -118,6 +125,7 @@ export const projects: Project[] = [
     year: "2025",
     tags: ["ESP32", "Low Power", "Sensors"],
     link: "https://github.com/aprescod12/medical-monitoring-safety-device",
+    linkType: "code",
   },
   {
     title: "Particle Photon Security System",
@@ -129,8 +137,21 @@ export const projects: Project[] = [
     year: "2024",
     tags: ["Embedded Systems", "Finite State Machines", "IoT Fundamentals"],
     link: "https://github.com/aprescod12/particle-photon-security-system",
+    linkType: "code",
   },
 ];
+
+const projectLinkLabels: Record<ProjectLinkType, string> = {
+  code: "View code",
+  report: "View report",
+  demo: "Watch demo",
+  external: "Open project",
+};
+
+export function getProjectLinkLabel(project: Project) {
+  if (!project.link) return null;
+  return project.linkType ? projectLinkLabels[project.linkType] : "Open project";
+}
 
 // Helpers
 export function getProjectBySlug(slug: string) {
