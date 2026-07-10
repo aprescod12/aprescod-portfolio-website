@@ -20,8 +20,8 @@ export default function HomePage() {
 
         {/* Strong recruiter headline */}
         <h1 className="mt-3 text-4xl font-semibold tracking-tight md:text-6xl">
-          Engineering <span className="text-blue-400">intelligent systems</span>{" "}
-          with <span className="text-blue-400">data-driven</span> design.
+          Building <span className="text-blue-400">embedded and biomedical systems</span>{" "}
+          that turn <span className="text-blue-400">sensor data</span> into reliable, real-world tools.
         </h1>
 
         {/* One-paragraph summary (keep it skimmable) */}
