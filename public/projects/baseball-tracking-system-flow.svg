@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="900" viewBox="0 0 1536 900" role="img" aria-labelledby="title desc">
+  <title id="title">Baseball bat tracking system architecture</title>
+  <desc id="desc">Report-backed system architecture showing dual-camera and IMU capture, synchronized data collection, NVIDIA Jetson processing, multi-sensor motion reconstruction, and swing metrics.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#07101d"/><stop offset="1" stop-color="#0b1628"/></linearGradient>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0 0L12 6L0 12Z" fill="#94a3b8"/></marker>
+    <style>.title{font:700 42px Inter,system-ui,sans-serif;fill:#f8fafc}.sub{font:400 19px Inter,system-ui,sans-serif;fill:#67e8b4}.head{font:700 17px Inter,system-ui,sans-serif;letter-spacing:1px}.boxTitle{font:700 20px Inter,system-ui,sans-serif;fill:#f8fafc}.body{font:400 16px Inter,system-ui,sans-serif;fill:#cbd5e1}.small{font:400 14px Inter,system-ui,sans-serif;fill:#94a3b8}.flow{stroke:#94a3b8;stroke-width:3;fill:none;marker-end:url(#arrow)}</style>
+  </defs>
+  <rect width="1536" height="900" rx="32" fill="url(#bg)"/>
+  <text x="64" y="70" class="title">Baseball Bat Tracking System</text>
+  <text x="64" y="106" class="sub">Dual-camera and IMU capture feeding Jetson-based processing, 3D motion reconstruction, and swing analysis.</text>
+
+  <g transform="translate(45 170)">
+    <rect width="225" height="510" rx="24" fill="#0b1728" stroke="#60a5fa" stroke-width="2"/>
+    <text x="28" y="42" class="head" fill="#60a5fa">1. CAPTURE LAYER</text>
+    <rect x="24" y="88" width="177" height="105" rx="18" fill="#0c1b30" stroke="#60a5fa"/><text x="44" y="130" class="boxTitle">Camera 1</text><text x="44" y="162" class="body">Left-view video</text>
+    <rect x="24" y="218" width="177" height="105" rx="18" fill="#0c1b30" stroke="#60a5fa"/><text x="44" y="260" class="boxTitle">Camera 2</text><text x="44" y="292" class="body">Right-view video</text>
+    <rect x="24" y="348" width="177" height="105" rx="18" fill="#0c1b30" stroke="#a78bfa"/><text x="44" y="390" class="boxTitle">IMU</text><text x="44" y="422" class="body">Bat acceleration and</text><text x="44" y="447" class="body">orientation data</text>
+  </g>
+  <path d="M270 425H330" class="flow"/>
+
+  <g transform="translate(340 170)">
+    <rect width="250" height="510" rx="24" fill="#0b1728" stroke="#22d3ee" stroke-width="2"/>
+    <text x="28" y="42" class="head" fill="#22d3ee">2. SYNCHRONIZATION</text>
+    <rect x="24" y="88" width="202" height="105" rx="18" fill="#0d2130" stroke="#22d3ee"/><text x="44" y="130" class="boxTitle">Time alignment</text><text x="44" y="162" class="body">Coordinate camera frames</text>
+    <rect x="24" y="218" width="202" height="105" rx="18" fill="#0d2130" stroke="#22d3ee"/><text x="44" y="260" class="boxTitle">Sensor buffering</text><text x="44" y="292" class="body">Pair visual and IMU data</text>
+    <rect x="24" y="348" width="202" height="105" rx="18" fill="#0d2130" stroke="#22d3ee"/><text x="44" y="390" class="boxTitle">Quality checks</text><text x="44" y="422" class="body">Validate complete captures</text>
+  </g>
+  <path d="M590 425H650" class="flow"/>
+
+  <g transform="translate(660 170)">
+    <rect width="235" height="510" rx="24" fill="#0b1728" stroke="#4ade80" stroke-width="2"/>
+    <text x="28" y="42" class="head" fill="#4ade80">3. EDGE COMPUTE</text>
+    <rect x="32" y="92" width="171" height="150" rx="22" fill="#0d211d" stroke="#4ade80"/><text x="117" y="148" text-anchor="middle" class="boxTitle">NVIDIA Jetson</text><text x="117" y="181" text-anchor="middle" class="body">On-device compute</text><text x="117" y="208" text-anchor="middle" class="small">Camera + IMU pipeline</text>
+    <rect x="24" y="278" width="187" height="74" rx="14" fill="#0d211d" stroke="#4ade80"/><text x="44" y="322" class="body">Video processing</text>
+    <rect x="24" y="374" width="187" height="74" rx="14" fill="#0d211d" stroke="#4ade80"/><text x="44" y="418" class="body">Local data handling</text>
+  </g>
+  <path d="M895 425H955" class="flow"/>
+
+  <g transform="translate(965 170)">
+    <rect width="290" height="510" rx="24" fill="#101629" stroke="#a78bfa" stroke-width="2"/>
+    <text x="28" y="42" class="head" fill="#a78bfa">4. PROCESSING PIPELINE</text>
+    <rect x="24" y="88" width="242" height="105" rx="18" fill="#17132c" stroke="#a78bfa"/><text x="44" y="130" class="boxTitle">Computer vision</text><text x="44" y="162" class="body">Track the bat in both views</text>
+    <rect x="24" y="218" width="242" height="105" rx="18" fill="#17132c" stroke="#a78bfa"/><text x="44" y="260" class="boxTitle">Sensor fusion</text><text x="44" y="292" class="body">Combine vision and IMU cues</text>
+    <rect x="24" y="348" width="242" height="105" rx="18" fill="#17132c" stroke="#a78bfa"/><text x="44" y="390" class="boxTitle">3D reconstruction</text><text x="44" y="422" class="body">Estimate the bat trajectory</text>
+  </g>
+  <path d="M1255 425H1315" class="flow"/>
+
+  <g transform="translate(1325 170)">
+    <rect width="165" height="510" rx="24" fill="#0b1728" stroke="#60a5fa" stroke-width="2"/>
+    <text x="20" y="42" class="head" fill="#60a5fa">5. OUTPUTS</text>
+    <text x="20" y="96" class="body">• bat speed</text><text x="20" y="132" class="body">• swing path</text><text x="20" y="168" class="body">• orientation</text><text x="20" y="204" class="body">• timing</text><text x="20" y="240" class="body">• training metrics</text>
+    <line x1="20" y1="278" x2="145" y2="278" stroke="#334155"/>
+    <text x="20" y="318" class="small">Results support</text><text x="20" y="342" class="small">data-informed</text><text x="20" y="366" class="small">swing evaluation.</text>
+  </g>
+
+  <g transform="translate(195 735)"><rect width="1145" height="90" rx="20" fill="#0b1728" stroke="#334155"/><text x="34" y="38" class="head" fill="#e2e8f0">REPORT-BACKED FLOW</text><text x="225" y="39" class="body">Two camera views + IMU</text><text x="430" y="39" class="body">→</text><text x="470" y="39" class="body">synchronized capture</text><text x="650" y="39" class="body">→</text><text x="690" y="39" class="body">Jetson processing</text><text x="840" y="39" class="body">→</text><text x="880" y="39" class="body">3D trajectory and metrics</text><text x="225" y="68" class="small">The diagram adapts the project report’s architecture into the portfolio’s shared visual style.</text></g>
+</svg>
