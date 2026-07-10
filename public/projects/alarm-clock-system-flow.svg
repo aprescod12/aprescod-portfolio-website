@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="900" viewBox="0 0 1536 900" role="img" aria-labelledby="title desc">
+  <title id="title">ESP32 alarm clock architecture</title>
+  <desc id="desc">Architecture showing Wi-Fi and NTP time synchronization, physical controls, ESP32 processing, finite-state alarm logic, OLED output, and I2S audio.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#07101d"/><stop offset="1" stop-color="#0b1628"/></linearGradient>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0 0L12 6L0 12Z" fill="#94a3b8"/></marker>
+    <style>.title{font:700 42px Inter,system-ui,sans-serif;fill:#f8fafc}.sub{font:400 19px Inter,system-ui,sans-serif;fill:#67e8b4}.head{font:700 17px Inter,system-ui,sans-serif;letter-spacing:1px}.boxTitle{font:700 20px Inter,system-ui,sans-serif;fill:#f8fafc}.body{font:400 16px Inter,system-ui,sans-serif;fill:#cbd5e1}.small{font:400 14px Inter,system-ui,sans-serif;fill:#94a3b8}.flow{stroke:#94a3b8;stroke-width:3;fill:none;marker-end:url(#arrow)}</style>
+  </defs>
+  <rect width="1536" height="900" rx="32" fill="url(#bg)"/>
+  <text x="64" y="70" class="title">ESP32 Alarm Clock System</text>
+  <text x="64" y="106" class="sub">Wi-Fi time sync, physical controls, finite-state alarm behavior, OLED feedback, and I2S audio.</text>
+
+  <g transform="translate(45 170)">
+    <rect width="220" height="500" rx="24" fill="#0b1728" stroke="#60a5fa" stroke-width="2"/>
+    <text x="28" y="42" class="head" fill="#60a5fa">1. TIME SOURCE</text>
+    <rect x="24" y="88" width="172" height="135" rx="18" fill="#0c1b30" stroke="#60a5fa"/><text x="44" y="132" class="boxTitle">Wi-Fi network</text><text x="44" y="166" class="body">Connects the ESP32</text><text x="44" y="193" class="body">to a local access point</text>
+    <path d="M110 223V278" stroke="#60a5fa" stroke-width="2" stroke-dasharray="8 8" marker-end="url(#arrow)"/>
+    <rect x="24" y="285" width="172" height="135" rx="18" fill="#0c1b30" stroke="#60a5fa"/><text x="44" y="329" class="boxTitle">NTP server</text><text x="44" y="363" class="body">Supplies network-</text><text x="44" y="390" class="body">synchronized time</text>
+    <text x="28" y="462" class="small">Time updates enter the</text><text x="28" y="485" class="small">controller over UDP.</text>
+  </g>
+  <path d="M265 420H325" class="flow"/>
+
+  <g transform="translate(335 170)">
+    <rect width="240" height="500" rx="24" fill="#0b1728" stroke="#60a5fa" stroke-width="2"/>
+    <text x="28" y="42" class="head" fill="#60a5fa">2. INPUTS</text>
+    <g class="body"><rect x="24" y="88" width="192" height="72" rx="14" fill="#0c1b30" stroke="#60a5fa"/><text x="44" y="132">Screen toggle</text><rect x="24" y="180" width="192" height="72" rx="14" fill="#0c1b30" stroke="#60a5fa"/><text x="44" y="224">Snooze</text><rect x="24" y="272" width="192" height="72" rx="14" fill="#0c1b30" stroke="#60a5fa"/><text x="44" y="316">Silence</text><rect x="24" y="364" width="192" height="72" rx="14" fill="#0c1b30" stroke="#60a5fa"/><text x="44" y="408">Alarm off</text></g>
+    <text x="28" y="472" class="small">Buttons generate events</text><text x="28" y="495" class="small">without blocking the loop.</text>
+  </g>
+  <path d="M575 420H635" class="flow"/>
+
+  <g transform="translate(645 170)">
+    <rect width="240" height="500" rx="24" fill="#0b1728" stroke="#4ade80" stroke-width="2"/>
+    <text x="28" y="42" class="head" fill="#4ade80">3. CONTROLLER</text>
+    <rect x="36" y="88" width="168" height="145" rx="22" fill="#0d211d" stroke="#4ade80"/><text x="120" y="146" text-anchor="middle" class="boxTitle">ESP32</text><text x="120" y="178" text-anchor="middle" class="body">WROOM</text><text x="120" y="205" text-anchor="middle" class="small">Wi-Fi • GPIO • timers</text>
+    <rect x="24" y="268" width="192" height="72" rx="14" fill="#0d211d" stroke="#4ade80"/><text x="44" y="312" class="body">NTP client</text>
+    <rect x="24" y="360" width="192" height="72" rx="14" fill="#0d211d" stroke="#4ade80"/><text x="44" y="404" class="body">Interrupt / event handling</text>
+    <text x="28" y="472" class="small">Coordinates time, inputs,</text><text x="28" y="495" class="small">state changes, and outputs.</text>
+  </g>
+  <path d="M885 420H945" class="flow"/>
+
+  <g transform="translate(955 170)">
+    <rect width="255" height="500" rx="24" fill="#101629" stroke="#a78bfa" stroke-width="2"/>
+    <text x="28" y="42" class="head" fill="#a78bfa">4. FINITE STATE MACHINE</text>
+    <g class="body"><rect x="38" y="88" width="179" height="58" rx="14" fill="#17132c" stroke="#a78bfa"/><text x="128" y="124" text-anchor="middle">OFF</text><path d="M128 146V169" class="flow"/><rect x="38" y="176" width="179" height="58" rx="14" fill="#17132c" stroke="#a78bfa"/><text x="128" y="212" text-anchor="middle">ARMED</text><path d="M128 234V257" class="flow"/><rect x="38" y="264" width="179" height="58" rx="14" fill="#17132c" stroke="#a78bfa"/><text x="128" y="300" text-anchor="middle">RINGING</text><path d="M128 322V345" class="flow"/><rect x="38" y="352" width="179" height="58" rx="14" fill="#17132c" stroke="#a78bfa"/><text x="128" y="388" text-anchor="middle">SNOOZED</text><rect x="38" y="430" width="179" height="46" rx="14" fill="#17132c" stroke="#a78bfa"/><text x="128" y="459" text-anchor="middle">SILENCED</text></g>
+  </g>
+  <path d="M1210 420H1270" class="flow"/>
+
+  <g transform="translate(1280 170)">
+    <rect width="210" height="500" rx="24" fill="#0b1728" stroke="#60a5fa" stroke-width="2"/>
+    <text x="28" y="42" class="head" fill="#60a5fa">5. OUTPUTS</text>
+    <rect x="24" y="88" width="162" height="155" rx="18" fill="#0c1b30" stroke="#60a5fa"/><text x="44" y="132" class="boxTitle">OLED display</text><text x="44" y="166" class="body">Time, date, alarm</text><text x="44" y="193" class="body">status, and state</text>
+    <rect x="24" y="276" width="162" height="155" rx="18" fill="#0c1b30" stroke="#22d3ee"/><text x="44" y="320" class="boxTitle">I2S audio</text><text x="44" y="354" class="body">Alarm tone through</text><text x="44" y="381" class="body">speaker or buzzer</text>
+    <text x="28" y="472" class="small">Outputs reflect the current</text><text x="28" y="495" class="small">state on every loop cycle.</text>
+  </g>
+
+  <g transform="translate(220 735)"><rect width="1095" height="88" rx="20" fill="#0b1728" stroke="#334155"/><text x="34" y="38" class="head" fill="#e2e8f0">KEY FLOW</text><text x="150" y="39" class="body">NTP time</text><text x="245" y="39" class="body">+</text><text x="275" y="39" class="body">button events</text><text x="395" y="39" class="body">→</text><text x="430" y="39" class="body">ESP32 controller</text><text x="585" y="39" class="body">→</text><text x="620" y="39" class="body">finite-state logic</text><text x="775" y="39" class="body">→</text><text x="810" y="39" class="body">OLED and audio</text><text x="150" y="67" class="small">The event-driven loop stays responsive across alarm, snooze, silence, and display interactions.</text></g>
+</svg>
