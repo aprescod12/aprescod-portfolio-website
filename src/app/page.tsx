@@ -67,6 +67,32 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* CREDENTIALS: compact education and background summary */}
+      <section aria-label="Education and credentials" className="mt-6">
+        <div className="grid overflow-hidden rounded-2xl border border-white/10 bg-white/5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="p-5 lg:border-r lg:border-white/10">
+            <p className="text-xs uppercase tracking-wider text-zinc-400">Undergraduate</p>
+            <p className="mt-2 font-semibold text-white">B.S. Electrical Engineering</p>
+            <p className="mt-1 text-sm text-zinc-300">Villanova University</p>
+          </div>
+          <div className="border-t border-white/10 p-5 sm:border-l sm:border-t-0 lg:border-l-0 lg:border-r">
+            <p className="text-xs uppercase tracking-wider text-zinc-400">Graduate Studies</p>
+            <p className="mt-2 font-semibold text-white">M.S. Biomedical Engineering</p>
+            <p className="mt-1 text-sm text-zinc-300">Candidate</p>
+          </div>
+          <div className="border-t border-white/10 p-5 lg:border-t-0 lg:border-r">
+            <p className="text-xs uppercase tracking-wider text-zinc-400">Technical Breadth</p>
+            <p className="mt-2 font-semibold text-white">Computer Science</p>
+            <p className="mt-1 text-sm text-zinc-300">Minor</p>
+          </div>
+          <div className="border-t border-white/10 p-5 sm:border-l lg:border-l-0 lg:border-t-0">
+            <p className="text-xs uppercase tracking-wider text-zinc-400">Athletics</p>
+            <p className="mt-2 font-semibold text-white">Villanova Track & Field</p>
+            <p className="mt-1 text-sm text-zinc-300">Student-Athlete</p>
+          </div>
+        </div>
+      </section>
+
       {/* PHOTO STRIP: horizontal, scrollable image row */}
       <section className="mt-10 mb-10">
         {/* Optional label so it feels intentional */}
