@@ -41,21 +41,21 @@ export const projects: Project[] = [
   {
     title: "fNIRS Device (Flexible PCB)",
     description:
-      "Contributing to faculty-led fNIRS research involving wearable sensing, hardware integration, and signal acquisition.",
+      "Supporting faculty-led fNIRS research focused on wearable sensing, hardware integration, and signal acquisition.",
     category: "Biomedical Research",
     status: "Ongoing",
     context: "Faculty-led research",
     availabilityNote:
       "Technical details and supporting materials are not publicly shared.",
-    tags: ["Biomedical", "Embedded", "Hardware"],
+    tags: ["Biomedical Sensing", "Embedded Hardware", "Signal Acquisition"],
   },
   {
     title: "Track & Field Training App",
     slug: "track-field-training-app",
     description:
-      "Cross-platform React Native application for planning and logging track and lift sessions, reviewing workout history, managing calendar events, and organizing athlete-specific performance data with Supabase-backed user accounts.",
+      "Built a cross-platform training app for logging track and lift sessions, reviewing workout history, managing calendar events, and storing user-specific data through Supabase.",
     category: "Mobile Development",
-    tags: ["React Native", "Supabase", "Full-Stack Development"],
+    tags: ["React Native", "Expo", "Supabase", "TypeScript"],
     link: "https://github.com/aprescod12/track-training-app",
     linkType: "code",
     caseStudy: {
@@ -78,16 +78,11 @@ export const projects: Project[] = [
     title: "ESP32 4-Floor Elevator Simulator",
     slug: "esp32-elevator",
     description:
-      "Architected a deterministic, interrupt-driven elevator control system on ESP32 implementing a SCAN scheduling algorithm within an explicit finite state machine framework. Designed non-blocking, event-driven timing using hardware interrupts to ensure predictable state transitions under real-time constraints. Abstracted hardware inputs and LED status outputs from control logic to maintain modularity and scalability while modeling realistic multi-floor servicing behavior.",
+      "Built a four-floor ESP32 elevator simulator using a finite state machine, SCAN scheduling, hardware interrupts, and non-blocking timing to service requests predictably.",
     category: "Embedded Systems",
     status: "Completed",
     year: "2026",
-    tags: [
-      "Embedded Systems",
-      "Finite State Machines",
-      "Real-Time Systems",
-      "Scheduling Algorithms",
-    ],
+    tags: ["ESP32", "Finite State Machine", "Real-Time Control", "SCAN Scheduling"],
     link: "https://github.com/aprescod12/esp32-elevator-simulator",
     linkType: "code",
     caseStudy: {
@@ -118,10 +113,10 @@ export const projects: Project[] = [
     title: "ESP32 Alarm Clock System",
     slug: "esp32-alarm",
     description:
-      "Engineered a WiFi-enabled alarm clock on the ESP32 featuring NTP time synchronization, I2S audio output, and OLED display rendering. Designed a deterministic finite state machine (OFF, ARMED, RINGING, SNOOZED, SILENCED) to manage alarm behavior with non-blocking button handling and coordinated peripheral control (I2C, I2S, GPIO).",
+      "Built a Wi-Fi-enabled ESP32 alarm clock with NTP time synchronization, OLED output, I2S audio, physical controls, and a non-blocking finite state machine.",
     category: "Embedded Systems",
     status: "Completed",
-    tags: ["Embedded Systems", "Finite State Machines", "WiFi", "I2S"],
+    tags: ["ESP32", "Finite State Machine", "NTP", "I2S Audio"],
     link: "https://github.com/aprescod12/alarm-clock-system",
     linkType: "code",
     caseStudy: {
@@ -162,12 +157,12 @@ export const projects: Project[] = [
     title: "Baseball Bat Tracking System (Jetson + Multi-Camera)",
     slug: "baseball-bat-tracking",
     description:
-      "Developed a multi-sensor baseball swing analysis system combining dual cameras and an inertial measurement unit (IMU) to capture and reconstruct swings in 3D. The project focused on real-time motion tracking, sensor synchronization, and extracting key swing metrics to support data-driven athletic training.",
+      "Developed a capstone swing-analysis system combining dual cameras, an IMU, and NVIDIA Jetson edge computing to reconstruct bat motion in 3D and extract training metrics.",
     category: "Computer Vision",
     status: "Completed",
     context: "Capstone project",
     collaborated: "Christopher Powers, Dmitrii Kapranov, Julian Frank, Michael Kokolis",
-    tags: ["Computer Vision", "Edge AI", "State Estimation"],
+    tags: ["Computer Vision", "NVIDIA Jetson", "IMU", "3D Motion Tracking"],
     link: "/Baseball Training Final Report.pdf",
     linkType: "report",
     caseStudy: {
@@ -191,12 +186,12 @@ export const projects: Project[] = [
     slug: "medical-monitoring-safety-device",
     featured: true,
     description:
-      "A breadboard-based prototype that simulates a wearable medical device, measuring heart rate and SpO₂, detecting fall events via an accelerometer, and using deep-sleep power management to model battery-efficient wearable operation.",
+      "Built an ESP32 medical-monitoring prototype that measures heart rate and estimated SpO₂, detects fall events, displays readings on an OLED, and explores deep-sleep power management.",
     category: "Biomedical Systems",
     status: "Completed",
     context: "Course project",
     year: "2025",
-    tags: ["ESP32", "Low Power", "Sensors"],
+    tags: ["ESP32", "Biomedical Sensing", "Fall Detection", "Low-Power Design"],
     link: "https://github.com/aprescod12/medical-monitoring-safety-device",
     linkType: "code",
     caseStudy: {
@@ -221,12 +216,12 @@ export const projects: Project[] = [
     title: "Engineering Portfolio Website",
     slug: "engineering-portfolio-website",
     description:
-      "Designed and developed a responsive engineering portfolio using Next.js, React, TypeScript, and Tailwind CSS. Built a reusable, data-driven project system with dynamically generated case-study pages, standardized project resources, responsive layouts, and an accessible continuously scrolling photo carousel.",
+      "Built a responsive Next.js portfolio with reusable project data, dynamically generated case-study routes, standardized resource links, and an accessible continuously scrolling photo carousel.",
     category: "Web Development",
     status: "Ongoing",
     context: "Personal project",
     year: "2026",
-    tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Responsive Design"],
     link: "https://github.com/aprescod12/aprescod-portfolio-website",
     linkType: "code",
     caseStudy: {
@@ -250,12 +245,12 @@ export const projects: Project[] = [
   {
     title: "Particle Photon Security System",
     description:
-      "Designed a finite state machine–based security system using the Particle Photon microcontroller, simulating real-world alarm behavior such as arming, disarming, and intrusion detection. The project highlights embedded systems fundamentals, state-driven logic, and reliable event handling in a resource-constrained environment.",
+      "Built a Particle Photon security-system prototype using finite-state logic to model arming, disarming, and intrusion detection with reliable event-driven behavior.",
     category: "Embedded Systems",
     status: "Completed",
     context: "Course project",
     year: "2024",
-    tags: ["Embedded Systems", "Finite State Machines", "IoT Fundamentals"],
+    tags: ["Particle Photon", "Finite State Machine", "Embedded Systems", "Event-Driven Logic"],
     link: "https://github.com/aprescod12/particle-photon-security-system",
     linkType: "code",
   },
