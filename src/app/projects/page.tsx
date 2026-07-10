@@ -166,14 +166,6 @@ export default function ProjectsPage() {
           </div>
         </section>
       ) : null}
-
-      <section className="mt-10 rounded-2xl border border-white/10 bg-white/5 p-6">
-        <h3 className="font-semibold tracking-tight">Public project resources</h3>
-        <p className="mt-2 text-sm text-zinc-300 leading-relaxed">
-          Each available action points to the most relevant public artifact: an internal case study,
-          source-code repository, or project report.
-        </p>
-      </section>
     </Container>
   );
 }
