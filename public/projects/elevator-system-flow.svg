@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="900" viewBox="0 0 1536 900" role="img" aria-labelledby="title desc">
+  <title id="title">ESP32 four-floor elevator simulator architecture</title>
+  <desc id="desc">Architecture showing floor-call inputs, ESP32 control, interrupt-driven request capture, finite-state control, SCAN scheduling, non-blocking timing, LEDs, and serial monitoring.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#07101d"/><stop offset="1" stop-color="#0b1628"/></linearGradient>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0 0L12 6L0 12Z" fill="#94a3b8"/></marker>
+    <style>.title{font:700 42px Inter,system-ui,sans-serif;fill:#f8fafc}.sub{font:400 19px Inter,system-ui,sans-serif;fill:#67e8b4}.head{font:700 17px Inter,system-ui,sans-serif;letter-spacing:1px}.boxTitle{font:700 20px Inter,system-ui,sans-serif;fill:#f8fafc}.body{font:400 16px Inter,system-ui,sans-serif;fill:#cbd5e1}.small{font:400 14px Inter,system-ui,sans-serif;fill:#94a3b8}.flow{stroke:#94a3b8;stroke-width:3;fill:none;marker-end:url(#arrow)}</style>
+  </defs>
+  <rect width="1536" height="900" rx="32" fill="url(#bg)"/>
+  <text x="64" y="70" class="title">ESP32 4-Floor Elevator Simulator</text>
+  <text x="64" y="106" class="sub">Interrupt-driven request handling, finite-state control, SCAN scheduling, and non-blocking timing.</text>
+
+  <g transform="translate(55 170)">
+    <rect width="230" height="490" rx="24" fill="#0b1728" stroke="#60a5fa" stroke-width="2"/>
+    <text x="28" y="42" class="head" fill="#60a5fa">1. INPUT LAYER</text>
+    <text x="28" y="72" class="small">Floor-call buttons</text>
+    <g class="body"><rect x="24" y="98" width="182" height="62" rx="14" fill="#0c1b30" stroke="#60a5fa"/><text x="45" y="136">Floor 4 request</text><rect x="24" y="178" width="182" height="62" rx="14" fill="#0c1b30" stroke="#60a5fa"/><text x="45" y="216">Floor 3 request</text><rect x="24" y="258" width="182" height="62" rx="14" fill="#0c1b30" stroke="#60a5fa"/><text x="45" y="296">Floor 2 request</text><rect x="24" y="338" width="182" height="62" rx="14" fill="#0c1b30" stroke="#60a5fa"/><text x="45" y="376">Floor 1 request</text></g>
+    <text x="28" y="445" class="small">GPIO interrupts capture</text><text x="28" y="468" class="small">button events responsively.</text>
+  </g>
+  <path d="M285 415H350" class="flow"/>
+
+  <g transform="translate(360 245)">
+    <rect width="220" height="340" rx="24" fill="#0b1728" stroke="#22d3ee" stroke-width="2"/>
+    <text x="28" y="42" class="head" fill="#22d3ee">2. CONTROLLER</text>
+    <rect x="34" y="84" width="152" height="132" rx="22" fill="#0d2130" stroke="#22d3ee"/>
+    <text x="110" y="139" text-anchor="middle" class="boxTitle">ESP32</text><text x="110" y="171" text-anchor="middle" class="body">WROOM 32</text><text x="110" y="198" text-anchor="middle" class="small">GPIO + timers + UART</text>
+    <text x="34" y="263" class="body">• request flags</text><text x="34" y="294" class="body">• state updates</text><text x="34" y="325" class="body">• timing control</text>
+  </g>
+  <path d="M580 415H640" class="flow"/>
+
+  <g transform="translate(650 170)">
+    <rect width="500" height="490" rx="24" fill="#0b1728" stroke="#4ade80" stroke-width="2"/>
+    <text x="28" y="42" class="head" fill="#4ade80">3. CONTROL LOGIC</text>
+    <g>
+      <rect x="24" y="86" width="210" height="145" rx="18" fill="#0d211d" stroke="#4ade80"/><text x="44" y="126" class="boxTitle">Interrupt capture</text><text x="44" y="160" class="body">Debounce button input</text><text x="44" y="187" class="body">and add request flags</text>
+      <rect x="266" y="86" width="210" height="145" rx="18" fill="#0d211d" stroke="#4ade80"/><text x="286" y="126" class="boxTitle">Finite state machine</text><text x="286" y="160" class="body">Idle, moving, door</text><text x="286" y="187" class="body">open, and closing</text>
+      <rect x="24" y="260" width="210" height="145" rx="18" fill="#0d211d" stroke="#4ade80"/><text x="44" y="300" class="boxTitle">SCAN scheduling</text><text x="44" y="334" class="body">Service active direction</text><text x="44" y="361" class="body">before reversing</text>
+      <rect x="266" y="260" width="210" height="145" rx="18" fill="#0d211d" stroke="#4ade80"/><text x="286" y="300" class="boxTitle">Non-blocking timing</text><text x="286" y="334" class="body">Movement and door</text><text x="286" y="361" class="body">timers use millis()</text>
+    </g>
+    <text x="28" y="453" class="small">Queued requests → direction tracking → floor movement → door sequence → next target</text>
+  </g>
+  <path d="M1150 415H1210" class="flow"/>
+
+  <g transform="translate(1220 170)">
+    <rect width="260" height="490" rx="24" fill="#0b1728" stroke="#60a5fa" stroke-width="2"/>
+    <text x="28" y="42" class="head" fill="#60a5fa">4. OUTPUT LAYER</text>
+    <rect x="24" y="86" width="212" height="130" rx="18" fill="#0c1b30" stroke="#60a5fa"/><text x="44" y="128" class="boxTitle">Floor indicators</text><text x="44" y="162" class="body">Four LEDs show the</text><text x="44" y="189" class="body">current floor.</text>
+    <rect x="24" y="242" width="212" height="110" rx="18" fill="#0c1b30" stroke="#4ade80"/><text x="44" y="284" class="boxTitle">Door-status LED</text><text x="44" y="318" class="body">Open / closing state</text>
+    <rect x="24" y="378" width="212" height="86" rx="18" fill="#101629" stroke="#a78bfa"/><text x="44" y="418" class="boxTitle">Serial monitor</text><text x="44" y="445" class="small">Requests, states, direction</text>
+  </g>
+
+  <g transform="translate(225 730)"><rect width="1085" height="92" rx="20" fill="#0b1728" stroke="#334155"/><text x="34" y="38" class="head" fill="#e2e8f0">KEY FLOW</text><text x="150" y="39" class="body">Button press</text><text x="270" y="39" class="body">→</text><text x="310" y="39" class="body">Request queue</text><text x="440" y="39" class="body">→</text><text x="480" y="39" class="body">SCAN scheduler</text><text x="620" y="39" class="body">→</text><text x="660" y="39" class="body">FSM movement</text><text x="800" y="39" class="body">→</text><text x="840" y="39" class="body">Door sequence</text><text x="970" y="39" class="body">→ LEDs / UART</text><text x="150" y="68" class="small">All movement and door timing remains non-blocking so new requests can still be captured.</text></g>
+</svg>
