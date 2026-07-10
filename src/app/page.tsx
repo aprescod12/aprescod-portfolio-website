@@ -26,8 +26,7 @@ export default function HomePage() {
 
         {/* One-paragraph summary (keep it skimmable) */}
         <p className="mt-4 max-w-2xl text-zinc-300 leading-relaxed">
-          I build and learn across embedded systems, sensing, and data-driven methods—
-          aiming to ship reliable, real-world technology.
+          I design embedded and sensing systems for healthcare and real-world applications, with experience spanning hardware integration, signal acquisition, web and mobile development, software, and data analysis.
         </p>
 
         {/* Primary actions (recruiters want fast navigation) */}
