@@ -1,170 +1,270 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type FocusEvent,
+  type KeyboardEvent,
+} from "react";
 
 type CarouselPhoto = {
   src: string;
   alt: string;
 };
 
-const initialPhotos: CarouselPhoto[] = [
+const AUTOPLAY_INTERVAL = 5500;
+
+const photos: CarouselPhoto[] = [
   {
     src: "/home/websitegradpic.JPG",
-    alt: "Amiri Prescod at Villanova University",
+    alt: "Amiri Prescod at Villanova University.",
   },
   {
     src: "/home/webformal1.JPG",
-    alt: "Amiri Prescod in a professional setting",
+    alt: "Amiri Prescod in a professional setting.",
   },
   {
     src: "/home/websitetrack2.jpg",
-    alt: "Amiri Prescod competing in track and field",
+    alt: "Amiri Prescod competing in track and field.",
   },
   {
     src: "/home/webformalpic2.JPG",
-    alt: "Amiri Prescod at a formal event",
+    alt: "Amiri Prescod at a formal event.",
   },
   {
     src: "/home/websitetrack.JPG",
-    alt: "Amiri Prescod during a track competition",
+    alt: "Amiri Prescod during a track competition.",
   },
   {
     src: "/home/websitetrack3.jpg",
-    alt: "Amiri Prescod representing Villanova Track and Field",
+    alt: "Amiri Prescod representing Villanova Track and Field.",
   },
 ];
 
 export default function HomePhotoCarousel() {
-  const [photos, setPhotos] = useState<CarouselPhoto[]>(initialPhotos);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [userPaused, setUserPaused] = useState(false);
+  const [interactionPaused, setInteractionPaused] = useState(false);
+  const [reduceMotion, setReduceMotion] = useState(false);
   const carouselRef = useRef<HTMLDivElement>(null);
-  const isPausedRef = useRef(false);
-  const isAnimatingRef = useRef(false);
-  const pendingStepRef = useRef(0);
-  const recycleTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  useLayoutEffect(() => {
-    const carousel = carouselRef.current;
-    const completedStep = pendingStepRef.current;
-
-    if (!carousel || completedStep === 0) return;
-
-    // React has moved the first image to the end. Offset the scroll position
-    // by the same distance before paint so the visible content does not jump.
-    const previousInlineBehavior = carousel.style.scrollBehavior;
-    carousel.style.scrollBehavior = "auto";
-    carousel.scrollLeft = Math.max(0, carousel.scrollLeft - completedStep);
-    carousel.getBoundingClientRect();
-    carousel.style.scrollBehavior = previousInlineBehavior;
-
-    pendingStepRef.current = 0;
-    isAnimatingRef.current = false;
-  }, [photos]);
+  const slideRefs = useRef<Array<HTMLDivElement | null>>([]);
+  const scrollFrameRef = useRef<number | null>(null);
 
   useEffect(() => {
-    const carousel = carouselRef.current;
-    if (!carousel || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      return;
-    }
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updatePreference = () => setReduceMotion(mediaQuery.matches);
 
-    const advanceCarousel = () => {
-      if (isPausedRef.current || isAnimatingRef.current) return;
+    updatePreference();
+    mediaQuery.addEventListener("change", updatePreference);
 
-      const slides = Array.from(carousel.children) as HTMLElement[];
-      if (slides.length < 2) return;
+    return () => mediaQuery.removeEventListener("change", updatePreference);
+  }, []);
 
-      const step = slides[1].offsetLeft - slides[0].offsetLeft;
-      if (step <= 0) return;
+  const goTo = useCallback(
+    (index: number) => {
+      const normalizedIndex = (index + photos.length) % photos.length;
+      const carousel = carouselRef.current;
+      const slide = slideRefs.current[normalizedIndex];
 
-      isAnimatingRef.current = true;
-      carousel.scrollBy({ left: step, behavior: "smooth" });
+      if (!carousel || !slide) return;
 
-      recycleTimeoutRef.current = setTimeout(() => {
-        pendingStepRef.current = step;
+      carousel.scrollTo({
+        left: slide.offsetLeft,
+        behavior: reduceMotion ? "auto" : "smooth",
+      });
+      setActiveIndex(normalizedIndex);
+    },
+    [reduceMotion]
+  );
 
-        setPhotos((currentPhotos) => {
-          if (currentPhotos.length < 2) {
-            pendingStepRef.current = 0;
-            isAnimatingRef.current = false;
-            return currentPhotos;
-          }
+  const goPrevious = useCallback(() => {
+    goTo(activeIndex - 1);
+  }, [activeIndex, goTo]);
 
-          const [passedPhoto, ...remainingPhotos] = currentPhotos;
-          return [...remainingPhotos, passedPhoto!];
-        });
+  const goNext = useCallback(() => {
+    goTo(activeIndex + 1);
+  }, [activeIndex, goTo]);
 
-        recycleTimeoutRef.current = null;
-      }, 700);
-    };
+  useEffect(() => {
+    if (userPaused || interactionPaused || reduceMotion) return;
 
-    const interval = setInterval(advanceCarousel, 4000);
+    const interval = window.setInterval(goNext, AUTOPLAY_INTERVAL);
+    return () => window.clearInterval(interval);
+  }, [goNext, interactionPaused, reduceMotion, userPaused]);
 
+  useEffect(() => {
     return () => {
-      clearInterval(interval);
-      if (recycleTimeoutRef.current !== null) {
-        clearTimeout(recycleTimeoutRef.current);
+      if (scrollFrameRef.current !== null) {
+        window.cancelAnimationFrame(scrollFrameRef.current);
       }
     };
   }, []);
 
+  const handleScroll = () => {
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+
+    if (scrollFrameRef.current !== null) {
+      window.cancelAnimationFrame(scrollFrameRef.current);
+    }
+
+    scrollFrameRef.current = window.requestAnimationFrame(() => {
+      const closestIndex = slideRefs.current.reduce(
+        (closest, slide, index) => {
+          if (!slide) return closest;
+
+          const currentDistance = Math.abs(slide.offsetLeft - carousel.scrollLeft);
+          return currentDistance < closest.distance
+            ? { index, distance: currentDistance }
+            : closest;
+        },
+        { index: 0, distance: Number.POSITIVE_INFINITY }
+      ).index;
+
+      setActiveIndex(closestIndex);
+      scrollFrameRef.current = null;
+    });
+  };
+
+  const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      goPrevious();
+    }
+
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      goNext();
+    }
+  };
+
+  const handleBlur = (event: FocusEvent<HTMLElement>) => {
+    if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+      setInteractionPaused(false);
+    }
+  };
+
   return (
-    <section className="mt-14 mb-10" aria-label="Work and athletics photo carousel">
-      <div className="flex flex-wrap items-end justify-between gap-3">
+    <section
+      className="mt-14 mb-10 rounded-3xl border border-white/10 bg-white/[0.03] p-4 outline-none transition-colors focus-visible:border-blue-400/50 md:p-5"
+      aria-label="Work and athletics photography"
+      aria-roledescription="carousel"
+      tabIndex={0}
+      onKeyDown={handleKeyDown}
+      onMouseEnter={() => setInteractionPaused(true)}
+      onMouseLeave={() => setInteractionPaused(false)}
+      onFocusCapture={() => setInteractionPaused(true)}
+      onBlurCapture={handleBlur}
+      onPointerDown={() => setInteractionPaused(true)}
+      onPointerUp={() => setInteractionPaused(false)}
+      onPointerCancel={() => setInteractionPaused(false)}
+    >
+      <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <p className="text-xs uppercase tracking-wider text-zinc-400">
             A glimpse into my work &amp; athletics
           </p>
+          <p className="mt-2 text-sm text-zinc-300">
+            Engineering and athletics—disciplined execution in both.
+          </p>
         </div>
-        <Link
-          href="/track"
-          className="text-sm font-medium text-blue-400 transition-colors hover:text-blue-300"
-        >
-          Explore Track &amp; Field →
-        </Link>
+
+        <div className="flex flex-wrap items-center gap-2">
+          <button
+            type="button"
+            onClick={goPrevious}
+            aria-label="Previous photo"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-zinc-100 transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+          >
+            ←
+          </button>
+          <button
+            type="button"
+            onClick={goNext}
+            aria-label="Next photo"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-zinc-100 transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+          >
+            →
+          </button>
+          <button
+            type="button"
+            disabled={reduceMotion}
+            onClick={() => setUserPaused((paused) => !paused)}
+            aria-label={
+              reduceMotion
+                ? "Autoplay disabled by reduced-motion preference"
+                : userPaused
+                  ? "Resume photo carousel"
+                  : "Pause photo carousel"
+            }
+            className="inline-flex h-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 px-3 text-xs font-medium text-zinc-200 transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 disabled:cursor-default disabled:text-zinc-500"
+          >
+            {reduceMotion ? "Reduced motion" : userPaused ? "Play" : "Pause"}
+          </button>
+          <Link
+            href="/track"
+            className="ml-1 rounded-lg text-sm font-medium text-blue-400 transition-colors hover:text-blue-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+          >
+            Explore Track &amp; Field →
+          </Link>
+        </div>
       </div>
 
       <div
         ref={carouselRef}
-        onMouseEnter={() => {
-          isPausedRef.current = true;
-        }}
-        onMouseLeave={() => {
-          isPausedRef.current = false;
-        }}
-        onFocusCapture={() => {
-          isPausedRef.current = true;
-        }}
-        onBlurCapture={() => {
-          isPausedRef.current = false;
-        }}
-        onPointerDown={() => {
-          isPausedRef.current = true;
-        }}
-        onPointerUp={() => {
-          isPausedRef.current = false;
-        }}
-        className="relative mt-5 flex gap-4 overflow-x-auto pb-2 scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        onScroll={handleScroll}
+        className="mt-5 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
-        {photos.map((photo) => (
+        {photos.map((photo, index) => (
           <div
             key={photo.src}
-            className="relative h-56 w-80 flex-shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/5"
+            ref={(element) => {
+              slideRefs.current[index] = element;
+            }}
+            role="group"
+            aria-roledescription="slide"
+            aria-label={`${index + 1} of ${photos.length}`}
+            className="relative h-56 w-[82vw] max-w-80 flex-none snap-start overflow-hidden rounded-2xl border border-white/10 bg-white/5 sm:w-80"
           >
             <Image
               src={photo.src}
               alt={photo.alt}
               fill
-              sizes="(max-width: 768px) 80vw, 320px"
-              className="object-cover transition-transform duration-300 hover:scale-[1.03]"
+              priority={index === 0}
+              sizes="(max-width: 640px) 82vw, 320px"
+              className="object-cover transition-transform duration-300 motion-reduce:transition-none md:hover:scale-[1.03]"
             />
           </div>
         ))}
       </div>
 
-      <p className="mt-3 text-sm text-zinc-400">
-        Engineering + athletics — disciplined execution in both.
-      </p>
+      <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
+        <p className="text-xs text-zinc-500" aria-live="polite">
+          Photo {activeIndex + 1} of {photos.length}
+        </p>
+
+        <div className="flex items-center gap-2" aria-label="Choose a photo">
+          {photos.map((photo, index) => (
+            <button
+              key={photo.src}
+              type="button"
+              onClick={() => goTo(index)}
+              aria-label={`Show photo ${index + 1}`}
+              aria-current={index === activeIndex ? "true" : undefined}
+              className={[
+                "h-2 rounded-full transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400",
+                index === activeIndex
+                  ? "w-6 bg-blue-300"
+                  : "w-2 bg-white/25 hover:bg-white/50",
+              ].join(" ")}
+            />
+          ))}
+        </div>
+      </div>
     </section>
   );
 }
