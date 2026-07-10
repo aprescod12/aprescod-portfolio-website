@@ -225,36 +225,32 @@ export default function HomePage() {
         </p>
       </section>
 
-      {/* VALUE SECTION: highlights recruiters care about (what, how, why) */}
+      {/* TECHNICAL FOCUS: concise capability overview */}
       <section className="mt-14">
         <SectionHeading
-          title="What I bring"
-          subtitle="A quick snapshot of the technical + execution strengths I’m building."
+          title="Technical focus areas"
+          subtitle="A concise overview of the disciplines that connect my projects and engineering work."
         />
 
-        {/* Three pillar cards */}
         <div className="grid gap-4 md:grid-cols-3">
-          {/* Pillar 1 */}
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition-colors">
-            <h3 className="font-semibold tracking-tight">Systems thinking</h3>
+            <h3 className="font-semibold tracking-tight">Embedded Systems</h3>
             <p className="mt-2 text-sm text-zinc-300 leading-relaxed">
-              I focus on end-to-end reliability—from sensor signals to usable outputs.
+              ESP32 development, finite state machines, real-time control, peripheral integration, and hardware-software coordination.
             </p>
           </div>
 
-          {/* Pillar 2 */}
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition-colors">
-            <h3 className="font-semibold tracking-tight">Technical execution</h3>
+            <h3 className="font-semibold tracking-tight">Biomedical Sensing</h3>
             <p className="mt-2 text-sm text-zinc-300 leading-relaxed">
-              Building with practical constraints: power, latency, and real-world noise.
+              fNIRS, heart rate and SpO₂ sensing, IMUs, signal quality, and wearable medical-device prototyping.
             </p>
           </div>
 
-          {/* Pillar 3 */}
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition-colors">
-            <h3 className="font-semibold tracking-tight">Performance mindset</h3>
+            <h3 className="font-semibold tracking-tight">Software and Data</h3>
             <p className="mt-2 text-sm text-zinc-300 leading-relaxed">
-              Athlete habits translate: consistency, feedback loops, and performing under pressure.
+              Python, React Native, Supabase, computer vision, data processing, and web and mobile application development.
             </p>
           </div>
         </div>
