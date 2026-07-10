@@ -1,55 +1,164 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
+import Container from "@/components/Container";
 import { demoSlugs, getProjectBySlug, getProjectLinkLabel } from "@/lib/projects";
 
 export function generateStaticParams() {
   return demoSlugs.map((slug) => ({ slug }));
 }
 
-export default async function ProjectDemoPage({
+export default async function ProjectCaseStudyPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-
   const project = getProjectBySlug(slug);
+
   if (!project) return notFound();
 
   const resourceLabel = getProjectLinkLabel(project);
+  const snapshotItems = [
+    { label: "Category", value: project.category },
+    { label: "Status", value: project.status },
+    { label: "Context", value: project.context },
+    { label: "Year", value: project.year },
+  ].filter((item) => item.value);
 
   return (
-    <div className="mx-auto max-w-5xl px-6 py-16">
-      {/* Header */}
-      <h1 className="text-4xl font-bold tracking-tight">{project.title}</h1>
+    <Container>
+      <Link
+        href="/projects"
+        className="inline-flex text-sm font-medium text-zinc-400 transition-colors hover:text-white"
+      >
+        ← Back to projects
+      </Link>
 
-      <p className="mt-4 text-zinc-300 leading-relaxed max-w-3xl">
-        {project.description}
-      </p>
+      <section className="mt-6 overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-white/10 via-white/5 to-white/0 p-7 md:p-10">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-start">
+          <div>
+            <p className="text-xs uppercase tracking-wider text-blue-300">Project case study</p>
+            <h1 className="mt-3 max-w-4xl text-4xl font-semibold tracking-tight text-white md:text-5xl">
+              {project.title}
+            </h1>
+            <p className="mt-5 max-w-3xl text-zinc-300 leading-relaxed">
+              {project.description}
+            </p>
 
-      {/* Public project resource */}
-      {project.link && resourceLabel ? (
-        <div className="mt-6">
-          <a
-            href={project.link}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white hover:bg-white/10 transition-colors"
-          >
-            {resourceLabel} ↗
-          </a>
+            <div className="mt-5 flex flex-wrap gap-2">
+              {project.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-zinc-200"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            {project.link && resourceLabel ? (
+              <div className="mt-7">
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center rounded-xl bg-blue-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-400"
+                >
+                  {resourceLabel} ↗
+                </a>
+              </div>
+            ) : null}
+          </div>
+
+          {snapshotItems.length || project.collaborated ? (
+            <aside className="rounded-2xl border border-white/10 bg-zinc-950/40 p-5">
+              <p className="text-xs uppercase tracking-wider text-zinc-400">Project snapshot</p>
+              <dl className="mt-4 space-y-4 text-sm">
+                {snapshotItems.map((item) => (
+                  <div key={item.label}>
+                    <dt className="text-zinc-500">{item.label}</dt>
+                    <dd className="mt-1 font-medium text-zinc-100">{item.value}</dd>
+                  </div>
+                ))}
+                {project.collaborated ? (
+                  <div>
+                    <dt className="text-zinc-500">Collaborators</dt>
+                    <dd className="mt-1 leading-relaxed text-zinc-200">{project.collaborated}</dd>
+                  </div>
+                ) : null}
+              </dl>
+            </aside>
+          ) : null}
         </div>
+      </section>
+
+      {project.caseStudy ? (
+        <>
+          <section className="mt-14 grid gap-8 lg:grid-cols-[minmax(0,1.35fr)_minmax(260px,0.65fr)]">
+            <div>
+              <p className="text-xs uppercase tracking-wider text-zinc-400">Overview</p>
+              <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white">
+                Project scope
+              </h2>
+              <p className="mt-4 text-zinc-300 leading-relaxed">
+                {project.caseStudy.overview}
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
+              <p className="text-xs uppercase tracking-wider text-zinc-400">System details</p>
+              <ul className="mt-4 space-y-3 text-sm leading-relaxed text-zinc-300">
+                {project.caseStudy.systemDetails.map((detail) => (
+                  <li key={detail} className="flex gap-3">
+                    <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-blue-400" />
+                    <span>{detail}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+
+          <section className="mt-14">
+            <p className="text-xs uppercase tracking-wider text-zinc-400">Engineering focus</p>
+            <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white">
+              Key design and implementation work
+            </h2>
+            <div className="mt-6 grid gap-4 md:grid-cols-3">
+              {project.caseStudy.engineeringFocus.map((focus, index) => (
+                <article
+                  key={focus}
+                  className="rounded-2xl border border-white/10 bg-white/5 p-6"
+                >
+                  <p className="text-xs font-medium uppercase tracking-wider text-blue-300">
+                    0{index + 1}
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-zinc-300">{focus}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          {project.caseStudy.note ? (
+            <section className="mt-10 rounded-2xl border border-amber-300/15 bg-amber-300/5 p-6">
+              <p className="text-sm leading-relaxed text-zinc-300">{project.caseStudy.note}</p>
+            </section>
+          ) : null}
+        </>
       ) : null}
 
-      {/* Videos */}
       {project.videos?.length ? (
-        <div className="mt-14 space-y-16">
-          {project.videos.map((video, index) => (
-            <div
-              key={index}
-              className="rounded-3xl border border-white/10 bg-white/5 p-6"
-            >
-              <div className="flex justify-center">
-                <div className="w-full max-w-2xl aspect-video overflow-hidden rounded-2xl border border-white/10 bg-black/30 shadow-lg">
+        <section className="mt-14">
+          <p className="text-xs uppercase tracking-wider text-zinc-400">Demonstrations</p>
+          <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white">
+            Project videos
+          </h2>
+          <div className="mt-6 space-y-8">
+            {project.videos.map((video, index) => (
+              <article
+                key={`${video.youtubeId ?? video.src}-${index}`}
+                className="rounded-3xl border border-white/10 bg-white/5 p-5 md:p-6"
+              >
+                <div className="mx-auto aspect-video w-full max-w-3xl overflow-hidden rounded-2xl border border-white/10 bg-black/30 shadow-lg">
                   {video.youtubeId ? (
                     <iframe
                       className="h-full w-full"
@@ -65,19 +174,32 @@ export default async function ProjectDemoPage({
                     </video>
                   ) : null}
                 </div>
-              </div>
 
-              {video.caption ? (
-                <p className="mt-4 text-sm text-zinc-300 text-center">
-                  {video.caption}
-                </p>
-              ) : null}
-            </div>
-          ))}
+                {video.caption ? (
+                  <p className="mx-auto mt-4 max-w-3xl text-center text-sm text-zinc-300">
+                    {video.caption}
+                  </p>
+                ) : null}
+              </article>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      <section className="my-14 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/5 p-6">
+        <div>
+          <h2 className="font-semibold tracking-tight text-white">Explore more engineering work</h2>
+          <p className="mt-1 text-sm text-zinc-400">
+            Return to the project portfolio to compare systems, software, and research experience.
+          </p>
         </div>
-      ) : (
-        <p className="mt-14 text-sm text-zinc-400">Demo videos coming soon.</p>
-      )}
-    </div>
+        <Link
+          href="/projects"
+          className="inline-flex items-center justify-center rounded-xl border border-white/15 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-white/5"
+        >
+          View all projects →
+        </Link>
+      </section>
+    </Container>
   );
 }
