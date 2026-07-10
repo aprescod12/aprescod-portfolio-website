@@ -15,7 +15,7 @@ export default function HomePage() {
 
         {/* Your positioning line */}
         <p className="text-sm text-zinc-300">
-          Amiri Prescod • International Student-Athlete • Engineering
+          B.S. Electrical Engineering • M.S. Biomedical Engineering Candidate • Computer Science Minor • Student-Athlete
         </p>
 
         {/* Strong recruiter headline */}
