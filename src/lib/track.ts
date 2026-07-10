@@ -64,7 +64,7 @@ export const performanceMetrics: PerformanceMetric[] = [
   {
     value: "9×",
     label: "Conference scorer",
-    detail: "Scored in every BIG EAST championship season competed",
+    detail: "Nine scoring performances across indoor and outdoor championships",
   },
   {
     value: "No. 2",
@@ -160,7 +160,7 @@ export const coverageLinks: CoverageLink[] = [
     title: "Villanova sprint performance lists",
     description:
       "Official all-time performance lists for the 60m and 100m sprint events.",
-    href: "https://villanova.com/sports/2018/6/18/sports-m-track-archive-nova-m-track-records-html.aspx",
+    href: "https://villanova.com/sports/2019/10/21/mens-track-field-records",
     action: "View program records",
   },
 ];
