@@ -154,6 +154,25 @@ export default function HomePage() {
       </section>
 
       <HomePhotoCarousel />
+
+      {/* CONTACT CTA: clear next step without duplicating the global footer */}
+      <section className="mt-14 mb-14 overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-r from-blue-500/15 via-white/5 to-white/0 p-8 md:flex md:items-center md:justify-between md:gap-8 md:p-10">
+        <div className="max-w-2xl">
+          <p className="text-xs uppercase tracking-wider text-blue-300">Let&apos;s connect</p>
+          <h2 className="mt-3 text-2xl font-semibold tracking-tight text-white md:text-3xl">
+            Have an engineering opportunity or project in mind?
+          </h2>
+          <p className="mt-3 text-zinc-300 leading-relaxed">
+            I&apos;m interested in work involving embedded systems, biomedical sensing, software, and healthcare technology.
+          </p>
+        </div>
+        <a
+          href="mailto:ajrprescod@gmail.com"
+          className="mt-6 inline-flex flex-shrink-0 items-center justify-center rounded-xl bg-blue-500 px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-400 md:mt-0"
+        >
+          Send an email →
+        </a>
+      </section>
     </Container>
   );
 }
