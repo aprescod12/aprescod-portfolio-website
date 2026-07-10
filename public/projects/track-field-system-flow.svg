@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="900" viewBox="0 0 1536 900" role="img" aria-labelledby="title desc">
+  <title id="title">Track and Field Training App system flow</title>
+  <desc id="desc">A system diagram showing the Expo client, application workflows, local session persistence, and Supabase authentication and database services.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#090f1c"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#000" flood-opacity="0.28"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L12,6 L0,12 z" fill="#94a3b8"/>
+    </marker>
+    <style>
+      .title { font: 700 42px Inter, ui-sans-serif, system-ui, sans-serif; fill: #f8fafc; }
+      .subtitle { font: 400 20px Inter, ui-sans-serif, system-ui, sans-serif; fill: #94a3b8; }
+      .section { font: 700 18px Inter, ui-sans-serif, system-ui, sans-serif; letter-spacing: 1.4px; }
+      .boxTitle { font: 700 21px Inter, ui-sans-serif, system-ui, sans-serif; fill: #f8fafc; }
+      .body { font: 400 17px Inter, ui-sans-serif, system-ui, sans-serif; fill: #cbd5e1; }
+      .small { font: 400 15px Inter, ui-sans-serif, system-ui, sans-serif; fill: #94a3b8; }
+      .flow { font: 600 16px Inter, ui-sans-serif, system-ui, sans-serif; fill: #e2e8f0; }
+    </style>
+  </defs>
+
+  <rect width="1536" height="900" rx="34" fill="url(#bg)"/>
+  <circle cx="1390" cy="80" r="210" fill="#2563eb" opacity="0.08"/>
+  <circle cx="140" cy="820" r="240" fill="#22c55e" opacity="0.06"/>
+
+  <text x="80" y="82" class="title">Track &amp; Field Training App</text>
+  <text x="80" y="122" class="subtitle">System flow from athlete interaction to user-scoped training data</text>
+
+  <g filter="url(#shadow)">
+    <rect x="70" y="180" width="390" height="570" rx="28" fill="#0f172a" stroke="#3b82f6" stroke-width="2"/>
+  </g>
+  <text x="105" y="225" class="section" fill="#60a5fa">EXPO CLIENT</text>
+  <text x="105" y="264" class="boxTitle">Athlete-facing navigation</text>
+
+  <g>
+    <rect x="105" y="300" width="320" height="68" rx="15" fill="#13233d" stroke="#315f9e"/>
+    <text x="130" y="330" class="boxTitle">Home</text>
+    <text x="130" y="354" class="small">Dashboard and recent activity</text>
+
+    <rect x="105" y="386" width="320" height="68" rx="15" fill="#13233d" stroke="#315f9e"/>
+    <text x="130" y="416" class="boxTitle">Calendar</text>
+    <text x="130" y="440" class="small">Workouts and manually added events</text>
+
+    <rect x="105" y="472" width="320" height="68" rx="15" fill="#13233d" stroke="#315f9e"/>
+    <text x="130" y="502" class="boxTitle">Workouts</text>
+    <text x="130" y="526" class="small">Log sessions and review history</text>
+
+    <rect x="105" y="558" width="320" height="68" rx="15" fill="#13233d" stroke="#315f9e"/>
+    <text x="130" y="588" class="boxTitle">Friends</text>
+    <text x="130" y="612" class="small">Social and shared activity views</text>
+
+    <rect x="105" y="644" width="320" height="68" rx="15" fill="#13233d" stroke="#315f9e"/>
+    <text x="130" y="674" class="boxTitle">Profile</text>
+    <text x="130" y="698" class="small">Athlete details and statistics</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="575" y="180" width="390" height="570" rx="28" fill="#111827" stroke="#8b5cf6" stroke-width="2"/>
+  </g>
+  <text x="610" y="225" class="section" fill="#c084fc">APPLICATION WORKFLOWS</text>
+
+  <rect x="610" y="274" width="320" height="86" rx="16" fill="#21183a" stroke="#7c3aed"/>
+  <text x="635" y="307" class="boxTitle">Authentication &amp; session</text>
+  <text x="635" y="334" class="small">Sign in, persistent user session</text>
+
+  <rect x="610" y="382" width="320" height="100" rx="16" fill="#21183a" stroke="#7c3aed"/>
+  <text x="635" y="416" class="boxTitle">Workout logging</text>
+  <text x="635" y="443" class="small">Separate track and lift data models</text>
+  <text x="635" y="466" class="small">Sets, reps, times, weights, notes</text>
+
+  <rect x="610" y="504" width="320" height="86" rx="16" fill="#21183a" stroke="#7c3aed"/>
+  <text x="635" y="537" class="boxTitle">History &amp; calendar</text>
+  <text x="635" y="564" class="small">Date filters, details, monthly views</text>
+
+  <rect x="610" y="612" width="320" height="100" rx="16" fill="#21183a" stroke="#7c3aed"/>
+  <text x="635" y="646" class="boxTitle">Performance processing</text>
+  <text x="635" y="673" class="small">Personal-record evaluation</text>
+  <text x="635" y="696" class="small">Achievement-processing logic</text>
+
+  <g filter="url(#shadow)">
+    <rect x="1080" y="180" width="390" height="570" rx="28" fill="#0d1f1a" stroke="#22c55e" stroke-width="2"/>
+  </g>
+  <text x="1115" y="225" class="section" fill="#4ade80">SUPABASE BACKEND</text>
+
+  <rect x="1115" y="282" width="320" height="116" rx="16" fill="#102a22" stroke="#249f62"/>
+  <text x="1140" y="318" class="boxTitle">Authentication</text>
+  <text x="1140" y="347" class="small">User identity and session tokens</text>
+  <text x="1140" y="372" class="small">Queries scoped to the signed-in user</text>
+
+  <rect x="1115" y="424" width="320" height="244" rx="16" fill="#102a22" stroke="#249f62"/>
+  <text x="1140" y="460" class="boxTitle">Training database</text>
+  <text x="1140" y="493" class="body">• Track workouts</text>
+  <text x="1140" y="526" class="body">• Lift workouts</text>
+  <text x="1140" y="559" class="body">• Calendar events</text>
+  <text x="1140" y="592" class="body">• Athlete profiles</text>
+  <text x="1140" y="625" class="body">• Personal records &amp; achievements</text>
+
+  <line x1="460" y1="465" x2="570" y2="465" stroke="#94a3b8" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="965" y1="465" x2="1075" y2="465" stroke="#94a3b8" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="483" y="438" class="flow">User actions</text>
+  <text x="987" y="438" class="flow">Secure reads / writes</text>
+
+  <rect x="592" y="785" width="356" height="76" rx="18" fill="#17152a" stroke="#8b5cf6"/>
+  <text x="620" y="817" class="boxTitle">Local session persistence</text>
+  <text x="620" y="844" class="small">AsyncStorage on native • localStorage on web</text>
+  <line x1="770" y1="750" x2="770" y2="780" stroke="#a78bfa" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="100" y="790" width="350" height="70" rx="18" fill="#111c31" stroke="#334155"/>
+  <text x="125" y="820" class="flow">1. Athlete logs or reviews training</text>
+  <text x="125" y="846" class="small">2. App validates, stores, and returns user data</text>
+
+  <rect x="1085" y="790" width="350" height="70" rx="18" fill="#10251e" stroke="#2f6f50"/>
+  <text x="1110" y="820" class="flow">3. Updated workouts and insights</text>
+  <text x="1110" y="846" class="small">appear across history, calendar, and profile views</text>
+</svg>
