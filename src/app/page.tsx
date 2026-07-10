@@ -8,101 +8,6 @@ import SectionHeading from "@/components/SectionHeading";
 export default function HomePage() {
   return (
     <Container>
-      {/* PHOTO STRIP: horizontal, scrollable image row */}
-<section className="mb-10">
-  {/* Optional label so it feels intentional */}
-  <p className="mb-3 text-xs uppercase tracking-wider text-zinc-400">
-    A glimpse into my work & athletics
-  </p>
-
-  {/* Subtle hint for desktop users */}
-  <p className="mt-2 text-xs text-zinc-400">
-    Scroll →
-  </p>
-
-  {/* Horizontal scroll container */}
-  <div
-    className="
-      flex gap-4 overflow-x-auto pb-2
-      scroll-smooth
-      [-ms-overflow-style:none]
-      [scrollbar-width:none]
-      [&::-webkit-scrollbar]:hidden
-    "
-  >
-    {/* Image 1 */}
-    <div className="relative h-56 w-80 flex-shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
-      <Image
-        src="/home/websitegradpic.JPG"
-        alt="Amiri Prescod — project or lab photo"
-        fill
-        priority
-        className="object-cover transition-transform duration-300 hover:scale-[1.03]"
-      />
-    </div>
-
-    {/* Image 2 */}
-    <div className="relative h-56 w-80 flex-shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
-      <Image
-        src="/home/webformal1.JPG"
-        alt="Amiri Prescod — track and field"
-        fill
-        priority
-        className="object-cover transition-transform duration-300 hover:scale-[1.03]"
-      />
-    </div>
-
-    {/* Image 3 */}
-    <div className="relative h-56 w-80 flex-shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
-      <Image
-        src="/home/websitetrack2.jpg"
-        alt="Amiri Prescod — another highlight"
-        fill
-        priority
-        className="object-cover transition-transform duration-300 hover:scale-[1.03]"
-      />
-    </div>
-
-    {/* Image 4 */}
-    <div className="relative h-56 w-80 flex-shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
-      <Image
-        src="/home/webformalpic2.JPG"
-        alt="Amiri Prescod — another highlight"
-        fill
-        priority
-        className="object-cover transition-transform duration-300 hover:scale-[1.03]"
-      />
-    </div>
-
-    {/* Image 5 */}
-    <div className="relative h-56 w-80 flex-shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
-      <Image
-        src="/home/websitetrack.JPG"
-        alt="Amiri Prescod — another highlight"
-        fill
-        priority
-        className="object-cover transition-transform duration-300 hover:scale-[1.03]"
-      />
-    </div>
-
-    {/* Image 6 */}
-    <div className="relative h-56 w-80 flex-shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
-      <Image
-        src="/home/websitetrack3.jpg"
-        alt="Amiri Prescod — another highlight"
-        fill
-        priority
-        className="object-cover transition-transform duration-300 hover:scale-[1.03]"
-      />
-    </div>
-  </div>
-
-  {/* Optional: subtle caption line (remove if you want it cleaner) */}
-    <p className="mt-3 text-sm text-zinc-400">
-      Engineering + athletics — disciplined execution in both.
-    </p>
-</section>
-
       {/* HERO: first impression (headline + positioning + CTAs) */}
       <section className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/10 to-white/0 p-8 md:p-12">
         {/* Decorative glow (purely visual) */}
@@ -115,10 +20,9 @@ export default function HomePage() {
 
         {/* Strong recruiter headline */}
         <h1 className="mt-3 text-4xl font-semibold tracking-tight md:text-6xl">
-  Engineering <span className="text-blue-400">intelligent systems</span>{" "}
-  with <span className="text-blue-400">data-driven</span> design.
-</h1>
-
+          Engineering <span className="text-blue-400">intelligent systems</span>{" "}
+          with <span className="text-blue-400">data-driven</span> design.
+        </h1>
 
         {/* One-paragraph summary (keep it skimmable) */}
         <p className="mt-4 max-w-2xl text-zinc-300 leading-relaxed">
@@ -160,6 +64,101 @@ export default function HomePage() {
             Athlete Mindset: Iteration & Discipline
           </span>
         </div>
+      </section>
+
+      {/* PHOTO STRIP: horizontal, scrollable image row */}
+      <section className="mt-10 mb-10">
+        {/* Optional label so it feels intentional */}
+        <p className="mb-3 text-xs uppercase tracking-wider text-zinc-400">
+          A glimpse into my work & athletics
+        </p>
+
+        {/* Subtle hint for desktop users */}
+        <p className="mt-2 text-xs text-zinc-400">
+          Scroll →
+        </p>
+
+        {/* Horizontal scroll container */}
+        <div
+          className="
+            flex gap-4 overflow-x-auto pb-2
+            scroll-smooth
+            [-ms-overflow-style:none]
+            [scrollbar-width:none]
+            [&::-webkit-scrollbar]:hidden
+          "
+        >
+          {/* Image 1 */}
+          <div className="relative h-56 w-80 flex-shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+            <Image
+              src="/home/websitegradpic.JPG"
+              alt="Amiri Prescod — project or lab photo"
+              fill
+              priority
+              className="object-cover transition-transform duration-300 hover:scale-[1.03]"
+            />
+          </div>
+
+          {/* Image 2 */}
+          <div className="relative h-56 w-80 flex-shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+            <Image
+              src="/home/webformal1.JPG"
+              alt="Amiri Prescod — track and field"
+              fill
+              priority
+              className="object-cover transition-transform duration-300 hover:scale-[1.03]"
+            />
+          </div>
+
+          {/* Image 3 */}
+          <div className="relative h-56 w-80 flex-shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+            <Image
+              src="/home/websitetrack2.jpg"
+              alt="Amiri Prescod — another highlight"
+              fill
+              priority
+              className="object-cover transition-transform duration-300 hover:scale-[1.03]"
+            />
+          </div>
+
+          {/* Image 4 */}
+          <div className="relative h-56 w-80 flex-shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+            <Image
+              src="/home/webformalpic2.JPG"
+              alt="Amiri Prescod — another highlight"
+              fill
+              priority
+              className="object-cover transition-transform duration-300 hover:scale-[1.03]"
+            />
+          </div>
+
+          {/* Image 5 */}
+          <div className="relative h-56 w-80 flex-shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+            <Image
+              src="/home/websitetrack.JPG"
+              alt="Amiri Prescod — another highlight"
+              fill
+              priority
+              className="object-cover transition-transform duration-300 hover:scale-[1.03]"
+            />
+          </div>
+
+          {/* Image 6 */}
+          <div className="relative h-56 w-80 flex-shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+            <Image
+              src="/home/websitetrack3.jpg"
+              alt="Amiri Prescod — another highlight"
+              fill
+              priority
+              className="object-cover transition-transform duration-300 hover:scale-[1.03]"
+            />
+          </div>
+        </div>
+
+        {/* Optional: subtle caption line (remove if you want it cleaner) */}
+        <p className="mt-3 text-sm text-zinc-400">
+          Engineering + athletics — disciplined execution in both.
+        </p>
       </section>
 
       {/* VALUE SECTION: highlights recruiters care about (what, how, why) */}
