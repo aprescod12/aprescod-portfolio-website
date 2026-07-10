@@ -14,10 +14,7 @@ import {
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: {
-    default: DEFAULT_TITLE,
-    template: `%s | ${SITE_NAME}`,
-  },
+  title: DEFAULT_TITLE,
   description: SITE_DESCRIPTION,
   applicationName: `${SITE_NAME} Engineering Portfolio`,
   authors: [{ name: SITE_NAME, url: SITE_URL }],
