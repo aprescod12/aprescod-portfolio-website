@@ -44,7 +44,7 @@ export default function HomePhotoCarousel() {
       return;
     }
 
-    let resetTimeout: ReturnType<typeof window.setTimeout> | undefined;
+    let resetTimeout: number | undefined;
 
     const interval = window.setInterval(() => {
       if (isPausedRef.current) return;
@@ -68,7 +68,7 @@ export default function HomePhotoCarousel() {
 
     return () => {
       window.clearInterval(interval);
-      if (resetTimeout) window.clearTimeout(resetTimeout);
+      if (resetTimeout !== undefined) window.clearTimeout(resetTimeout);
     };
   }, []);
 
