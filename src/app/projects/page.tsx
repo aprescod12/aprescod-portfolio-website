@@ -27,6 +27,7 @@ export default function ProjectsPage() {
   return (
     <Container>
       <SectionHeading
+        level="h1"
         title="Projects"
         subtitle="A selection of technical work across biomedical devices, embedded systems, computer vision, and software development."
       />
