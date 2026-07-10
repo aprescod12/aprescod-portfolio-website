@@ -1,9 +1,12 @@
 // components/ProjectCard.tsx
 
 import Link from "next/link";
-import type { Project } from "@/lib/projects";
+import { getProjectLinkLabel, type Project } from "@/lib/projects";
 
 export default function ProjectCard({ project }: { project: Project }) {
+  const resourceLabel = getProjectLinkLabel(project);
+  const hasActions = Boolean(project.slug || (project.link && resourceLabel));
+
   return (
     <div
       className={[
@@ -44,40 +47,34 @@ export default function ProjectCard({ project }: { project: Project }) {
         ))}
       </div>
 
-      {/* Links */}
-      <div className="mt-5 flex items-center gap-4">
-        {project.slug ? (
-          <>
+      {hasActions ? (
+        <div className="mt-5 flex flex-wrap items-center gap-4">
+          {project.slug ? (
             <Link
               href={`/projects/${project.slug}`}
-              className="inline-flex text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors"
+              className="inline-flex text-sm font-medium text-blue-400 transition-colors hover:text-blue-300"
             >
-              View →
+              View case study →
             </Link>
+          ) : null}
 
-            {/* Only show Code when slug exists */}
-            {project.link ? (
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex text-sm font-medium text-zinc-300 hover:text-white transition-colors"
-              >
-                Code ↗
-              </a>
-            ) : null}
-          </>
-        ) : project.link ? (
-          <a
-            href={project.link}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors"
-          >
-            View →
-          </a>
-        ) : null}
-      </div>
+          {project.link && resourceLabel ? (
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noreferrer"
+              className={[
+                "inline-flex text-sm font-medium transition-colors",
+                project.slug
+                  ? "text-zinc-300 hover:text-white"
+                  : "text-blue-400 hover:text-blue-300",
+              ].join(" ")}
+            >
+              {resourceLabel} ↗
+            </a>
+          ) : null}
+        </div>
+      ) : null}
     </div>
   );
 }
