@@ -1,27 +1,25 @@
-// components/SectionHeading.tsx
-// Purpose: Consistent section titles + optional subtitle for a clean, recruiter-friendly hierarchy.
+type SectionHeadingProps = {
+  title: string;
+  subtitle?: string;
+  level?: "h1" | "h2";
+};
 
 export default function SectionHeading({
-    title,
-    subtitle,
-  }: {
-    title: string;
-    subtitle?: string;
-  }) {
-    return (
-      <div className="mb-6">
-        {/* Section title (bigger + bold for structure) */}
-        <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
-          {title}
-        </h2>
-  
-        {/* Section subtitle (muted supporting text) */}
-        {subtitle ? (
-          <p className="mt-2 max-w-2xl text-zinc-300 leading-relaxed">
-            {subtitle}
-          </p>
-        ) : null}
-      </div>
-    );
-  }
-  
+  title,
+  subtitle,
+  level = "h2",
+}: SectionHeadingProps) {
+  const Heading = level;
+
+  return (
+    <div className="mb-6">
+      <Heading className="text-2xl font-semibold tracking-tight md:text-3xl">
+        {title}
+      </Heading>
+
+      {subtitle ? (
+        <p className="mt-2 max-w-2xl leading-relaxed text-zinc-300">{subtitle}</p>
+      ) : null}
+    </div>
+  );
+}
