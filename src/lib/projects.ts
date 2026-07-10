@@ -19,7 +19,6 @@ export type Project = {
 export const projects: Project[] = [
   {
     title: "fNIRS Device (Flexible PCB)",
-    featured: true,
     description:
       "Working on a wearable-friendly fNIRS system with a focus on hardware integration, signal fidelity, and real-world usability.",
     impact:
@@ -90,6 +89,7 @@ export const projects: Project[] = [
   },
   {
     title: "Medical Monitoring & Safety Device (ESP32 Wearable System Prototype)",
+    featured: true,
     description:
       "A breadboard-based prototype that simulates a wearable medical device, measuring heart rate and SpO₂, detecting fall events via an accelerometer, and using deep-sleep power management to model battery-efficient wearable operation.",
     tags: ["ESP32", "Low Power", "Sensors"],
