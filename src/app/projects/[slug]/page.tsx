@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Container from "@/components/Container";
@@ -117,6 +118,29 @@ export default async function ProjectCaseStudyPage({
               </ul>
             </div>
           </section>
+
+          {project.slug === "track-field-training-app" ? (
+            <section className="mt-14">
+              <p className="text-xs uppercase tracking-wider text-zinc-400">System flow</p>
+              <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white">
+                Architecture and data flow
+              </h2>
+              <figure className="mt-6 overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-3 md:p-4">
+                <Image
+                  src="/projects/track-field-system-flow.svg"
+                  alt="System-flow diagram showing the Track and Field Training App's Expo client, application workflows, local session persistence, and Supabase backend."
+                  width={1536}
+                  height={900}
+                  sizes="(max-width: 1024px) 100vw, 1152px"
+                  className="h-auto w-full rounded-2xl"
+                  unoptimized
+                />
+                <figcaption className="px-2 pb-1 pt-3 text-xs leading-relaxed text-zinc-500">
+                  AI-generated system diagram based on the project&apos;s verified architecture and implementation.
+                </figcaption>
+              </figure>
+            </section>
+          ) : null}
 
           <section className="mt-14">
             <p className="text-xs uppercase tracking-wider text-zinc-400">Engineering focus</p>
