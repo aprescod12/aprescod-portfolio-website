@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,7 +9,7 @@ type CarouselPhoto = {
   alt: string;
 };
 
-const photos: CarouselPhoto[] = [
+const initialPhotos: CarouselPhoto[] = [
   {
     src: "/home/websitegradpic.JPG",
     alt: "Amiri Prescod at Villanova University",
@@ -36,16 +36,31 @@ const photos: CarouselPhoto[] = [
   },
 ];
 
-const firstPhoto = photos[0]!;
-const carouselPhotos: CarouselPhoto[] = [
-  ...photos,
-  { ...firstPhoto, alt: `${firstPhoto.alt} — repeated slide` },
-];
-
 export default function HomePhotoCarousel() {
+  const [photos, setPhotos] = useState<CarouselPhoto[]>(initialPhotos);
   const carouselRef = useRef<HTMLDivElement>(null);
-  const activeIndexRef = useRef(0);
   const isPausedRef = useRef(false);
+  const isAnimatingRef = useRef(false);
+  const pendingStepRef = useRef(0);
+  const recycleTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useLayoutEffect(() => {
+    const carousel = carouselRef.current;
+    const completedStep = pendingStepRef.current;
+
+    if (!carousel || completedStep === 0) return;
+
+    // React has moved the first image to the end. Offset the scroll position
+    // by the same distance before paint so the visible content does not jump.
+    const previousInlineBehavior = carousel.style.scrollBehavior;
+    carousel.style.scrollBehavior = "auto";
+    carousel.scrollLeft = Math.max(0, carousel.scrollLeft - completedStep);
+    carousel.getBoundingClientRect();
+    carousel.style.scrollBehavior = previousInlineBehavior;
+
+    pendingStepRef.current = 0;
+    isAnimatingRef.current = false;
+  }, [photos]);
 
   useEffect(() => {
     const carousel = carouselRef.current;
@@ -53,31 +68,43 @@ export default function HomePhotoCarousel() {
       return;
     }
 
-    let resetTimeout: ReturnType<typeof setTimeout> | undefined;
-
-    const interval = setInterval(() => {
-      if (isPausedRef.current) return;
+    const advanceCarousel = () => {
+      if (isPausedRef.current || isAnimatingRef.current) return;
 
       const slides = Array.from(carousel.children) as HTMLElement[];
-      const nextIndex = activeIndexRef.current + 1;
-      const nextSlide = slides[nextIndex];
+      if (slides.length < 2) return;
 
-      if (!nextSlide) return;
+      const step = slides[1].offsetLeft - slides[0].offsetLeft;
+      if (step <= 0) return;
 
-      activeIndexRef.current = nextIndex;
-      carousel.scrollTo({ left: nextSlide.offsetLeft, behavior: "smooth" });
+      isAnimatingRef.current = true;
+      carousel.scrollBy({ left: step, behavior: "smooth" });
 
-      if (nextIndex === photos.length) {
-        resetTimeout = setTimeout(() => {
-          carousel.scrollTo({ left: 0, behavior: "auto" });
-          activeIndexRef.current = 0;
-        }, 700);
-      }
-    }, 4000);
+      recycleTimeoutRef.current = setTimeout(() => {
+        pendingStepRef.current = step;
+
+        setPhotos((currentPhotos) => {
+          if (currentPhotos.length < 2) {
+            pendingStepRef.current = 0;
+            isAnimatingRef.current = false;
+            return currentPhotos;
+          }
+
+          const [passedPhoto, ...remainingPhotos] = currentPhotos;
+          return [...remainingPhotos, passedPhoto!];
+        });
+
+        recycleTimeoutRef.current = null;
+      }, 700);
+    };
+
+    const interval = setInterval(advanceCarousel, 4000);
 
     return () => {
       clearInterval(interval);
-      if (resetTimeout !== undefined) clearTimeout(resetTimeout);
+      if (recycleTimeoutRef.current !== null) {
+        clearTimeout(recycleTimeoutRef.current);
+      }
     };
   }, []);
 
@@ -88,7 +115,9 @@ export default function HomePhotoCarousel() {
           <p className="text-xs uppercase tracking-wider text-zinc-400">
             A glimpse into my work &amp; athletics
           </p>
-          <p className="mt-2 text-sm text-zinc-400">Auto-scrolling • drag to explore</p>
+          <p className="mt-2 text-sm text-zinc-400">
+            Continuously scrolling • drag to explore
+          </p>
         </div>
         <Link
           href="/track"
@@ -112,17 +141,22 @@ export default function HomePhotoCarousel() {
         onBlurCapture={() => {
           isPausedRef.current = false;
         }}
-        className="relative mt-5 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        onPointerDown={() => {
+          isPausedRef.current = true;
+        }}
+        onPointerUp={() => {
+          isPausedRef.current = false;
+        }}
+        className="relative mt-5 flex gap-4 overflow-x-auto pb-2 scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
-        {carouselPhotos.map((photo, index) => (
+        {photos.map((photo) => (
           <div
-            key={`${photo.src}-${index}`}
-            className="relative h-56 w-80 flex-shrink-0 snap-start overflow-hidden rounded-2xl border border-white/10 bg-white/5"
-            aria-hidden={index === photos.length}
+            key={photo.src}
+            className="relative h-56 w-80 flex-shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/5"
           >
             <Image
               src={photo.src}
-              alt={index === photos.length ? "" : photo.alt}
+              alt={photo.alt}
               fill
               sizes="(max-width: 768px) 80vw, 320px"
               className="object-cover transition-transform duration-300 hover:scale-[1.03]"
