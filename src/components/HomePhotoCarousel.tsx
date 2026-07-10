@@ -4,7 +4,12 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const photos = [
+type CarouselPhoto = {
+  src: string;
+  alt: string;
+};
+
+const photos: CarouselPhoto[] = [
   {
     src: "/home/websitegradpic.JPG",
     alt: "Amiri Prescod at Villanova University",
@@ -31,7 +36,11 @@ const photos = [
   },
 ];
 
-const carouselPhotos = [...photos, { ...photos[0], alt: `${photos[0].alt} — repeated slide` }];
+const firstPhoto = photos[0]!;
+const carouselPhotos: CarouselPhoto[] = [
+  ...photos,
+  { ...firstPhoto, alt: `${firstPhoto.alt} — repeated slide` },
+];
 
 export default function HomePhotoCarousel() {
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -44,9 +53,9 @@ export default function HomePhotoCarousel() {
       return;
     }
 
-    let resetTimeout: number | undefined;
+    let resetTimeout: ReturnType<typeof setTimeout> | undefined;
 
-    const interval = window.setInterval(() => {
+    const interval = setInterval(() => {
       if (isPausedRef.current) return;
 
       const slides = Array.from(carousel.children) as HTMLElement[];
@@ -59,7 +68,7 @@ export default function HomePhotoCarousel() {
       carousel.scrollTo({ left: nextSlide.offsetLeft, behavior: "smooth" });
 
       if (nextIndex === photos.length) {
-        resetTimeout = window.setTimeout(() => {
+        resetTimeout = setTimeout(() => {
           carousel.scrollTo({ left: 0, behavior: "auto" });
           activeIndexRef.current = 0;
         }, 700);
@@ -67,8 +76,8 @@ export default function HomePhotoCarousel() {
     }, 4000);
 
     return () => {
-      window.clearInterval(interval);
-      if (resetTimeout !== undefined) window.clearTimeout(resetTimeout);
+      clearInterval(interval);
+      if (resetTimeout !== undefined) clearTimeout(resetTimeout);
     };
   }, []);
 
