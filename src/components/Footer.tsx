@@ -24,7 +24,12 @@ export default function Footer() {
           >
             GitHub
           </a>
-          <a className={footerLinkClass} href="mailto:ajrprescod@gmail.com">
+          <a
+            className={footerLinkClass}
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=ajrprescod@gmail.com&su=Portfolio%20Inquiry"
+            target="_blank"
+            rel="noreferrer"
+          >
             Email
           </a>
         </div>
