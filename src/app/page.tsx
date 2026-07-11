@@ -167,7 +167,9 @@ export default function HomePage() {
           </p>
         </div>
         <a
-          href="mailto:ajrprescod@gmail.com"
+          href="https://mail.google.com/mail/?view=cm&fs=1&to=ajrprescod@gmail.com&su=Portfolio%20Inquiry"
+          target="_blank"
+          rel="noreferrer"
           className="mt-6 inline-flex flex-shrink-0 items-center justify-center rounded-xl bg-blue-500 px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-400 md:mt-0"
         >
           Send an email →
