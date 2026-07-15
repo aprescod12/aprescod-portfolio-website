@@ -86,7 +86,7 @@ export const projects: Project[] = [
     context: "Independent project for potential university adoption",
     year: "2026",
     impact:
-      "Replaced a fragmented spreadsheet- and document-based staffing workflow with a centralized, auditable system for students and supervisors.",
+      "Developed a working pilot candidate designed to replace a fragmented spreadsheet- and document-based staffing process with a centralized, auditable workflow.",
     tags: ["Django", "PostgreSQL", "Celery", "Redis", "Docker"],
     caseStudy: {
       overview:
