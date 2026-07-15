@@ -77,6 +77,38 @@ export const projects: Project[] = [
     },
   },
   {
+    title: "AFA Event Staffing & Shift Management Platform",
+    slug: "afa-event-staffing-platform",
+    description:
+      "Designed and built a full-stack institutional staffing platform for controlled shift releases, conflict-safe student assignments, FIFO waitlists, notifications, attendance, and operational reporting.",
+    category: "Full-Stack Software Engineering",
+    status: "Institutional Pilot Candidate",
+    context: "Independent project for potential university adoption",
+    year: "2026",
+    impact:
+      "Developed a working pilot candidate designed to replace a fragmented spreadsheet- and document-based staffing process with a centralized, auditable workflow.",
+    tags: ["Django", "PostgreSQL", "Celery", "Redis", "Docker"],
+    caseStudy: {
+      overview:
+        "The AFA Event Staffing and Shift Management Platform is a full-stack web application built to manage the complete lifecycle of university event staffing. Students can discover eligible shifts, register under controlled release rules, join or leave waitlists, review their schedules, and manage notification preferences. Supervisors can create release batches, events, and named shifts; monitor staffing; manage assignments; record attendance; review history; and export operational reports.",
+      engineeringFocus: [
+        "Implemented server-side capacity enforcement, cross-event scheduling-conflict detection, restricted and open signup periods, cancellation controls, and FIFO waitlist promotion while preserving staffing history.",
+        "Built separate student and supervisor workflows with server-side role authorization, profile management, calendars, staffing dashboards, attendance records, student directories, reports, and exports.",
+        "Designed event-driven and scheduled notifications with user preferences, delivery logging, deduplication, and Celery- and Redis-backed processing for reminders and staffing changes.",
+      ],
+      systemDetails: [
+        "Django server-rendered application with dedicated student and supervisor workflows",
+        "PostgreSQL production data model with SQLite-supported local development",
+        "Celery, Redis, and Celery Beat for asynchronous and scheduled operations",
+        "Controlled release batches, capacity enforcement, conflict prevention, and FIFO waitlists",
+        "Attendance history, staffing dashboards, calendars, CSV exports, and print-friendly rosters",
+        "Docker preview environment, GitHub Actions validation, and institutional identity groundwork",
+      ],
+      note:
+        "This is a working and tested institutional pilot candidate, not a currently deployed Villanova production system. Production use would require university approval and configuration for SSO and Duo, hosting, email delivery, privacy, accessibility, monitoring, backups, support, and long-term ownership.",
+    },
+  },
+  {
     title: "ESP32 4-Floor Elevator Simulator",
     slug: "esp32-elevator",
     description:

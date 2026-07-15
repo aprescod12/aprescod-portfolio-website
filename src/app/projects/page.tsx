@@ -7,10 +7,10 @@ import ProjectCard from "@/components/ProjectCard";
 import { getProjectLinkLabel, projects } from "@/lib/projects";
 
 const selectedProjectTitles = [
+  "AFA Event Staffing & Shift Management Platform",
   "Track & Field Training App",
   "Baseball Bat Tracking System (Jetson + Multi-Camera)",
   "ESP32 4-Floor Elevator Simulator",
-  "ESP32 Alarm Clock System",
 ];
 
 export default function ProjectsPage() {
