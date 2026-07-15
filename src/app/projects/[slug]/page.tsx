@@ -14,6 +14,12 @@ const architectureDiagrams: Record<
     disclaimer:
       "AI-generated system diagram based on the project's verified architecture and implementation.",
   },
+  "afa-event-staffing-platform": {
+    src: "/projects/afa-staffing-system-flow.svg",
+    alt: "Architecture diagram showing student and supervisor workflows passing through Django staffing rules to PostgreSQL, Redis, Celery, notifications, and reporting services.",
+    disclaimer:
+      "System diagram based on the project's verified repository architecture and implementation.",
+  },
   "medical-monitoring-safety-device": {
     src: "/projects/medical-monitoring-system-flow.svg",
     alt: "Architecture diagram showing biomedical sensors and user input flowing through an ESP32 to biometric processing, fall detection, OLED feedback, alert behavior, and low-power control.",
