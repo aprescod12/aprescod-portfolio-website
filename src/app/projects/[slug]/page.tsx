@@ -20,6 +20,12 @@ const architectureDiagrams: Record<
     disclaimer:
       "System diagram based on the project's verified repository architecture and implementation.",
   },
+  "personal-job-intelligence-platform": {
+    src: "/projects/job-intelligence-system-flow.svg",
+    alt: "Architecture diagram showing resume and job inputs moving through controlled Django extraction, review, verification, matching, candidate snapshots, and application tracking, with future agent capabilities clearly separated as roadmap work.",
+    disclaimer:
+      "System diagram based on the project's verified repository implementation and documented seven-agent roadmap.",
+  },
   "medical-monitoring-safety-device": {
     src: "/projects/medical-monitoring-system-flow.svg",
     alt: "Architecture diagram showing biomedical sensors and user input flowing through an ESP32 to biometric processing, fall detection, OLED feedback, alert behavior, and low-power control.",
