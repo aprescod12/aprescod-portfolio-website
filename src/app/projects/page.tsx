@@ -8,9 +8,9 @@ import { getProjectLinkLabel, projects } from "@/lib/projects";
 
 const selectedProjectTitles = [
   "AFA Event Staffing & Shift Management Platform",
+  "Personal Job Intelligence & Application Tracking Platform",
   "Track & Field Training App",
   "Baseball Bat Tracking System (Jetson + Multi-Camera)",
-  "ESP32 4-Floor Elevator Simulator",
 ];
 
 export default function ProjectsPage() {
