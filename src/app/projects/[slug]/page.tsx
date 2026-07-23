@@ -70,6 +70,8 @@ export default async function ProjectCaseStudyPage({
   const architectureDiagram = project.slug
     ? architectureDiagrams[project.slug]
     : undefined;
+  const isJobIntelligenceProject =
+    project.slug === "personal-job-intelligence-platform";
   const snapshotItems = [
     { label: "Category", value: project.category },
     { label: "Status", value: project.status },
@@ -143,6 +145,21 @@ export default async function ProjectCaseStudyPage({
           ) : null}
         </div>
       </section>
+
+      {isJobIntelligenceProject ? (
+        <section className="mt-8 rounded-3xl border border-blue-400/20 bg-gradient-to-br from-blue-500/10 via-white/5 to-white/0 p-7 md:p-8">
+          <p className="text-xs uppercase tracking-wider text-blue-300">Learning objective</p>
+          <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white">
+            Learning to implement AI agents inside real software workflows
+          </h2>
+          <p className="mt-4 max-w-4xl leading-relaxed text-zinc-300">
+            I started this project to move beyond isolated AI prompts and learn how agentic systems are actually designed and integrated into dependable applications. The job-search problem provides a practical environment for learning orchestration, structured tool boundaries, stateful workflows, evidence and provenance, deterministic fallback, evaluation, human approval gates, and safe coordination between specialized AI-assisted components.
+          </p>
+          <p className="mt-4 max-w-4xl leading-relaxed text-zinc-300">
+            The seven-agent architecture is being implemented incrementally inside one controlled Django application so that each capability can be tested and understood before broader automation is introduced.
+          </p>
+        </section>
+      ) : null}
 
       {project.caseStudy ? (
         <>
