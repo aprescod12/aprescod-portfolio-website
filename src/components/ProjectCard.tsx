@@ -6,6 +6,8 @@ import { getProjectLinkLabel, type Project } from "@/lib/projects";
 export default function ProjectCard({ project }: { project: Project }) {
   const resourceLabel = getProjectLinkLabel(project);
   const hasActions = Boolean(project.slug || (project.link && resourceLabel));
+  const isJobIntelligenceProject =
+    project.slug === "personal-job-intelligence-platform";
 
   return (
     <div
@@ -22,6 +24,14 @@ export default function ProjectCard({ project }: { project: Project }) {
       <p className="mt-2 text-sm leading-relaxed text-zinc-300">
         {project.description}
       </p>
+
+      {isJobIntelligenceProject ? (
+        <p className="mt-3 rounded-xl border border-blue-400/15 bg-blue-400/5 px-4 py-3 text-sm leading-relaxed text-zinc-200">
+          <span className="font-medium text-blue-300">Learning objective:</span>{" "}
+          Use a real product workflow to learn how AI agents can be designed,
+          constrained, evaluated, and integrated into dependable software.
+        </p>
+      ) : null}
 
       {project.impact ? (
         <p className="mt-3 text-sm text-zinc-200">
