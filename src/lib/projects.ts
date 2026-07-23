@@ -109,6 +109,40 @@ export const projects: Project[] = [
     },
   },
   {
+    title: "Personal Job Intelligence & Application Tracking Platform",
+    slug: "personal-job-intelligence-platform",
+    description:
+      "Building a Django-based career intelligence platform that converts résumés and job listings into structured, source-backed data, produces explainable candidate-to-role analysis, and tracks opportunities through a controlled human-review workflow.",
+    category: "Applied AI & Full-Stack Software Engineering",
+    status: "Active Development",
+    context: "Independent AI engineering project",
+    year: "2026",
+    impact:
+      "Created an auditable job-search pipeline connecting résumé evidence, career preferences, job requirements, listing reliability, matcher versions, and application decisions without relying on unexplained AI recommendations.",
+    tags: ["Django", "Python", "OpenAI API", "Explainable AI", "Human-in-the-Loop"],
+    link: "https://github.com/aprescod12/personal-job-finder",
+    linkType: "code",
+    caseStudy: {
+      overview:
+        "The Personal Job Intelligence and Application Tracking Platform is a learning-first Django application designed to make job searching more structured, explainable, and evidence-based. The implemented system stores and verifies résumé evidence, structures job requirements, checks listing reliability, calculates transparent candidate-to-role match results, and tracks opportunities through the application pipeline. AI providers may propose structured information from unstructured documents, while Python and Django enforce schemas, evidence grounding, duplicate controls, review gates, scoring rules, and database changes.",
+      engineeringFocus: [
+        "Built a controlled résumé pipeline for PDF, DOCX, and TXT sources with SHA-256 fingerprinting, version history, deterministic extraction, optional OpenAI structured output, claim-level evidence anchoring, editable review, and explicit activation of immutable candidate-profile snapshots.",
+        "Designed a deterministic and explainable matching system that separates direct evidence, normalized concepts, rule-related evidence, controlled semantic evidence, missing qualifications, and eligibility blockers while recording the matcher and candidate-profile versions used.",
+        "Implemented human approval boundaries, duplicate detection, extraction provenance, listing verification, blind holdout validation, matcher calibration, and application tracking so consequential AI-assisted decisions remain visible, reviewable, and user-controlled.",
+      ],
+      systemDetails: [
+        "Django application with job tracking, candidate-profile, review, calibration, and match-analysis workflows",
+        "PDF, DOCX, and TXT résumé ingestion with local document parsing and versioned source control",
+        "Optional OpenAI structured extraction with strict schemas, grounding validation, and deterministic fallback",
+        "Approved claim evidence composed into immutable candidate-profile snapshots with explicit activation",
+        "Explainable weighted matching, listing reliability checks, duplicate controls, and provenance history",
+        "Seven-agent product architecture implemented incrementally inside one controlled Django workflow",
+      ],
+      note:
+        "The application is under active development. Résumé ingestion, candidate-evidence review, profile versioning, job processing, listing verification, explainable matching, calibration, and application tracking are implemented. Automated job discovery, project-specific portfolio recommendations, the full coordinator workflow, expanded reminders, and production deployment remain roadmap work. The system does not automatically submit applications or contact employers.",
+    },
+  },
+  {
     title: "ESP32 4-Floor Elevator Simulator",
     slug: "esp32-elevator",
     description:
