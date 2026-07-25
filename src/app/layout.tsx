@@ -93,13 +93,42 @@ const personStructuredData = {
   ],
 };
 
+const themeInitializationScript = `
+(function () {
+  var theme = "dark";
+
+  try {
+    var storedTheme = window.localStorage.getItem("aprescod-theme");
+
+    if (storedTheme === "light" || storedTheme === "dark") {
+      theme = storedTheme;
+    } else if (!window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      theme = "light";
+    }
+  } catch (error) {
+    if (!window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      theme = "light";
+    }
+  }
+
+  document.documentElement.dataset.theme = theme;
+  document.documentElement.style.colorScheme = theme;
+})();
+`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full">
+    <html lang="en" className="h-full" suppressHydrationWarning>
+      <head>
+        <script
+          id="theme-initializer"
+          dangerouslySetInnerHTML={{ __html: themeInitializationScript }}
+        />
+      </head>
       <body className="min-h-dvh flex flex-col">
         <a
           href="#main-content"
