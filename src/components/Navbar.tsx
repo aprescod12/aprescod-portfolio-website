@@ -85,7 +85,7 @@ export default function Navbar() {
           <ThemeToggle />
 
           <a
-            href="/APrescod_Resume copy.pdf"
+            href="/APrescod_Resume1.pdf"
             target="_blank"
             rel="noreferrer"
             className="ml-1 inline-flex items-center justify-center rounded-xl bg-blue-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
@@ -155,7 +155,7 @@ export default function Navbar() {
               })}
 
               <a
-                href="/APrescod_Resume copy.pdf"
+                href="/APrescod_Resume1.pdf"
                 target="_blank"
                 rel="noreferrer"
                 className="mt-2 inline-flex items-center justify-center rounded-xl bg-blue-500 px-4 py-3 text-base font-medium text-white transition-colors hover:bg-blue-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
