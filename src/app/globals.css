@@ -1,20 +1,220 @@
-/* Tailwind v4: this is the only required import */
 @import "tailwindcss";
 
-/* Ensure the page can stretch full height */
-html, body {
+:root {
+  color-scheme: light;
+  --page-background: #f7f8fb;
+  --page-text: #18181b;
+  --page-glow: rgba(59, 130, 246, 0.1);
+  --surface: rgba(255, 255, 255, 0.76);
+  --surface-strong: rgba(255, 255, 255, 0.94);
+  --surface-hover: rgba(255, 255, 255, 1);
+  --surface-inset: rgba(244, 244, 245, 0.84);
+  --border: rgba(24, 24, 27, 0.12);
+  --divider: rgba(24, 24, 27, 0.11);
+  --nav-background: rgba(250, 250, 250, 0.88);
+  --nav-background-strong: rgba(250, 250, 250, 0.97);
+  --text-strong: #27272a;
+  --text-muted: #52525b;
+  --text-subtle: #71717a;
+  --accent-label: #1d4ed8;
+  --accent-link: #2563eb;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --page-background: #09090b;
+  --page-text: #fafafa;
+  --page-glow: rgba(59, 130, 246, 0.08);
+  --surface: rgba(255, 255, 255, 0.05);
+  --surface-strong: rgba(255, 255, 255, 0.1);
+  --surface-hover: rgba(255, 255, 255, 0.1);
+  --surface-inset: rgba(9, 9, 11, 0.4);
+  --border: rgba(255, 255, 255, 0.1);
+  --divider: rgba(255, 255, 255, 0.1);
+  --nav-background: rgba(9, 9, 11, 0.85);
+  --nav-background-strong: rgba(9, 9, 11, 0.95);
+  --text-strong: #e4e4e7;
+  --text-muted: #d4d4d8;
+  --text-subtle: #a1a1aa;
+  --accent-label: #93c5fd;
+  --accent-link: #60a5fa;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    --page-background: #09090b;
+    --page-text: #fafafa;
+    --page-glow: rgba(59, 130, 246, 0.08);
+  }
+}
+
+html,
+body {
   height: 100%;
 }
 
-/* Global background + text color (no @apply, just plain CSS) */
+html {
+  background-color: var(--page-background);
+}
+
 body {
-  background: #09090b; /* zinc-950 */
-  color: #fafafa;      /* zinc-50 */
+  background:
+    radial-gradient(circle at 50% -12rem, var(--page-glow), transparent 34rem),
+    var(--page-background);
+  color: var(--page-text);
+  transition:
+    background-color 300ms ease,
+    color 300ms ease;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Optional: makes selection highlight feel polished */
 ::selection {
-  background: rgba(59, 130, 246, 0.35); /* blue-500-ish */
+  background: rgba(59, 130, 246, 0.28);
+}
+
+.theme-icon {
+  position: absolute;
+  height: 1.15rem;
+  width: 1.15rem;
+  transition:
+    opacity 220ms ease,
+    transform 300ms ease;
+}
+
+.theme-icon-sun {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+.theme-icon-moon {
+  opacity: 0;
+  transform: rotate(-24deg) scale(0.7);
+}
+
+html[data-theme="dark"] .theme-icon-sun {
+  opacity: 0;
+  transform: rotate(28deg) scale(0.7);
+}
+
+html[data-theme="dark"] .theme-icon-moon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+/* Light-mode mappings for the existing dark-first Tailwind palette. */
+html[data-theme="light"] [class~="text-white"],
+html[data-theme="light"] [class~="text-white/90"],
+html[data-theme="light"] [class~="text-white/95"] {
+  color: var(--page-text);
+}
+
+html[data-theme="light"] [class~="text-zinc-100"],
+html[data-theme="light"] [class~="text-zinc-200"] {
+  color: var(--text-strong);
+}
+
+html[data-theme="light"] [class~="text-zinc-300"] {
+  color: var(--text-muted);
+}
+
+html[data-theme="light"] [class~="text-zinc-400"],
+html[data-theme="light"] [class~="text-zinc-500"] {
+  color: var(--text-subtle);
+}
+
+html[data-theme="light"] [class~="text-blue-200"],
+html[data-theme="light"] [class~="text-blue-300"] {
+  color: var(--accent-label);
+}
+
+html[data-theme="light"] [class~="text-blue-400"] {
+  color: var(--accent-link);
+}
+
+html[data-theme="light"] [class~="hover:text-white"]:hover {
+  color: var(--page-text);
+}
+
+html[data-theme="light"] [class~="hover:text-blue-300"]:hover,
+html[data-theme="light"] .group:hover [class~="group-hover:text-blue-300"] {
+  color: var(--accent-label);
+}
+
+html[data-theme="light"] [class~="disabled:text-zinc-500"]:disabled {
+  color: #a1a1aa;
+}
+
+html[data-theme="light"] [class~="bg-blue-500"][class~="text-white"] {
+  color: #ffffff;
+}
+
+html[data-theme="light"] [class~="border-white/10"],
+html[data-theme="light"] [class~="border-white/15"] {
+  border-color: var(--border);
+}
+
+html[data-theme="light"] [class~="bg-white/5"] {
+  background-color: var(--surface);
+}
+
+html[data-theme="light"] [class~="bg-white/[0.03]"] {
+  background-color: rgba(255, 255, 255, 0.62);
+}
+
+html[data-theme="light"] [class~="bg-white/10"] {
+  background-color: var(--divider);
+}
+
+html[data-theme="light"] [class~="bg-white/25"] {
+  background-color: rgba(24, 24, 27, 0.22);
+}
+
+html[data-theme="light"] [class~="hover:bg-white/5"]:hover,
+html[data-theme="light"] [class~="hover:bg-white/10"]:hover,
+html[data-theme="light"] [class~="hover:bg-white/[0.07]"]:hover,
+html[data-theme="light"] [class~="hover:bg-white/[0.08]"]:hover {
+  background-color: var(--surface-hover);
+}
+
+html[data-theme="light"] [class~="hover:bg-white/50"]:hover {
+  background-color: rgba(24, 24, 27, 0.42);
+}
+
+html[data-theme="light"] [class~="bg-zinc-950/85"] {
+  background-color: var(--nav-background);
+}
+
+html[data-theme="light"] [class~="bg-zinc-950/95"] {
+  background-color: var(--nav-background-strong);
+}
+
+html[data-theme="light"] [class~="bg-zinc-950/40"],
+html[data-theme="light"] [class~="bg-zinc-950/35"],
+html[data-theme="light"] [class~="bg-zinc-950/30"] {
+  background-color: var(--surface-inset);
+}
+
+html[data-theme="light"] [class~="bg-zinc-950"] {
+  background-color: #ffffff;
+}
+
+html[data-theme="light"] [class~="before:bg-white/10"]::before {
+  background-color: var(--divider);
+}
+
+html[data-theme="light"] [class~="ring-zinc-950"] {
+  --tw-ring-color: var(--page-background);
+}
+
+html[data-theme="light"] [class~="focus-visible:ring-offset-zinc-950"]:focus-visible {
+  --tw-ring-offset-color: var(--page-background);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body,
+  .theme-icon {
+    transition: none;
+  }
 }
