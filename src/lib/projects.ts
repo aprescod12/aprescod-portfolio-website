@@ -50,7 +50,7 @@ export const projects: Project[] = [
     title: "Miniature fNIRS Research Platform",
     slug: "miniature-fnirs-research-platform",
     description:
-      "Continuing Villanova miniature-fNIRS research by rebuilding the mobile acquisition stack in Flutter and extending an existing wireless sensor into a reliable research platform for BLE acquisition, four-channel optical visualization, durable session storage, engineering-quality monitoring, and future app-controlled embedded hardware.",
+      "Continuing Villanova miniature-fNIRS research by restoring and troubleshooting an inherited wireless sensor platform, rebuilding the mobile acquisition stack in Flutter, and extending the system for reliable BLE acquisition, four-channel optical visualization, durable session storage, engineering-quality monitoring, and future app-controlled embedded hardware.",
     category: "Biomedical Engineering Research",
     status: "Active Research",
     context: "Faculty-advised biomedical engineering research",
@@ -58,7 +58,7 @@ export const projects: Project[] = [
     availabilityNote:
       "The current mobile application repository is private; this case study summarizes verified implementation and planned research work without presenting the platform as clinically validated.",
     impact:
-      "Rebuilt the software foundation around an inherited miniature fNIRS sensor, physically characterized its BLE data interface, and established a versioned research roadmap spanning mobile acquisition, embedded control, PCB revision, signal optimization, and future validated physiological processing.",
+      "Restored an inherited miniature fNIRS platform to working research use by troubleshooting the legacy hardware/software path, physically characterizing its BLE data interface, rebuilding the mobile software foundation, and establishing a versioned roadmap spanning embedded control, PCB revision, signal optimization, and future validated physiological processing.",
     tags: [
       "Biomedical Engineering",
       "fNIRS",
@@ -71,14 +71,15 @@ export const projects: Project[] = [
     ],
     caseStudy: {
       overview:
-        "This project continues an existing Villanova miniature-fNIRS research platform rather than claiming ownership of the original hardware. The compact sensor PCB, original CC2650 firmware, and original fNIRS architecture were created through prior Villanova research. My work is focused on restoring and characterizing the inherited system, rebuilding the mobile acquisition layer from scratch in Flutter, preserving research data reliably, and extending the platform toward future embedded control, hardware revision, and validated signal processing.",
+        "This project continues an existing Villanova miniature-fNIRS research platform rather than claiming ownership of the original hardware. The compact sensor PCB, original CC2650 firmware, and original fNIRS architecture were created through prior Villanova research. I inherited the legacy system in a state that required troubleshooting and restoration before it could be used reliably again. My work began by getting the existing hardware/software path back up and running, then characterizing the physical device, rebuilding the mobile acquisition layer from scratch in Flutter, preserving research data reliably, and extending the platform toward future embedded control, hardware revision, and validated signal processing.",
       engineeringFocus: [
+        "Troubleshot and restored the inherited miniature fNIRS hardware/software system to working research use, then verified the physical BLE behavior rather than assuming the legacy application accurately represented the device.",
         "Rebuilt the mobile software as a shared Flutter codebase for iOS and Android, with exact BLE service and characteristic validation, strictly serialized reads targeting approximately 5 Hz, four-trace live visualization, pseudonymous sessions, durable SQLite persistence, interrupted-session recovery, and structured CSV/JSON export.",
-        "Physically characterized the inherited device and verified that its current firmware returns an 11-field, 22-byte BLE packet containing four raw optical measurements and seven engineering/status values, then designed the acquisition layer around the measured hardware behavior rather than legacy assumptions.",
         "Established research-data integrity rules that preserve the complete raw packet and raw ADC measurements, track UTC completion time, monotonic elapsed time and read latency, store baseline and engineering-quality evidence, and avoid presenting Hb/HbO2, brain activation, concussion diagnosis, or other clinical interpretation as validated output.",
       ],
       systemDetails: [
-        "Existing Villanova miniature fNIRS sensor with CC2650MODA-based embedded platform",
+        "Inherited Villanova miniature fNIRS sensor restored to working research use before software extension",
+        "CC2650MODA-based embedded platform with physically verified BLE behavior",
         "Flutter mobile application targeting iOS and Android",
         "Read-based BLE acquisition with a physically verified 22-byte, eleven-field packet",
         "Four raw optical channels: long/far and short/near detectors at 730 nm and 850 nm",
@@ -87,22 +88,24 @@ export const projects: Project[] = [
       ],
       sections: [
         {
-          eyebrow: "Attribution",
-          title: "Inherited Research Platform",
+          eyebrow: "Attribution + restoration",
+          title: "Inherited and Restored Research Platform",
           body:
-            "The starting point is a compact miniature fNIRS sensor created through prior Villanova research. I did not design the original PCB, original CC2650 firmware, or original fNIRS architecture. My contribution begins with restoring, testing, characterizing, and extending that inherited platform.",
+            "The starting point was a compact miniature fNIRS sensor created through prior Villanova research. I did not design the original PCB, original CC2650 firmware, or original fNIRS architecture. I inherited the legacy hardware and software stack and first had to troubleshoot the existing system to get it back up and running before I could extend it. That restoration work became the foundation for the later BLE characterization, Flutter rebuild, and research-data architecture.",
           bullets: [
-            "Existing compact manufactured PCB rather than a flexible-PCB design",
-            "CC2650MODA-based embedded system with BLE connectivity and JTAG reprogramming capability",
-            "Research continuation centered on software reliability, protocol understanding, embedded control, and future hardware iteration",
+            "Inherited an existing compact manufactured PCB rather than designing the original board",
+            "Troubleshot the legacy hardware/software path to restore communication and usable device operation",
+            "Validated behavior on the physical sensor instead of relying solely on legacy source-code assumptions",
+            "Continued the research from a restored platform with software reliability, protocol understanding, embedded control, and future hardware iteration as the next engineering layers",
           ],
         },
         {
           eyebrow: "Problem",
           title: "Problem With the Legacy Application and Workflow",
           body:
-            "The previous mobile workflow was not a reliable foundation for current cross-platform research. Legacy application assumptions also did not fully match the behavior of the physical device, so recreating the old interface would have preserved uncertainty instead of resolving it.",
+            "The inherited platform was not immediately ready for dependable current research use. The system first required troubleshooting to restore operation, and the previous mobile workflow was not a reliable foundation for cross-platform acquisition. Legacy application assumptions also did not fully match the behavior of the physical device, so recreating the old interface would have preserved uncertainty instead of resolving it.",
           bullets: [
+            "Restored the inherited device/application path before beginning the new acquisition stack",
             "Replaced legacy Android/Xamarin application paths with a new shared Flutter codebase",
             "Designed the new app as a research data-acquisition system rather than a Bluetooth demonstration",
             "Documented a source-level packet-length discrepancy and followed physically verified device behavior",
