@@ -7,6 +7,7 @@ import ProjectCard from "@/components/ProjectCard";
 import { getProjectLinkLabel, projects } from "@/lib/projects";
 
 const selectedProjectTitles = [
+  "Miniature fNIRS Research Platform",
   "AFA Event Staffing & Shift Management Platform",
   "Personal Job Intelligence & Application Tracking Platform",
   "Track & Field Training App",
