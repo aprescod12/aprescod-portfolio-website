@@ -2,10 +2,18 @@
 
 export type ProjectLinkType = "code" | "report" | "demo" | "external";
 
+export type ProjectCaseStudySection = {
+  title: string;
+  body?: string;
+  bullets?: string[];
+  eyebrow?: string;
+};
+
 export type ProjectCaseStudy = {
   overview: string;
   engineeringFocus: string[];
   systemDetails: string[];
+  sections?: ProjectCaseStudySection[];
   note?: string;
 };
 
@@ -39,15 +47,169 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    title: "fNIRS Device (Flexible PCB)",
+    title: "Miniature fNIRS Research Platform",
+    slug: "miniature-fnirs-research-platform",
     description:
-      "Supporting faculty-led fNIRS research focused on wearable sensing, hardware integration, and signal acquisition.",
-    category: "Biomedical Research",
-    status: "Ongoing",
-    context: "Faculty-led research",
+      "Continuing Villanova miniature-fNIRS research by rebuilding the mobile acquisition stack in Flutter and extending an existing wireless sensor into a reliable research platform for BLE acquisition, four-channel optical visualization, durable session storage, engineering-quality monitoring, and future app-controlled embedded hardware.",
+    category: "Biomedical Engineering Research",
+    status: "Active Research",
+    context: "Faculty-advised biomedical engineering research",
+    year: "2026",
     availabilityNote:
-      "Technical details and supporting materials are not publicly shared.",
-    tags: ["Biomedical Sensing", "Embedded Hardware", "Signal Acquisition"],
+      "The current mobile application repository is private; this case study summarizes verified implementation and planned research work without presenting the platform as clinically validated.",
+    impact:
+      "Rebuilt the software foundation around an inherited miniature fNIRS sensor, physically characterized its BLE data interface, and established a versioned research roadmap spanning mobile acquisition, embedded control, PCB revision, signal optimization, and future validated physiological processing.",
+    tags: [
+      "Biomedical Engineering",
+      "fNIRS",
+      "Flutter",
+      "Bluetooth Low Energy",
+      "Embedded Systems",
+      "Signal Acquisition",
+      "SQLite",
+      "PCB Design",
+    ],
+    caseStudy: {
+      overview:
+        "This project continues an existing Villanova miniature-fNIRS research platform rather than claiming ownership of the original hardware. The compact sensor PCB, original CC2650 firmware, and original fNIRS architecture were created through prior Villanova research. My work is focused on restoring and characterizing the inherited system, rebuilding the mobile acquisition layer from scratch in Flutter, preserving research data reliably, and extending the platform toward future embedded control, hardware revision, and validated signal processing.",
+      engineeringFocus: [
+        "Rebuilt the mobile software as a shared Flutter codebase for iOS and Android, with exact BLE service and characteristic validation, strictly serialized reads targeting approximately 5 Hz, four-trace live visualization, pseudonymous sessions, durable SQLite persistence, interrupted-session recovery, and structured CSV/JSON export.",
+        "Physically characterized the inherited device and verified that its current firmware returns an 11-field, 22-byte BLE packet containing four raw optical measurements and seven engineering/status values, then designed the acquisition layer around the measured hardware behavior rather than legacy assumptions.",
+        "Established research-data integrity rules that preserve the complete raw packet and raw ADC measurements, track UTC completion time, monotonic elapsed time and read latency, store baseline and engineering-quality evidence, and avoid presenting Hb/HbO2, brain activation, concussion diagnosis, or other clinical interpretation as validated output.",
+      ],
+      systemDetails: [
+        "Existing Villanova miniature fNIRS sensor with CC2650MODA-based embedded platform",
+        "Flutter mobile application targeting iOS and Android",
+        "Read-based BLE acquisition with a physically verified 22-byte, eleven-field packet",
+        "Four raw optical channels: long/far and short/near detectors at 730 nm and 850 nm",
+        "Seven engineering/status fields covering battery, charging, USB, 8.2 V power, low battery, power mode, and duty cycle",
+        "Local SQLite sessions with raw-packet preservation, timestamps, latency, baseline evidence, quality flags, connection events, and export metadata",
+      ],
+      sections: [
+        {
+          eyebrow: "Attribution",
+          title: "Inherited Research Platform",
+          body:
+            "The starting point is a compact miniature fNIRS sensor created through prior Villanova research. I did not design the original PCB, original CC2650 firmware, or original fNIRS architecture. My contribution begins with restoring, testing, characterizing, and extending that inherited platform.",
+          bullets: [
+            "Existing compact manufactured PCB rather than a flexible-PCB design",
+            "CC2650MODA-based embedded system with BLE connectivity and JTAG reprogramming capability",
+            "Research continuation centered on software reliability, protocol understanding, embedded control, and future hardware iteration",
+          ],
+        },
+        {
+          eyebrow: "Problem",
+          title: "Problem With the Legacy Application and Workflow",
+          body:
+            "The previous mobile workflow was not a reliable foundation for current cross-platform research. Legacy application assumptions also did not fully match the behavior of the physical device, so recreating the old interface would have preserved uncertainty instead of resolving it.",
+          bullets: [
+            "Replaced legacy Android/Xamarin application paths with a new shared Flutter codebase",
+            "Designed the new app as a research data-acquisition system rather than a Bluetooth demonstration",
+            "Documented a source-level packet-length discrepancy and followed physically verified device behavior",
+          ],
+        },
+        {
+          eyebrow: "Implemented · Version 1",
+          title: "My Version 1 Application Rebuild",
+          body:
+            "Version 1 is a cross-platform research application for reliable BLE acquisition, visualization, preservation, and export of raw measurements from the existing miniature fNIRS sensor. The current main branch contains the Milestone 6 baseline and engineering-quality workflow and has undergone substantial physical iPhone testing.",
+          bullets: [
+            "BLE discovery, connection, exact service/characteristic validation, manual reads, and serialized recording targeting one read every 200 ms",
+            "Four live raw-optical traces with bounded visualization buffering that does not alter acquisition or persisted data",
+            "Pseudonymous sessions, local SQLite persistence, interrupted-session recovery, saved-session review, cascading deletion, CSV export, and metadata JSON export",
+            "Android release compilation and automated validation are implemented; complete physical Android BLE validation remains outstanding",
+            "Experiment-marker storage exists in the schema, while marker-entry UI and automatic reconnection remain release-candidate work rather than completed Milestone 6 functionality",
+          ],
+        },
+        {
+          eyebrow: "Physically verified",
+          title: "Physical Device and BLE Protocol Characterization",
+          body:
+            "Repeated reads on the physical sensor established that the current firmware exposes eleven unsigned 16-bit big-endian values in a 22-byte payload. That verification substantially changed the software model because the device exposes more information than the earlier application assumptions suggested.",
+          bullets: [
+            "Four optical readings: 730 nm and 850 nm at long/far and short/near detector paths",
+            "Seven engineering/status values: battery ADC, charging, USB, 8.2 V power, low-battery, power-mode, and duty-cycle status",
+            "Read-completion timestamps are generated by the app because the current firmware does not provide device timestamps, sequence numbers, dropped-sample indicators, or firmware revision fields",
+            "The complete raw 22-byte payload is preserved alongside every decoded accepted sample",
+          ],
+        },
+        {
+          eyebrow: "Implemented · Data integrity",
+          title: "Research Data Architecture",
+          body:
+            "The software is structured around preserving research evidence rather than only drawing a live chart. BLE operations are serialized, database writes are queued separately, and session completion verifies that accepted samples were durably stored before a normal stop is finalized.",
+          bullets: [
+            "UTC read-completion timestamps, monotonic elapsed timing, read latency, and app-assigned acceptance indices",
+            "Sessions as the aggregate root with samples, connection events, and marker records linked through SQLite foreign keys",
+            "Complete raw payload plus decoded optical and engineering fields retained for every accepted sample",
+            "Unexpectedly active sessions are preserved and relabeled as interrupted after app restart instead of being presented as normally completed",
+            "Raw samples remain available and are not replaced by filtered or calculated values",
+          ],
+        },
+        {
+          eyebrow: "Implemented · Research workflow",
+          title: "Baseline and Engineering Quality Monitoring",
+          body:
+            "Version 1 adds explicit baseline collection and configurable engineering checks to help researchers identify acquisition problems without converting those checks into physiological or clinical claims.",
+          bullets: [
+            "Exact accepted-sample baseline collection with minimum, maximum, range, arithmetic mean, and population standard deviation for all four raw optical fields",
+            "Configurable read-rate, accepted-read-gap, near-floor, near-ceiling, flatline, abrupt-change, and baseline-range checks",
+            "Per-sample quality flags and timestamped warning/baseline events retained for reproducibility",
+            "Warnings never filter, replace, or silently discard accepted raw measurements",
+            "Near-floor and near-ceiling thresholds remain disabled by default until experimentally established for the actual device and protocol",
+          ],
+        },
+        {
+          eyebrow: "Planned · Version 2.0A",
+          title: "Version 2 Firmware and Device-Control Work",
+          body:
+            "The first Version 2 goal is bidirectional control while retaining the existing manufactured PCB. Firmware changes do not automatically require a board redesign because the existing CC2650MODA can be reprogrammed through JTAG.",
+          bullets: [
+            "Reproduce the legacy CC2650 firmware build and flashing environment",
+            "Add app-to-device configuration commands with explicit acknowledgement/readback",
+            "Support app-commanded acquisition start/stop, optical-source sequencing, wavelength-sequencing experiments, and safe timing controls",
+            "Report runtime configuration to the app and store configuration plus timestamped changes with each research session",
+          ],
+        },
+        {
+          eyebrow: "Planned · Version 2.0B",
+          title: "Adjustable Optical-Source Prototype",
+          body:
+            "The current compact PCB uses fixed LED-current paths. Before revising the manufactured board, controllable optical-source approaches will be prototyped externally so the research can identify the simplest circuit that provides safe, repeatable, scientifically useful control.",
+          bullets: [
+            "Candidate approaches include synchronized PWM experiments, selectable-current or selectable-resistance circuitry, and programmable constant-current LED drivers",
+            "Evaluation will measure LED current, repeatability, detector response, saturation, power consumption, thermal behavior, and introduced optical/electrical noise",
+            "External prototyping reduces the risk of committing an unvalidated control method directly into a PCB revision",
+          ],
+        },
+        {
+          eyebrow: "Planned · Version 2.0C",
+          title: "Planned PCB Revision B",
+          body:
+            "After an adjustable optical-source circuit is validated externally, I plan to create a controlled revision of the existing compact PCB in Altium/CircuitMaker. This is intentionally framed as a revision of a proven research board, not a ground-up redesign.",
+          bullets: [
+            "Read and trace the inherited schematic across LED, detector, MCU, power, and JTAG nets",
+            "Perform schematic capture, component selection, symbol/footprint work, four-layer placement and routing, power/ground planning, and analog-versus-switching separation",
+            "Run ERC/DRC and design-for-manufacture review, produce fabrication documentation, and complete board bring-up",
+            "Validate JTAG programming, BLE behavior, optical response, and electrical characteristics on the revised hardware",
+          ],
+        },
+        {
+          eyebrow: "Roadmap · Versions 2.1–4.0",
+          title: "Long-Term Signal Processing and Multi-Device Roadmap",
+          body:
+            "The locked roadmap separates device optimization, wearability, validated physiological processing, and multi-device research so each claim is introduced only after the underlying engineering is ready.",
+          bullets: [
+            "Version 2.1: optimize real physical controls for source intensity, duty cycle, timing, baseline/drift handling, averaging, artifact detection, and visualization filtering while preserving raw samples unchanged",
+            "Version 2.2: investigate headband and wrist/forearm mounting, record anatomical site and mount metadata, improve guided setup, baseline prompts, experiment templates, and marker workflows; wrist/forearm use will not be described as cerebral fNIRS",
+            "Version 3.0: validate Hb/HbO2 processing only after equations, extinction coefficients, geometry/pathlength assumptions, short-separation correction, filtering, artifact handling, test datasets, and a trusted comparison workflow are documented",
+            "Version 4.0: explore multiple simultaneous BLE sensors, persistent device IDs, anatomical mapping, per-device quality, synchronized markers, multi-sensor storage/export, spatial visualization, and eventual firmware timing support for rigorous synchronization claims",
+          ],
+        },
+      ],
+      note:
+        "Research use only. The current application does not provide clinical diagnosis, concussion assessment, brain-activation interpretation, validated hemoglobin concentration measurements, or a clinically validated signal-quality assessment. Version 1 preserves raw optical and engineering data so future processing can be validated without losing the underlying measurements.",
+    },
   },
   {
     title: "Track & Field Training App",
