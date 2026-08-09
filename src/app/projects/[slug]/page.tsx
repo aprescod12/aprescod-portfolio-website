@@ -233,6 +233,54 @@ export default async function ProjectCaseStudyPage({
             </div>
           </section>
 
+          {project.caseStudy.sections?.length ? (
+            <section className="mt-14">
+              <p className="text-xs uppercase tracking-wider text-zinc-400">Case study</p>
+              <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white">
+                Engineering progression and roadmap
+              </h2>
+              <div className="mt-6 space-y-5">
+                {project.caseStudy.sections.map((section, index) => (
+                  <article
+                    key={section.title}
+                    className="rounded-3xl border border-white/10 bg-white/5 p-6 md:p-8"
+                  >
+                    <div className="grid gap-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
+                      <div>
+                        <p className="text-xs font-medium uppercase tracking-wider text-blue-300">
+                          {String(index + 1).padStart(2, "0")}
+                          {section.eyebrow ? ` · ${section.eyebrow}` : ""}
+                        </p>
+                        <h3 className="mt-3 text-xl font-semibold tracking-tight text-white">
+                          {section.title}
+                        </h3>
+                        {section.body ? (
+                          <p className="mt-4 leading-relaxed text-zinc-300">
+                            {section.body}
+                          </p>
+                        ) : null}
+                      </div>
+
+                      {section.bullets?.length ? (
+                        <ul className="space-y-3 text-sm leading-relaxed text-zinc-300">
+                          {section.bullets.map((bullet) => (
+                            <li key={bullet} className="flex gap-3">
+                              <span
+                                aria-hidden="true"
+                                className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-blue-400"
+                              />
+                              <span>{bullet}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : null}
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
+          ) : null}
+
           {project.caseStudy.note ? (
             <section className="mt-10 rounded-2xl border border-amber-300/15 bg-amber-300/5 p-6">
               <p className="text-sm leading-relaxed text-zinc-300">{project.caseStudy.note}</p>
