@@ -34,7 +34,7 @@ export default function HomePage() {
             href="/projects"
             className="inline-flex items-center justify-center rounded-xl bg-blue-500 px-4 py-2 text-sm font-medium text-white hover:bg-blue-400 transition-colors"
           >
-            View Projects
+            View projects
           </a>
 
           <a
@@ -43,7 +43,7 @@ export default function HomePage() {
             rel="noreferrer"
             className="inline-flex items-center justify-center rounded-xl border border-white/15 px-4 py-2 text-sm font-medium text-white hover:bg-white/5 transition-colors"
           >
-            View Resume
+            View resume
           </a>
         </div>
 
