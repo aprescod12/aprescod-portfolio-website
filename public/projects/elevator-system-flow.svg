@@ -45,7 +45,7 @@
     <rect width="260" height="490" rx="24" fill="#0b1728" stroke="#60a5fa" stroke-width="2"/>
     <text x="28" y="42" class="head" fill="#60a5fa">4. OUTPUT LAYER</text>
     <rect x="24" y="86" width="212" height="130" rx="18" fill="#0c1b30" stroke="#60a5fa"/><text x="44" y="128" class="boxTitle">Floor indicators</text><text x="44" y="162" class="body">Four LEDs show the</text><text x="44" y="189" class="body">current floor.</text>
-    <rect x="24" y="242" width="212" height="110" rx="18" fill="#0c1b30" stroke="#4ade80"/><text x="44" y="284" class="boxTitle">Door-status LED</text><text x="44" y="318" class="body">Open / closing state</text>
+    <rect x="24" y="242" width="212" height="110" rx="18" fill="#0c1b30" stroke="#4ade80"/><text x="44" y="284" class="boxTitle">Door-status LED</text><text x="44" y="318" class="body">Open/closing state</text>
     <rect x="24" y="378" width="212" height="86" rx="18" fill="#101629" stroke="#a78bfa"/><text x="44" y="418" class="boxTitle">Serial monitor</text><text x="44" y="445" class="small">Requests, states, direction</text>
   </g>
 
