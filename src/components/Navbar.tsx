@@ -161,7 +161,7 @@ export default function Navbar() {
                 className="mt-2 inline-flex items-center justify-center rounded-xl bg-blue-500 px-4 py-3 text-base font-medium text-white transition-colors hover:bg-blue-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
                 onClick={() => setMenuOpen(false)}
               >
-                View Resume ↗
+                View resume ↗
               </a>
             </div>
           </nav>

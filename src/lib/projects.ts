@@ -101,7 +101,7 @@ export const projects: Project[] = [
         },
         {
           eyebrow: "Problem",
-          title: "Problem With the Legacy Application and Workflow",
+          title: "Problem with the Legacy Application and Workflow",
           body:
             "The inherited platform was not immediately ready for dependable current research use. The system first required troubleshooting to restore operation, and the previous mobile workflow was not a reliable foundation for cross-platform acquisition. Legacy application assumptions also did not fully match the behavior of the physical device, so recreating the old interface would have preserved uncertainty instead of resolving it.",
           bullets: [
@@ -334,11 +334,11 @@ export const projects: Project[] = [
       ],
     },
     videos: [
-      { youtubeId: "tgXctCg14ZQ", caption: "Button Presses and LED Reaction." },
+      { youtubeId: "tgXctCg14ZQ", caption: "Button presses and LED responses." },
       {
         youtubeId: "rMUoFo9LxEs",
         caption:
-          "The Arduino Serial Monitor demonstrated Button Press Recognition and Elevator State Updates.",
+          "The Arduino Serial Monitor demonstrated button-press recognition and elevator-state updates.",
       },
     ],
   },
@@ -357,7 +357,7 @@ export const projects: Project[] = [
         "This ESP32 alarm clock combines network-synchronized time, an OLED interface, physical controls, and I2S audio within a state-driven embedded architecture.",
       engineeringFocus: [
         "Modeled alarm behavior as explicit OFF, ARMED, RINGING, SNOOZED, and SILENCED states.",
-        "Coordinated WiFi and NTP time synchronization with OLED rendering, button input, and audio output.",
+        "Coordinated Wi-Fi and NTP time synchronization with OLED rendering, button input, and audio output.",
         "Used non-blocking control logic so display updates and button interactions remain responsive across alarm states.",
       ],
       systemDetails: [
@@ -370,19 +370,19 @@ export const projects: Project[] = [
     videos: [
       {
         youtubeId: "kkGcaMSYXD4",
-        caption: "The System Alarm going off and the Specified Time.",
+        caption: "The system alarm sounding at the specified time.",
       },
       {
         youtubeId: "ksUBhCYbksk",
-        caption: "The System Going into a 1 Minute Snooze Mode on Button Press.",
+        caption: "The system entering a one-minute snooze mode after a button press.",
       },
       {
         youtubeId: "-uvissk0dHE",
-        caption: "The System going into Silenced Mode on Button Press.",
+        caption: "The system entering SILENCED mode after a button press.",
       },
       {
         youtubeId: "iNDnfd_8_3s",
-        caption: "Demonstrating the Toggle Screen Button.",
+        caption: "Demonstrating the toggle-screen button.",
       },
     ],
   },

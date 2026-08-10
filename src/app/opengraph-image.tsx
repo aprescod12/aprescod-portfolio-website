@@ -109,7 +109,7 @@ export default function OpenGraphImage() {
                 lineHeight: 1.4,
               }}
             >
-              Electrical Engineering · Biomedical Engineering M.S. candidate · Embedded systems · Biomedical sensing
+              Electrical Engineering · Biomedical Engineering M.S. Candidate · Embedded Systems · Biomedical Sensing
             </div>
           </div>
         </div>

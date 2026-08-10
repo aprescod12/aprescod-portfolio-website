@@ -41,7 +41,7 @@ export default function ProjectCard({ project }: { project: Project }) {
 
       {project.collaborated ? (
         <p className="mt-3 text-sm text-zinc-200">
-          <span className="text-zinc-400">Collaborated With:</span>{" "}
+          <span className="text-zinc-400">Collaborated with:</span>{" "}
           {project.collaborated}
         </p>
       ) : null}
