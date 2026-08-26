@@ -308,6 +308,38 @@ export const projects: Project[] = [
     },
   },
   {
+    title: "CaribEcon Intelligence Backend",
+    slug: "caribecon-intelligence-backend",
+    description:
+      "Building the governed PostgreSQL/Supabase intelligence backend for CaribEcon, migrating Caribbean macroeconomic and news data from file-based JSON into versioned, provenance-aware production pipelines.",
+    category: "Backend & Data Engineering",
+    status: "Active Development",
+    context: "Buildathon team · Backend & Data Engineer",
+    year: "2026",
+    impact:
+      "Designed the foundation for moving CaribEcon toward a durable database source of truth while preserving the existing web, Excel, and AI research interfaces during migration.",
+    tags: ["TypeScript", "PostgreSQL", "Supabase", "Data Pipelines", "Data Governance"],
+    caseStudy: {
+      overview:
+        "CaribEcon is a Caribbean economic intelligence platform spanning a public data site, Excel analyst tools, and evidence-grounded research. On the buildathon team, I own development of the long-term intelligence backend: a governed PostgreSQL/Supabase architecture that moves macroeconomic and news data from JSON into trusted, auditable storage without breaking the products already consuming the existing data contracts.",
+      engineeringFocus: [
+        "Designed and implemented the Raw → Staging → Validation/Review → Canonical architecture so automated feeds, discovery systems, and AI-generated candidates cannot write directly into trusted production data.",
+        "Built deterministic TypeScript normalization and validation, stable economic and evidence identifiers, provenance tracking, versioned observations and source vintages, and database-level idempotency for repeatable imports.",
+        "Hardened macro and news import tooling for hosted Supabase with explicit database-target and TLS safeguards, automated tests, and a migration path that preserves existing Astro, Excel, and Ask CaribEcon interfaces.",
+      ],
+      systemDetails: [
+        "Supabase/PostgreSQL intelligence core for Caribbean macroeconomic and news data",
+        "Canonical entities for economies, indicators, sources, series, observations, revisions/vintages, news, and evidence references",
+        "Separate raw, staging, review, and promotion layers with traceability from source payload to trusted record",
+        "Deterministic TypeScript normalization, validation, evidence IDs, and import logic",
+        "PostgreSQL uniqueness constraints and versioned observations for idempotency and historical revision tracking",
+        "Production roadmap includes repository-based retrieval, JSON/PostgreSQL parity testing, snapshot exports, and automated historical backfills",
+      ],
+      note:
+        "The backend is under active development. The governed schema, normalization and validation foundations, import paths, hosted-database safeguards, and automated tests are implemented; full production migration, parity proof, snapshot exporting, and broader historical ingestion remain ongoing.",
+    },
+  },
+  {
     title: "ESP32 4-Floor Elevator Simulator",
     slug: "esp32-elevator",
     description:
