@@ -9,6 +9,7 @@ import { getProjectLinkLabel, projects } from "@/lib/projects";
 const selectedProjectTitles = [
   "Miniature fNIRS Research Platform",
   "CaribEcon Intelligence Backend",
+  "Company Snapshot — Evidence-Grounded Company Intelligence",
   "AFA Event Staffing & Shift Management Platform",
   "Personal Job Intelligence & Application Tracking Platform",
   "Track & Field Training App",
