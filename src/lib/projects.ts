@@ -308,6 +308,90 @@ export const projects: Project[] = [
     },
   },
   {
+    title: "Company Snapshot — Evidence-Grounded Company Intelligence",
+    slug: "company-snapshot-v2",
+    description:
+      "Built and deployed a company-intelligence web app that resolves company identity, retrieves recent public-web signals, verifies each claim against its publisher page, and returns an evidence-grounded snapshot or an honest limited-evidence state.",
+    category: "Software Engineering & Applied AI",
+    status: "Deployed",
+    context: "AI-assisted take-home engineering project",
+    year: "2026",
+    impact:
+      "Designed a bounded, inspectable retrieval pipeline with strict identity, recency, source-verification, deduplication, and failure controls, then validated it against real production companies and publisher sources with a 372-test zero-network suite.",
+    tags: ["Node.js", "Exa API", "Vercel", "Information Retrieval", "Verification & Testing"],
+    link: "https://github.com/aprescod12/company-snapshot-v2",
+    linkType: "code",
+    caseStudy: {
+      overview:
+        "Company Snapshot is a deployed web application that turns a company name or domain into a short description and up to three recent, source-linked signals from the public web. I built it around a simple constraint: retrieval quality had to be inspectable and failure had to remain honest. Instead of relying on one opaque model response, the final system resolves company identity, performs bounded Exa discovery, prioritizes candidates deterministically, verifies publisher pages directly, optionally performs one official-domain fallback, generates a homepage-grounded description, and assembles only evidence that passes the pipeline's controls.",
+      engineeringFocus: [
+        "Designed a bounded retrieval architecture with one broad Exa Search, sequential source verification, at most one official-domain fallback Search, one homepage Contents request, no automatic retries, and no provider waterfall.",
+        "Implemented deterministic identity, recency, source classification, support, and duplicate-event checks so search snippets are treated as candidates rather than final evidence and weak cases fail closed instead of being padded.",
+        "Used production failures and red-before-green regressions to strengthen same-event deduplication and publisher HTML extraction, while explicitly stopping further complexity when a residual live-web limitation could not be justified as a deterministic defect.",
+      ],
+      systemDetails: [
+        "Native Node.js ES modules with zero npm runtime dependencies",
+        "Exa Search for bounded discovery and Exa Contents for the confirmed homepage description",
+        "Publisher-page verification with safe URL handling, bounded redirects/body size, publication-date extraction, claim support checks, and recency enforcement",
+        "Public states for snapshot, insufficient evidence, clarification needed, and sanitized provider unavailability",
+        "Vercel serverless API boundary with a server-only EXA_API_KEY and a plain HTML/CSS/JavaScript frontend",
+        "372 zero-network tests plus a local HTTP fixture harness for exercising the real frontend without provider calls",
+      ],
+      sections: [
+        {
+          eyebrow: "Architecture",
+          title: "From One-Shot Retrieval to a Bounded Evidence Pipeline",
+          body:
+            "Early provider experiments showed that a single search or synthesized answer could return plausible-looking but weak, stale, or unsupported signals. The final architecture therefore separates discovery from evidence approval and places a hard ceiling on retrieval complexity.",
+          bullets: [
+            "Resolve the submitted company before searching for signals so ambiguous identity produces clarification instead of a guess",
+            "Use one broad Search to discover candidates, then prioritize them deterministically by recency, provenance, and lightweight duplicate detection",
+            "Verify publisher pages sequentially and preserve only source-derived evidence that passes company, date, recency, support, and materiality checks",
+            "Use at most one official-domain fallback Search when fewer than three verified signals survive, then stop with insufficient evidence rather than fabricate coverage",
+          ],
+        },
+        {
+          eyebrow: "Verification",
+          title: "Evidence Is Verified Before It Reaches the Snapshot",
+          body:
+            "Search-provider metadata is never treated as final proof. Each candidate must survive direct publisher-page retrieval and deterministic checks before its title, date, and source URL can appear in the public result.",
+          bullets: [
+            "Fetch exact publisher URLs with bounded timeouts, redirect limits, response sizes, and public-source URL safeguards",
+            "Extract publisher-derived article titles, dates, and substantive body content instead of trusting search snippets alone",
+            "Require the page to support the intended company and event, reject stale or trivial results, and classify first-party versus secondary sources",
+            "Keep the description path separate: one Exa Contents request summarizes the already-confirmed company's homepage in 2–3 stable, factual sentences",
+          ],
+        },
+        {
+          eyebrow: "Production debugging",
+          title: "Real Failures Drove the Deduplication Design",
+          body:
+            "Reviewer-style production testing exposed duplicate-event cases that ordinary title-similarity tests missed. Those failures were reproduced offline before changes were accepted, and the fixes were deliberately generic rather than company-specific.",
+          bullets: [
+            "A Linear production case revealed two different publisher headlines covering the same tender and valuation event, leading to a second evidence-level duplicate check over verified article content",
+            "Adversarial review added protections for repeated corporate metrics, percent parsing, currency-versus-count anchors, nested article markup, script/comment regions, and spelled-out quantities",
+            "A later Adobe replay still exposed a residual live publisher-structure edge case; after bounded investigation, that limitation was documented and accepted instead of expanding the system into an unbounded crawler or semantic-research agent",
+            "The final runtime intentionally favors precision and honest failure over universal recall",
+          ],
+        },
+        {
+          eyebrow: "AI-assisted engineering",
+          title: "Plan, Implement, Review the Diff, Then Verify",
+          body:
+            "The repository also records the development process used to build the system with AI coding agents. Architecture and phase boundaries were defined before implementation, actual diffs were reviewed rather than trusting completion claims, and genuine AI mistakes were logged when testing or inspection proved them wrong.",
+          bullets: [
+            "Used full-context, bounded implementation briefs instead of one-shot build prompts",
+            "Separated local implementation, pre-push review, push authorization, remote confirmation, and formal phase approval",
+            "Maintained an AI failure log covering incorrect assumptions, parser bugs, misleading tests, over-broad fixes, and debugging mistakes",
+            "Backed the final implementation with 372 zero-network tests and targeted live-production validation against real companies and source pages",
+          ],
+        },
+      ],
+      note:
+        "The deployed application intentionally does not guarantee a successful three-signal snapshot for every company. Ambiguous identity, sparse evidence, provider variability, or publisher-page structure can produce clarification, limited evidence, or sanitized unavailable states. The documented residual same-event deduplication limitation is accepted rather than hidden or padded with weaker evidence.",
+    },
+  },
+  {
     title: "CaribEcon Intelligence Backend",
     slug: "caribecon-intelligence-backend",
     description:
