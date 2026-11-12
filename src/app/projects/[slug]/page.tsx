@@ -10,7 +10,7 @@ const architectureDiagrams: Record<
 > = {
   "track-field-training-app": {
     src: "/projects/track-field-system-flow.svg",
-    alt: "System-flow diagram showing the Track and Field Training App's Expo client, application workflows, local session persistence, and Supabase backend.",
+    alt: "System-flow diagram showing athlete-owned Running, Jumps, Throws, and Lift performance alongside privacy-scoped team, coach, assignment, submission, and Supabase authorization workflows.",
     disclaimer:
       "AI-generated system diagram based on the project's verified architecture and implementation.",
   },
@@ -22,7 +22,7 @@ const architectureDiagrams: Record<
   },
   "personal-job-intelligence-platform": {
     src: "/projects/job-intelligence-system-flow.svg",
-    alt: "Architecture diagram showing resume and job inputs moving through controlled Django extraction, review, verification, matching, candidate snapshots, and application tracking, with future agent capabilities clearly separated as roadmap work.",
+    alt: "Architecture diagram showing versioned résumé evidence, approved ATS discovery sources, controlled job processing, deterministic matching, human review, and application tracking, with Greenhouse discovery implemented and remaining agent capabilities separated as roadmap work.",
     disclaimer:
       "System diagram based on the project's verified repository implementation and documented seven-agent roadmap.",
   },
