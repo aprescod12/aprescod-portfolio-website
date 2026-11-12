@@ -50,15 +50,15 @@ export const projects: Project[] = [
     title: "Miniature fNIRS Research Platform",
     slug: "miniature-fnirs-research-platform",
     description:
-      "Continuing Villanova miniature-fNIRS research by restoring and troubleshooting an inherited wireless sensor platform, rebuilding the mobile acquisition stack in Flutter, and extending the system for reliable BLE acquisition, four-channel optical visualization, durable session storage, engineering-quality monitoring, and future app-controlled embedded hardware.",
+      "Continuing Villanova miniature-fNIRS research by restoring an inherited wireless sensor platform, rebuilding its Flutter acquisition stack, and hardening Version 1 around reliable BLE acquisition, four-channel optical visualization, durable SQLite sessions, baseline and engineering-quality monitoring, export, and release validation.",
     category: "Biomedical Engineering Research",
     status: "Active Research",
     context: "Faculty-advised biomedical engineering research",
     year: "2026",
     availabilityNote:
-      "The current mobile application repository is private; this case study summarizes verified implementation and planned research work without presenting the platform as clinically validated.",
+      "The current mobile application repository is private; this case study summarizes verified implementation and the repository-governed release roadmap without presenting the platform as clinically validated.",
     impact:
-      "Restored an inherited miniature fNIRS platform to working research use by troubleshooting the legacy hardware/software path, physically characterizing its BLE data interface, rebuilding the mobile software foundation, and establishing a versioned roadmap spanning embedded control, PCB revision, signal optimization, and future validated physiological processing.",
+      "Restored an inherited miniature fNIRS platform to working research use, physically characterized its BLE interface, rebuilt the mobile software foundation, and brought Milestones 0–6 to a merged Version 1 baseline with automated validation and physical iPhone release-mode evidence.",
     tags: [
       "Biomedical Engineering",
       "fNIRS",
@@ -67,15 +67,15 @@ export const projects: Project[] = [
       "Embedded Systems",
       "Signal Acquisition",
       "SQLite",
-      "PCB Design",
+      "Research Data Systems",
     ],
     caseStudy: {
       overview:
-        "This project continues an existing Villanova miniature-fNIRS research platform rather than claiming ownership of the original hardware. The compact sensor PCB, original CC2650 firmware, and original fNIRS architecture were created through prior Villanova research. I inherited the legacy system in a state that required troubleshooting and restoration before it could be used reliably again. My work began by getting the existing hardware/software path back up and running, then characterizing the physical device, rebuilding the mobile acquisition layer from scratch in Flutter, preserving research data reliably, and extending the platform toward future embedded control, hardware revision, and validated signal processing.",
+        "This project continues an existing Villanova miniature-fNIRS research platform rather than claiming ownership of the original hardware. The compact sensor PCB, original CC2650 firmware, and original fNIRS architecture came from prior Villanova research. I inherited the system in a state that required troubleshooting and restoration, then rebuilt the mobile acquisition layer in Flutter around physically verified BLE behavior. The current repository baseline has Milestones 0–6 merged: reliable acquisition, four-channel raw optical visualization, durable SQLite sessions, interrupted-session recovery, structured export, explicit baselines, and configurable engineering-quality indicators. Current work is focused on Version 1 hardening and release readiness rather than unverified physiological interpretation or a speculative hardware redesign.",
       engineeringFocus: [
-        "Troubleshot and restored the inherited miniature fNIRS hardware/software system to working research use, then verified the physical BLE behavior rather than assuming the legacy application accurately represented the device.",
-        "Rebuilt the mobile software as a shared Flutter codebase for iOS and Android, with exact BLE service and characteristic validation, strictly serialized reads targeting approximately 5 Hz, four-trace live visualization, pseudonymous sessions, durable SQLite persistence, interrupted-session recovery, and structured CSV/JSON export.",
-        "Established research-data integrity rules that preserve the complete raw packet and raw ADC measurements, track UTC completion time, monotonic elapsed time and read latency, store baseline and engineering-quality evidence, and avoid presenting Hb/HbO2, brain activation, concussion diagnosis, or other clinical interpretation as validated output.",
+        "Troubleshot and restored the inherited hardware/software path, then verified the physical BLE behavior instead of treating legacy application assumptions as authoritative.",
+        "Rebuilt the mobile software as a shared Flutter codebase for iOS and Android with exact BLE service/characteristic validation, strictly serialized reads targeting approximately 5 Hz, four-trace visualization, pseudonymous sessions, durable SQLite persistence, interrupted-session recovery, and structured CSV/JSON export.",
+        "Established research-data integrity and release boundaries that preserve the complete raw packet and raw ADC measurements, record timing and quality evidence, keep engineering warnings separate from physiological claims, and require explicit physical-device evidence for platform validation.",
       ],
       systemDetails: [
         "Inherited Villanova miniature fNIRS sensor restored to working research use before software extension",
@@ -91,44 +91,31 @@ export const projects: Project[] = [
           eyebrow: "Attribution + restoration",
           title: "Inherited and Restored Research Platform",
           body:
-            "The starting point was a compact miniature fNIRS sensor created through prior Villanova research. I did not design the original PCB, original CC2650 firmware, or original fNIRS architecture. I inherited the legacy hardware and software stack and first had to troubleshoot the existing system to get it back up and running before I could extend it. That restoration work became the foundation for the later BLE characterization, Flutter rebuild, and research-data architecture.",
+            "The starting point was a compact miniature fNIRS sensor created through prior Villanova research. I did not design the original PCB, original CC2650 firmware, or original fNIRS architecture. I inherited the legacy hardware and software stack and first had to troubleshoot the existing system to get it back up and running before I could extend it.",
           bullets: [
             "Inherited an existing compact manufactured PCB rather than designing the original board",
             "Troubleshot the legacy hardware/software path to restore communication and usable device operation",
             "Validated behavior on the physical sensor instead of relying solely on legacy source-code assumptions",
-            "Continued the research from a restored platform with software reliability, protocol understanding, embedded control, and future hardware iteration as the next engineering layers",
+            "Used the restored system as the verified foundation for the new mobile acquisition and research-data workflow",
           ],
         },
         {
-          eyebrow: "Problem",
-          title: "Problem with the Legacy Application and Workflow",
+          eyebrow: "Implemented · Version 1 baseline",
+          title: "Flutter Acquisition and Recording Rebuild",
           body:
-            "The inherited platform was not immediately ready for dependable current research use. The system first required troubleshooting to restore operation, and the previous mobile workflow was not a reliable foundation for cross-platform acquisition. Legacy application assumptions also did not fully match the behavior of the physical device, so recreating the old interface would have preserved uncertainty instead of resolving it.",
-          bullets: [
-            "Restored the inherited device/application path before beginning the new acquisition stack",
-            "Replaced legacy Android/Xamarin application paths with a new shared Flutter codebase",
-            "Designed the new app as a research data-acquisition system rather than a Bluetooth demonstration",
-            "Documented a source-level packet-length discrepancy and followed physically verified device behavior",
-          ],
-        },
-        {
-          eyebrow: "Implemented · Version 1",
-          title: "My Version 1 Application Rebuild",
-          body:
-            "Version 1 is a cross-platform research application for reliable BLE acquisition, visualization, preservation, and export of raw measurements from the existing miniature fNIRS sensor. The current main branch contains the Milestone 6 baseline and engineering-quality workflow and has undergone substantial physical iPhone testing.",
+            "The current main branch contains the merged Milestones 0–6 Version 1 baseline and has passed automated validation plus physical iPhone release-mode validation.",
           bullets: [
             "BLE discovery, connection, exact service/characteristic validation, manual reads, and serialized recording targeting one read every 200 ms",
             "Four live raw-optical traces with bounded visualization buffering that does not alter acquisition or persisted data",
             "Pseudonymous sessions, local SQLite persistence, interrupted-session recovery, saved-session review, cascading deletion, CSV export, and metadata JSON export",
-            "Android release compilation and automated validation are implemented; complete physical Android BLE validation remains outstanding",
-            "Experiment-marker storage exists in the schema, while marker-entry UI and automatic reconnection remain release-candidate work rather than completed Milestone 6 functionality",
+            "Database writes are queued separately from BLE operations, and normal stop verifies the stored sample count before finalizing a session",
           ],
         },
         {
           eyebrow: "Physically verified",
           title: "Physical Device and BLE Protocol Characterization",
           body:
-            "Repeated reads on the physical sensor established that the current firmware exposes eleven unsigned 16-bit big-endian values in a 22-byte payload. That verification substantially changed the software model because the device exposes more information than the earlier application assumptions suggested.",
+            "Repeated reads on the physical sensor established that the current firmware exposes eleven unsigned 16-bit big-endian values in a 22-byte payload. That verification changed the software model because the device exposes more information than the earlier application assumptions suggested.",
           bullets: [
             "Four optical readings: 730 nm and 850 nm at long/far and short/near detector paths",
             "Seven engineering/status values: battery ADC, charging, USB, 8.2 V power, low-battery, power-mode, and duty-cycle status",
@@ -137,23 +124,10 @@ export const projects: Project[] = [
           ],
         },
         {
-          eyebrow: "Implemented · Data integrity",
-          title: "Research Data Architecture",
-          body:
-            "The software is structured around preserving research evidence rather than only drawing a live chart. BLE operations are serialized, database writes are queued separately, and session completion verifies that accepted samples were durably stored before a normal stop is finalized.",
-          bullets: [
-            "UTC read-completion timestamps, monotonic elapsed timing, read latency, and app-assigned acceptance indices",
-            "Sessions as the aggregate root with samples, connection events, and marker records linked through SQLite foreign keys",
-            "Complete raw payload plus decoded optical and engineering fields retained for every accepted sample",
-            "Unexpectedly active sessions are preserved and relabeled as interrupted after app restart instead of being presented as normally completed",
-            "Raw samples remain available and are not replaced by filtered or calculated values",
-          ],
-        },
-        {
-          eyebrow: "Implemented · Research workflow",
+          eyebrow: "Implemented · Research data",
           title: "Baseline and Engineering Quality Monitoring",
           body:
-            "Version 1 adds explicit baseline collection and configurable engineering checks to help researchers identify acquisition problems without converting those checks into physiological or clinical claims.",
+            "Version 1 adds explicit baseline collection and configurable engineering checks so researchers can identify acquisition problems without converting those checks into physiological or clinical claims.",
           bullets: [
             "Exact accepted-sample baseline collection with minimum, maximum, range, arithmetic mean, and population standard deviation for all four raw optical fields",
             "Configurable read-rate, accepted-read-gap, near-floor, near-ceiling, flatline, abrupt-change, and baseline-range checks",
@@ -163,82 +137,116 @@ export const projects: Project[] = [
           ],
         },
         {
-          eyebrow: "Planned · Version 2.0A",
-          title: "Version 2 Firmware and Device-Control Work",
+          eyebrow: "Next · V1-HARDENING",
+          title: "Markers, Controlled Reconnect, and Release-Candidate Hardening",
           body:
-            "The first Version 2 goal is bidirectional control while retaining the existing manufactured PCB. Firmware changes do not automatically require a board redesign because the existing CC2650MODA can be reprogrammed through JTAG.",
+            "The repository's next authorized delivery slice is Version 1 hardening, not a new hardware generation. The existing draft hardening PR must be reconciled with current main and independently reviewed before any of its work can be described as merged.",
           bullets: [
-            "Reproduce the legacy CC2650 firmware build and flashing environment",
-            "Add app-to-device configuration commands with explicit acknowledgement/readback",
-            "Support app-commanded acquisition start/stop, optical-source sequencing, wavelength-sequencing experiments, and safe timing controls",
-            "Report runtime configuration to the app and store configuration plus timestamped changes with each research session",
+            "Add the Version 1 experiment-marker entry workflow on top of the already-reserved durable marker schema",
+            "Add bounded automatic reconnection while preserving the rule that a disconnect finalizes the active session before any reconnect",
+            "Re-run the full automated gates on the submitted SHA and complete the required physical iPhone regression",
+            "Preserve all existing raw-data, BLE protocol, persistence, export, and nonclinical boundaries during hardening",
           ],
         },
         {
-          eyebrow: "Planned · Version 2.0B",
-          title: "Adjustable Optical-Source Prototype",
+          eyebrow: "Deferred / release boundary",
+          title: "Version 1 Release and Platform Validation",
           body:
-            "The current compact PCB uses fixed LED-current paths. Before revising the manufactured board, controllable optical-source approaches will be prototyped externally so the research can identify the simplest circuit that provides safe, repeatable, scientifically useful control.",
+            "A production release is not yet ready. Release ownership, application identifiers and signing, distribution, compatibility, and institutional decisions remain external gates. Physical Android BLE acceptance is explicitly deferred and non-blocking for Version 1 release, but Android behavior must continue to be described as physically unverified until that protocol is run.",
           bullets: [
-            "Candidate approaches include synchronized PWM experiments, selectable-current or selectable-resistance circuitry, and programmable constant-current LED drivers",
-            "Evaluation will measure LED current, repeatability, detector response, saturation, power consumption, thermal behavior, and introduced optical/electrical noise",
-            "External prototyping reduces the risk of committing an unvalidated control method directly into a PCB revision",
-          ],
-        },
-        {
-          eyebrow: "Planned · Version 2.0C",
-          title: "Planned PCB Revision B",
-          body:
-            "After an adjustable optical-source circuit is validated externally, I plan to create a controlled revision of the existing compact PCB in Altium/CircuitMaker. This is intentionally framed as a revision of a proven research board, not a ground-up redesign.",
-          bullets: [
-            "Read and trace the inherited schematic across LED, detector, MCU, power, and JTAG nets",
-            "Perform schematic capture, component selection, symbol/footprint work, four-layer placement and routing, power/ground planning, and analog-versus-switching separation",
-            "Run ERC/DRC and design-for-manufacture review, produce fabrication documentation, and complete board bring-up",
-            "Validate JTAG programming, BLE behavior, optical response, and electrical characteristics on the revised hardware",
-          ],
-        },
-        {
-          eyebrow: "Roadmap · Versions 2.1–4.0",
-          title: "Long-Term Signal Processing and Multi-Device Roadmap",
-          body:
-            "The locked roadmap separates device optimization, wearability, validated physiological processing, and multi-device research so each claim is introduced only after the underlying engineering is ready.",
-          bullets: [
-            "Version 2.1: optimize real physical controls for source intensity, duty cycle, timing, baseline/drift handling, averaging, artifact detection, and visualization filtering while preserving raw samples unchanged",
-            "Version 2.2: investigate headband and wrist/forearm mounting, record anatomical site and mount metadata, improve guided setup, baseline prompts, experiment templates, and marker workflows; wrist/forearm use will not be described as cerebral fNIRS",
-            "Version 3.0: validate Hb/HbO2 processing only after equations, extinction coefficients, geometry/pathlength assumptions, short-separation correction, filtering, artifact handling, test datasets, and a trusted comparison workflow are documented",
-            "Version 4.0: explore multiple simultaneous BLE sensors, persistent device IDs, anatomical mapping, per-device quality, synchronized markers, multi-sensor storage/export, spatial visualization, and eventual firmware timing support for rigorous synchronization claims",
+            "Physical iPhone evidence exists for the merged baseline; complete cross-platform physical validation does not",
+            "Android remains a target, with automated/build checks required and physical BLE acceptance deferred until a device and operator are available",
+            "Flutter web is outside Version 1 and is not authorized for implementation in the current delivery roadmap",
+            "Hb/HbO2 calculations, cloud synchronization, user accounts, background acquisition, multiple devices, and clinical interpretation remain outside the validated Version 1 scope",
           ],
         },
       ],
       note:
-        "Research use only. The current application does not provide clinical diagnosis, concussion assessment, brain-activation interpretation, validated hemoglobin concentration measurements, or a clinically validated signal-quality assessment. Version 1 preserves raw optical and engineering data so future processing can be validated without losing the underlying measurements.",
+        "Research use only. The current application does not provide clinical diagnosis, concussion assessment, brain-activation interpretation, validated hemoglobin concentration measurements, or a clinically validated signal-quality assessment. Milestones 0–6 are merged; the Version 1 hardening slice remains unapproved until its draft work is reconciled, revalidated, physically checked on iPhone, and independently reviewed.",
     },
   },
   {
     title: "Track & Field Training App",
     slug: "track-field-training-app",
     description:
-      "Built a cross-platform training app for logging track and lift sessions, reviewing workout history, managing calendar events, and storing user-specific data through Supabase.",
-    category: "Mobile Development",
-    status: "Ongoing",
+      "Building a cross-platform athlete-and-coach training platform with personal workout logging, team identity, privacy-scoped coach access, reusable training templates, scheduled assignments, athlete submissions, and first-class Running, Jumps, Throws, and Lift workflows.",
+    category: "Mobile & Backend Product Engineering",
+    status: "Pilot Preparation",
     context: "Personal project",
-    tags: ["React Native", "Expo", "Supabase", "TypeScript"],
+    year: "2026",
+    impact:
+      "Expanded a personal training log into a team-ready coaching system while preserving athlete ownership and privacy through explicit coach-athlete relationships, database-enforced authorization, and separate prescription-versus-performance records.",
+    tags: ["React Native", "Expo", "Supabase", "TypeScript", "PostgreSQL & RLS"],
     link: "https://github.com/aprescod12/track-training-app",
     linkType: "code",
     caseStudy: {
       overview:
-        "This application brings track training, strength work, calendar planning, workout history, and athlete-specific performance workflows into one mobile experience designed around the needs of track and field athletes.",
+        "The Track & Field Training App has grown from a personal track-and-lift logger into a broader athlete-and-coach training platform. The current repository supports authenticated athlete logging, history, calendar planning, teams, team groups, explicit coach-athlete relationships, coach-authored workout templates, scheduled assignments, athlete submissions, and coach review. The training model now treats Running, Jumps, Throws, and Lift as separate first-class domains so field-event athletes are not forced into a generic running/lifting schema. The project is in pilot preparation with an athlete-focused Phase 4 runbook and staged production boundaries.",
       engineeringFocus: [
-        "Built a file-based Expo Router architecture with tab, stack, modal, authentication, detail, history, calendar, statistics, and profile routes.",
-        "Integrated Supabase authentication and user-scoped database queries with persistent sessions across native and web platforms.",
-        "Designed separate track and lift logging models for sets, repetitions, times, weights, notes, exercise search, custom exercises, personal records, and achievement processing.",
+        "Extended the Supabase data model from personal workouts into teams, groups, coach-athlete assignments, workout templates, scheduled recipients, submissions, reviews, and field-event attempts while keeping athlete-owned performance separate from coach prescriptions.",
+        "Implemented privacy and authorization as database rules rather than UI convention: team membership, team administration, friendship, athlete visibility, and coach training authority are separate concepts enforced through explicit relationships and Row-Level Security.",
+        "Introduced domain-specific training workflows for Running, Jumps, Throws, and Lift, including jump/throw attempt models, implement-weight handling, assignment-domain matching, training bests, and calendar semantics that distinguish assigned from logged work.",
       ],
       systemDetails: [
-        "React Native and Expo with TypeScript",
-        "Expo Router navigation across tab, stack, modal, and dynamic routes",
-        "Supabase authentication and database-backed athlete data",
-        "AsyncStorage on native platforms and localStorage on the web for session persistence",
+        "React Native and Expo with TypeScript and Expo Router",
+        "Supabase authentication, PostgreSQL migrations, Row-Level Security, and database authorization tests",
+        "Athlete-owned workouts, entries, sets, field attempts, calendar events, personal records, and training-best surfaces",
+        "Teams, groups, invitations, explicit coach-athlete assignments, role titles, and training-domain permissions",
+        "Coach-authored templates, scheduled assignments, materialized recipients, athlete submissions, linked performance, and formal review metadata",
+        "Local, staging/pilot, and future production environment separation with EAS preview builds and a documented pilot runbook",
       ],
+      sections: [
+        {
+          eyebrow: "Athlete workflow",
+          title: "Personal Training Across Four Domains",
+          body:
+            "Athletes can still use the application independently, but the underlying model now represents track and field more faithfully through four training domains rather than one generic non-lift category.",
+          bullets: [
+            "Running retains the set/rep/time-oriented model and fastest-time personal-record behavior",
+            "Jumps support Long Jump, Triple Jump, High Jump, and Pole Vault with attempt-level marks or height outcomes",
+            "Throws support Shot Put, Discus, Hammer, and Javelin with attempt outcomes and implement weight so unlike implements are not treated as equivalent",
+            "Lift remains its own strength-training domain, with workout history, profile statistics, calendar integration, and athlete-owned data",
+          ],
+        },
+        {
+          eyebrow: "Authorization",
+          title: "Teams Without Collapsing Athlete Privacy",
+          body:
+            "The team layer deliberately separates organizational membership from access to training data. A user does not gain athlete visibility simply by joining a team, becoming an administrator, sharing a group, or becoming verified.",
+          bullets: [
+            "Explicit active coach-athlete assignments are the coaching-based visibility gate",
+            "Training-domain permissions independently control whether a coach may prescribe or formally review Running, Jumps, Throws, or Lift work",
+            "Team groups organize rosters but never create friendship, athlete visibility, prescription authority, or review authority",
+            "Coaches can view authorized team-context performance but cannot edit athlete-owned workouts or field attempts",
+          ],
+        },
+        {
+          eyebrow: "Coach workflow",
+          title: "Prescription, Assignment, Submission, and Review",
+          body:
+            "Coach-created prescriptions are stored separately from what an athlete actually performs. That distinction keeps historical instructions auditable and prevents the coaching workflow from mutating athlete-owned performance.",
+          bullets: [
+            "Reusable workout templates snapshot into scheduled assignments so later template edits do not rewrite history",
+            "Assignments can target a full team, group, selected athletes, or an individual while materializing the exact recipient list at assignment time",
+            "Athletes can submit completed, partially completed, modified, skipped, or unavailable outcomes and attach an eligible workout when appropriate",
+            "Formal coach review is written to dedicated review metadata and remains subject to current athlete visibility and training-domain authority",
+          ],
+        },
+        {
+          eyebrow: "Pilot status",
+          title: "Staging and Pilot Readiness",
+          body:
+            "The repository now has a Phase 4 pilot runbook rather than treating the app as a purely local prototype. Pilot 1 is intentionally athlete-focused and uses EAS preview builds against staging services; production remains a future clean environment.",
+          bullets: [
+            "Pilot 1 targets an initial cohort of 3–5 athletes and validates onboarding, session persistence, training logs, calendar behavior, notifications, and ordinary recovery states",
+            "Each release candidate keeps the coach-assignment workflow under smoke test even before the coach cohort is introduced",
+            "The core coach-athlete workflow is production-live, while newer coach-responsibility-scope and field-event migrations are implemented in the repository but still pending hosted Supabase deployment",
+            "Pilot completion requires measured reliability evidence; no retention, crash-rate, or usage metric is claimed before it is actually observed",
+          ],
+        },
+      ],
+      note:
+        "The application is still under active development. Personal athlete workflows and the core coach-athlete assignment system are implemented; newer responsibility-scope and field-event schema changes are present in the repository but remain pending hosted Supabase deployment. Pilot 1 is a documented staging plan, not a completed public production launch.",
     },
   },
   {
@@ -277,34 +285,86 @@ export const projects: Project[] = [
     title: "Personal Job Intelligence & Application Tracking Platform",
     slug: "personal-job-intelligence-platform",
     description:
-      "Building a Django-based career intelligence platform that converts résumés and job listings into structured, source-backed data, produces explainable candidate-to-role analysis, and tracks opportunities through a controlled human-review workflow.",
+      "Building a Django-based career intelligence platform that turns résumés, approved employer sources, and job listings into structured evidence, controlled discovery, explainable candidate-to-role analysis, and a human-reviewed application pipeline.",
     category: "Applied AI & Full-Stack Software Engineering",
     status: "Active Development",
     context: "Independent AI engineering project",
     year: "2026",
     impact:
-      "Created an auditable job-search pipeline connecting résumé evidence, career preferences, job requirements, listing reliability, matcher versions, and application decisions without relying on unexplained AI recommendations.",
-    tags: ["Django", "Python", "OpenAI API", "Explainable AI", "Human-in-the-Loop"],
+      "Created an auditable job-search pipeline connecting résumé evidence, career preferences, approved ATS sources, deterministic discovery relevance, structured job requirements, matcher versions, and application decisions without relying on unexplained AI recommendations or automatic applications.",
+    tags: ["Django", "Python", "OpenAI API", "Information Retrieval", "Human-in-the-Loop"],
     link: "https://github.com/aprescod12/personal-job-finder",
     linkType: "code",
     caseStudy: {
       overview:
-        "The Personal Job Intelligence and Application Tracking Platform is a learning-first Django application designed to make job searching more structured, explainable, and evidence-based. The implemented system stores and verifies résumé evidence, structures job requirements, checks listing reliability, calculates transparent candidate-to-role match results, and tracks opportunities through the application pipeline. AI providers may propose structured information from unstructured documents, while Python and Django enforce schemas, evidence grounding, duplicate controls, review gates, scoring rules, and database changes.",
+        "The Personal Job Intelligence and Application Tracking Platform is a learning-first Django application for discovering, reviewing, evaluating, and tracking job opportunities through controlled evidence boundaries. The implemented system stores and verifies résumé evidence, composes immutable candidate-profile snapshots, processes selected job listings, calculates transparent match results, tracks listing reliability, and now includes a real Job Discovery Agent surface with approved employer sources, deterministic relevance filtering, duplicate controls, and human handoff into Job Processing. AI may propose structured information from unstructured documents, while Python and Django enforce schemas, provenance, review gates, authorization restrictions, scoring rules, and database changes.",
       engineeringFocus: [
-        "Built a controlled résumé pipeline for PDF, DOCX, and TXT sources with SHA-256 fingerprinting, version history, deterministic extraction, optional OpenAI structured output, claim-level evidence anchoring, editable review, and explicit activation of immutable candidate-profile snapshots.",
-        "Designed a deterministic and explainable matching system that separates direct evidence, normalized concepts, rule-related evidence, controlled semantic evidence, missing qualifications, and eligibility blockers while recording the matcher and candidate-profile versions used.",
-        "Implemented human approval boundaries, duplicate detection, extraction provenance, listing verification, blind holdout validation, matcher calibration, and application tracking so consequential AI-assisted decisions remain visible, reviewable, and user-controlled.",
+        "Built a controlled résumé pipeline for PDF, DOCX, and TXT sources with content fingerprinting, version history, deterministic parsing, optional OpenAI structured extraction, local evidence anchoring, editable claim review, and explicit activation of immutable candidate-profile snapshots.",
+        "Designed a deterministic and explainable matcher that separates direct evidence, normalized concepts, controlled semantic evidence, missing qualifications, and hard eligibility blockers while preserving the exact matcher and candidate-profile versions used for every evaluation.",
+        "Implemented bounded job discovery around approved ATS sources: live Greenhouse multi-board retrieval, deterministic relevance classification, source-attempt auditing, duplicate/closure handling, ATS detection for Greenhouse/Lever/Ashby, and a Lever adapter plus approval/connection-testing flow that stops before full Lever discovery execution.",
       ],
       systemDetails: [
-        "Django application with job tracking, candidate-profile, review, calibration, and match-analysis workflows",
-        "PDF, DOCX, and TXT résumé ingestion with local document parsing and versioned source control",
-        "Optional OpenAI structured extraction with strict schemas, grounding validation, and deterministic fallback",
-        "Approved claim evidence composed into immutable candidate-profile snapshots with explicit activation",
-        "Explainable weighted matching, listing reliability checks, duplicate controls, and provenance history",
-        "Seven-agent product architecture implemented incrementally inside one controlled Django workflow",
+        "Django application with job tracking, candidate-profile, review, calibration, discovery-inbox, and match-analysis workflows",
+        "PDF, DOCX, and TXT résumé ingestion with local parsing, versioned sources, and approved claim provenance",
+        "Optional OpenAI strict structured extraction with deterministic fallback and explicit enable controls",
+        "Approved Greenhouse employer sources with bounded live discovery, multi-board execution previews, partial-failure accounting, relevance filtering, and human handoff",
+        "Deterministic ATS detection for Greenhouse, Lever, and Ashby with bounded public-network validation and persisted source-detection audits",
+        "Lever provider adapter and approved-source onboarding/connection testing implemented; full Lever discovery execution remains a later controlled step",
+        "Versioned explainable matching, listing reliability checks, duplicate controls, reevaluation history, and application tracking",
+      ],
+      sections: [
+        {
+          eyebrow: "Candidate evidence",
+          title: "From Résumé Files to Reviewed Profile Snapshots",
+          body:
+            "Résumé evidence is treated as a versioned source rather than a one-time prompt. Documents are parsed locally first, AI extraction is optional, and claims do not enter the active candidate profile until they have been grounded and explicitly reviewed.",
+          bullets: [
+            "PDF, DOCX, and TXT sources are fingerprinted and versioned with duplicate-file protection",
+            "Deterministic parsing remains available without an API key; optional OpenAI extraction uses strict structured output",
+            "Extracted claims are checked against local résumé text and presented for editable approval or rejection",
+            "Only approved claims compose immutable candidate-profile snapshots, and a snapshot must be explicitly activated before matching changes",
+          ],
+        },
+        {
+          eyebrow: "Matching",
+          title: "Explainable Evaluation Instead of a Black-Box Fit Score",
+          body:
+            "The live matcher is deterministic and versioned. It uses explicit evidence categories and refuses to let semantic similarity satisfy hard requirements such as work authorization, licensure, certifications, security clearance, or experience.",
+          bullets: [
+            "Required and preferred qualifications are represented separately from career preferences",
+            "Match output preserves direct, related, controlled-semantic, missing, and blocker evidence",
+            "Human calibration and blind holdout judgments are stored alongside model versions for regression comparison",
+            "Immutable evaluation runs preserve candidate snapshot, job inputs, result evidence, gaps, blockers, and score deltas over time",
+          ],
+        },
+        {
+          eyebrow: "Discovery",
+          title: "Controlled ATS Discovery With Human Handoff",
+          body:
+            "Stage 6 moved discovery from a future roadmap item into the working application. Discovery is still deliberately bounded: sources must be approved, provider calls are read-only, results are filtered and deduplicated locally, and nothing becomes a processed job until the user deliberately hands it off.",
+          bullets: [
+            "Greenhouse boards can be approved, connection-tested, selected in controlled multi-board runs, and reconciled without failed refreshes falsely closing prior listings",
+            "Opportunities are classified deterministically as Strong, Adjacent, Industry only, Outside, or Insufficient information before entering the default Priority Inbox",
+            "ATS detection can recognize Greenhouse, Lever, and Ashby from direct board URLs or company career pages while blocking private/local destinations and bounding redirects, response size, and timeout",
+            "Lever now has a normalized provider adapter plus human-approved source onboarding and bounded connection tests; full Lever discovery execution is intentionally still disabled pending the next integration step",
+          ],
+        },
+        {
+          eyebrow: "Current boundary",
+          title: "What Is Still Roadmap Work",
+          body:
+            "The application remains a controlled local-development system rather than an autonomous job-application bot. Several major components are intentionally still downstream of the evidence and discovery foundations.",
+          bullets: [
+            "Project Relevance and Development Agent is not yet implemented",
+            "The full Coordinator Agent across stable component interfaces remains roadmap work",
+            "Expanded tasks, reminders, interview, and follow-up workflows remain incomplete",
+            "Production deployment still requires authentication/authorization hardening, protected résumé storage, production settings, database/backup strategy, observability, security review, and recovery procedures",
+            "The system does not automatically apply to jobs, contact employers, or bypass review gates",
+          ],
+        },
       ],
       note:
-        "The application is under active development. Résumé ingestion, candidate-evidence review, profile versioning, job processing, listing verification, explainable matching, calibration, and application tracking are implemented. Automated job discovery, project-specific portfolio recommendations, the full coordinator workflow, expanded reminders, and production deployment remain roadmap work. The system does not automatically submit applications or contact employers.",
+        "The repository now contains real controlled job discovery; it is no longer accurate to describe all discovery as future work. Greenhouse execution is implemented. Lever detection, provider normalization, approval, and connection testing are implemented, while full Lever listing execution remains disabled pending the next bounded integration step. Ashby is detectable but not yet approvable. Project-relevance automation, the full coordinator, and production deployment remain roadmap work.",
     },
   },
   {
@@ -395,32 +455,82 @@ export const projects: Project[] = [
     title: "CaribEcon Intelligence Backend",
     slug: "caribecon-intelligence-backend",
     description:
-      "Building the governed PostgreSQL/Supabase intelligence backend for CaribEcon, migrating Caribbean macroeconomic and news data from file-based JSON into versioned, provenance-aware production pipelines.",
+      "Built and governed CaribEcon's PostgreSQL/Supabase intelligence backend and production-integration control plane, moving macroeconomic and news data toward canonical, versioned storage while preserving the existing website, Excel, and Ask CaribEcon contracts.",
     category: "Backend & Data Engineering",
-    status: "Active Development",
+    status: "Pilot Integration",
     context: "Buildathon team · Backend & Data Engineer",
     year: "2026",
     impact:
-      "Designed the foundation for moving CaribEcon toward a durable database source of truth while preserving the existing web, Excel, and AI research interfaces during migration.",
-    tags: ["TypeScript", "PostgreSQL", "Supabase", "Data Pipelines", "Data Governance"],
+      "Advanced the backend from an isolated schema into a governed hosted lineage: canonical macro/news ingestion and parity controls, 2,239 canonical news identities after the approved catch-up, a least-privileged runtime-read foundation, and a dedicated Ask/Deep Dive spend-ledger connection deployed to the Excel pilot.",
+    tags: ["TypeScript", "PostgreSQL", "Supabase", "Data Governance", "Production Integration"],
     caseStudy: {
       overview:
-        "CaribEcon is a Caribbean economic intelligence platform spanning a public data site, Excel analyst tools, and evidence-grounded research. On the buildathon team, I own development of the long-term intelligence backend: a governed PostgreSQL/Supabase architecture that moves macroeconomic and news data from JSON into trusted, auditable storage without breaking the products already consuming the existing data contracts.",
+        "CaribEcon is a Caribbean economic intelligence platform spanning an Astro website, Excel analyst tools, structured macro/news data, and evidence-grounded AI research. My backend work focuses on the governed PostgreSQL/Supabase intelligence layer and the control plane used to verify, migrate, and safely connect that layer to existing consumers. The backend now has hosted canonical macro/news state, governed ingestion and promotion, reproducible parity evidence, a least-privileged runtime reader, and a dedicated database connection for the Ask/Deep Dive spend ledger. The project intentionally preserves compatibility while integrations are phased: the Excel pilot is the active integration target, while the public website and macro/news content consumers remain JSON-backed until separately authorized migrations.",
       engineeringFocus: [
-        "Designed and implemented the Raw → Staging → Validation/Review → Canonical architecture so automated feeds, discovery systems, and AI-generated candidates cannot write directly into trusted production data.",
-        "Built deterministic TypeScript normalization and validation, stable economic and evidence identifiers, provenance tracking, versioned observations and source vintages, and database-level idempotency for repeatable imports.",
-        "Hardened macro and news import tooling for hosted Supabase with explicit database-target and TLS safeguards, automated tests, and a migration path that preserves existing Astro, Excel, and Ask CaribEcon interfaces.",
+        "Designed and implemented a Raw → Staging → Validation/Review → Canonical architecture so automated feeds, discovery systems, or model-assisted candidates cannot publish trusted production facts directly.",
+        "Built deterministic normalization, stable economic/evidence identifiers, provenance and vintage tracking, idempotent import/promotion behavior, canonical parity checks, and explicit review boundaries for macroeconomic and news data.",
+        "Extended the work into production integration and security hardening with a least-privileged runtime reader, transaction-pooler validation, credential separation, database/TLS checks, rollback evidence, and a dedicated spend-ledger path for the Excel Ask/Deep Dive pilot.",
       ],
       systemDetails: [
-        "Supabase/PostgreSQL intelligence core for Caribbean macroeconomic and news data",
-        "Canonical entities for economies, indicators, sources, series, observations, revisions/vintages, news, and evidence references",
-        "Separate raw, staging, review, and promotion layers with traceability from source payload to trusted record",
-        "Deterministic TypeScript normalization, validation, evidence IDs, and import logic",
-        "PostgreSQL uniqueness constraints and versioned observations for idempotency and historical revision tracking",
-        "Production roadmap includes repository-based retrieval, JSON/PostgreSQL parity testing, snapshot exports, and automated historical backfills",
+        "PostgreSQL/Supabase intelligence core with canonical economies, indicators, sources, series, observations, vintages, version history, news, and evidence references",
+        "Separate raw, staging, review, and explicit promotion layers with provenance from source payload to trusted canonical record",
+        "Deterministic TypeScript normalization, validation, evidence identifiers, import tooling, parity checks, and idempotency verification",
+        "Hosted canonical news catch-up with 2,239 identities and governance that keeps needs-review/rejected records out of canonical output",
+        "Least-privileged runtime-read foundation proven through the transaction pooler with explicit privilege, TLS, timeout, and rollback controls",
+        "Dedicated caribecon_ask_ledger connection deployed for Ask and Deep Dive spend accounting in the Excel pilot",
+      ],
+      sections: [
+        {
+          eyebrow: "Data governance",
+          title: "Raw Data Does Not Become Trusted Data Automatically",
+          body:
+            "The backend is built around an explicit promotion boundary. Receiving, normalizing, staging, or even reviewing a record does not make it canonical; trusted output requires a governed promotion step and keeps source/vintage history intact.",
+          bullets: [
+            "Raw source payloads, staged normalized records, review decisions, and canonical records remain separate layers",
+            "Historical macro revisions are preserved as vintages instead of overwriting the prior reported value",
+            "Existing evidence-ID contracts are preserved so the backend can sit underneath the current research and consumer surfaces without inventing a second identity scheme",
+            "Repeated import and promotion paths are tested for idempotency and parity rather than assuming an upsert is safe",
+          ],
+        },
+        {
+          eyebrow: "Canonical catch-up",
+          title: "From Local Proof to Hosted Canonical State",
+          body:
+            "The backend work progressed beyond a local schema. The governed hosted lineage was audited, reconciled, and brought forward through bounded migration slices with explicit evidence and independent review.",
+          bullets: [
+            "Canonical macro state and source-vintage behavior were verified without silently replacing repository contracts",
+            "The approved news catch-up promoted 2,238 governed candidates while retaining one historical canonical extra, for 2,239 canonical news identities",
+            "Needs-review and rejected news records remain unpromoted by design",
+            "Recovery, replay, manifest, permission, and integrity evidence are retained alongside the migration history",
+          ],
+        },
+        {
+          eyebrow: "Production integration",
+          title: "Least-Privilege Runtime and Excel Pilot Cutover",
+          body:
+            "The integration phase added the database boundary needed for server-side runtime use without giving application code unrestricted mutation authority. The Excel product, including Ask and Deep Dive, is the current pilot target.",
+          bullets: [
+            "A dedicated runtime reader was implemented and verified against the hosted transaction pooler",
+            "The Ask spend-ledger path was separated into its own dedicated credential and database functions",
+            "The production cutover passed API status checks and a human Excel Desktop smoke for Ask and Deep Dive",
+            "Compatibility paths such as the legacy POSTGRES_URL and direct postgres grants remain governed residuals rather than being silently removed",
+          ],
+        },
+        {
+          eyebrow: "Current boundary",
+          title: "Integration Is Intentionally Incomplete",
+          body:
+            "The backend is not presented as a completed replacement for every CaribEcon data path. The current architecture keeps consumer migration separate from canonical-data readiness so that rollback and parity remain measurable.",
+          bullets: [
+            "Macro and news content consumers remain JSON-backed; the database is not yet the universal runtime content source",
+            "The public Astro website remains a refreshed JSON-backed consumer",
+            "The Excel add-in is the pilot product; current buildathon deployments continue to sync main-owned news data while the API migration is staged",
+            "The next content-consumer slice is still separately governed; no case-study claim treats it as complete merely because the database exists",
+          ],
+        },
       ],
       note:
-        "The backend is under active development. The governed schema, normalization and validation foundations, import paths, hosted-database safeguards, and automated tests are implemented; full production migration, parity proof, snapshot exporting, and broader historical ingestion remain ongoing.",
+        "CaribEcon uses multiple active lineages. The repository's current main branch continues the broader Astro/data-feed product, while the backend control plane lives on feature/amiri-backend and the production Excel-pilot integration runs on buildathon. This case study describes that backend/integration lineage specifically rather than implying every backend file is merged into main or that every consumer has migrated off JSON.",
     },
   },
   {
