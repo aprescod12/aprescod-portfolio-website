@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Generated static design prototypes:
+    "public/taste-test/**",
+    "public/taste-test-2/**",
   ]),
 ]);
 

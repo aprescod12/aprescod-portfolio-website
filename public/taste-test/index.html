@@ -1,0 +1,282 @@
+<!doctype html>
+<!--
+  tasteskill deal: service; putty-black-teal; instrument-serif; split; nav-centre;
+  footer-columns; close-photo; space; block; initial; soft; word-highlight.
+-->
+<html lang="en" data-type="service" data-radius="soft" data-buttons="block" data-motion>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Amiri Prescod: embedded and biomedical systems engineer</title>
+    <meta name="description" content="Engineering portfolio spanning embedded systems, biomedical sensing, software, data, and computer vision across 12 documented projects.">
+    <meta name="site-kind" content="other">
+    <meta name="page-type" content="service">
+    <meta property="og:title" content="Amiri Prescod: embedded and biomedical systems engineer">
+    <meta property="og:description" content="Twelve documented engineering projects across embedded systems, biomedical sensing, software, data, and computer vision.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://amiriprescod.vercel.app/taste-test/share.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://amiriprescod.vercel.app/">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#dedad3">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400..700&family=Libre+Franklin:wght@400..600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/system.css">
+    <link rel="stylesheet" href="assets/ui/cards.css">
+    <link rel="stylesheet" href="assets/motion/motion.css">
+    <link rel="stylesheet" href="assets/backgrounds/backgrounds.css">
+    <link rel="stylesheet" href="assets/layout/layout.css">
+    <link rel="stylesheet" href="assets/icons/icon.css">
+    <style>
+      :root {
+        --p-bg: #dedad3; --p-surface: #d3cec6; --p-ink: #0a0a0a; --p-muted: #55514c;
+        --p-accent: #256f82; --p-accent-ink: #ffffff; --p-action: #256f82; --p-action-ink: #ffffff;
+        --p-inv-bg: #0a0a0a; --p-inv-surface: #151515; --p-inv-ink: #dedad3; --p-inv-muted: #84827e;
+        --p-inv-accent: #256f82; --p-inv-accent-ink: #ffffff; --p-inv-action: #256f82; --p-inv-action-ink: #ffffff;
+        --font-display: "Source Serif 4", Georgia, serif;
+        --font-text: "Libre Franklin", system-ui, sans-serif;
+        --display-weight: 400;
+        --display-tracking: -0.02em;
+        --display-tracking-xl: -0.026em;
+      }
+
+      .hero__media > img,
+      .photo-frame > img,
+      .close__media > img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .hero__media > img { object-position: 50% 34%; }
+
+      .artifact-frame {
+        min-height: 680px;
+        padding: var(--s-6);
+        background: var(--g-alt);
+        border: 1px solid var(--line);
+        border-radius: var(--r-lg);
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+      }
+
+      .artifact-frame img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        max-height: 420px;
+        object-fit: contain;
+      }
+
+      .project-card {
+        color: inherit;
+        text-decoration: none;
+        overflow: hidden;
+      }
+
+      .project-card__visual {
+        height: 300px;
+        padding: var(--s-2);
+        background: var(--g-alt);
+        border-bottom: 1px solid var(--line);
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+      }
+
+      .project-card__visual img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .project-card__body { padding: var(--s-5); }
+      .project-card__body p { margin: var(--s-2) 0 0; }
+
+      .photo-frame {
+        margin: 0;
+        height: 470px;
+        border-radius: var(--r-lg);
+        overflow: hidden;
+      }
+
+      #background .photo-frame:first-of-type img { object-position: 50% 40%; }
+      #background .photo-frame:last-of-type img { object-position: 54% 45%; }
+
+      .close__media {
+        margin-top: var(--s-7);
+        height: 280px;
+        border-radius: var(--r-lg);
+        overflow: hidden;
+      }
+
+      .close__media img { object-position: 50% 48%; }
+
+      @media (min-width: 640px) and (max-width: 1023px) {
+        #work { --h: 2; }
+        .artifact-frame { min-height: 360px; }
+        #background .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        #background .photo-frame { grid-column: auto; height: 480px; }
+      }
+
+      @media (max-width: 639px) {
+        .artifact-frame { min-height: 300px; padding: var(--s-4); margin-top: var(--s-7); }
+        .project-card__visual { height: 190px; }
+        .photo-frame { height: 360px; }
+        .photo-frame + .photo-frame { margin-top: var(--s-4); }
+        .close__media { height: 220px; }
+      }
+    </style>
+    <script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+    <script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
+    <link rel="modulepreload" href="assets/moments/moments.js">
+    <link rel="modulepreload" href="assets/moments/lib.js">
+    <link rel="modulepreload" href="assets/moments/word-highlight/moment.js">
+  </head>
+  <body>
+    <header class="nav nav--centre">
+      <div class="wrap nav__bar">
+        <a class="skip-link" href="#top">Skip to content</a>
+        <a class="nav__logo" href="#top"><span class="mark mark--initial" aria-hidden="true">A</span>Amiri Prescod</a>
+        <nav class="nav__links" aria-label="Main navigation">
+          <div class="nav__item"><a class="nav__link" href="#systems">Systems</a></div>
+          <div class="nav__item"><a class="nav__link" href="#work">Projects</a></div>
+          <div class="nav__item"><a class="nav__link" href="#method">Method</a></div>
+          <div class="nav__item"><a class="nav__link" href="#background">Engineering</a></div>
+        </nav>
+        <div class="nav__actions">
+          <a class="btn btn--primary" href="/projects">See projects</a>
+        </div>
+        <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu">
+          <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero hero--split" data-enter aria-labelledby="hero-h">
+        <div class="wrap">
+          <div class="hero-text grid hero__grid">
+            <div class="hero__text span-5">
+              <p class="hero__kicker">12 documented engineering projects</p>
+              <h1 id="hero-h">Embedded and biomedical systems engineer</h1>
+              <p class="hero__lead">I build sensing, embedded, and software systems that carry real-world data from hardware through analysis and usable tools.</p>
+              <div class="btn-row">
+                <a class="btn btn--primary" href="/projects">See projects</a>
+                <a class="btn btn--secondary" href="/APrescod_Resume1.pdf">Read résumé</a>
+              </div>
+            </div>
+            <div class="hero__media span-6 start-7">
+              <img src="img/portrait.jpg" width="1191" height="1800" alt="Amiri Prescod in a dark suit and blue tie" fetchpriority="high" data-source="client" data-subject="portrait">
+              <div class="ly-float">
+                <div class="ly-float__row"><span>Electrical engineering</span><span>Biomedical engineering</span></div>
+                <div class="ly-float__title">Computer science · Villanova Track &amp; Field</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="systems" style="--hm: 2" aria-labelledby="systems-h">
+        <div class="wrap grid grid--top">
+          <div class="span-5">
+            <div class="section-head">
+              <h2 id="systems-h">Engineering across the system</h2>
+              <p>The work spans the sensor, the device, the application, and the data path.</p>
+            </div>
+            <ul class="rows">
+              <li><span class="rows__name">Embedded systems<small>ESP32 development, real-time control, peripheral integration, and hardware-software coordination.</small></span></li>
+              <li><span class="rows__name">Biomedical sensing<small>fNIRS, heart rate and SpO₂ sensing, IMUs, signal acquisition, and wearable prototypes.</small></span></li>
+              <li><span class="rows__name">Software and data<small>Python, mobile and web development, computer vision, data processing, and applied AI.</small></span></li>
+            </ul>
+            <p><a class="link" href="/projects">See all projects</a></p>
+          </div>
+          <a class="artifact-frame span-6 start-7 m-zoom" href="/projects/medical-monitoring-safety-device" aria-label="Read the Medical Monitoring and Safety Device case study">
+            <img src="img/medical-monitoring.svg" width="1600" height="900" alt="System flow for the medical monitoring and safety device" loading="lazy" data-source="client" data-subject="project system flow">
+          </a>
+        </div>
+      </section>
+
+      <section class="section" id="work" style="--hm: 2" aria-labelledby="work-h">
+        <div class="wrap">
+          <div class="section-head">
+            <h2 id="work-h">Selected engineering projects</h2>
+            <p>Each case study shows the architecture, implementation boundary, validation status, and next engineering step.</p>
+          </div>
+          <div class="grid">
+            <a class="card project-card span-4" href="/projects/medical-monitoring-safety-device">
+              <div class="project-card__visual"><img src="img/medical-monitoring.svg" width="1600" height="900" alt="System flow for the medical monitoring and safety device" loading="lazy" data-source="client" data-subject="project system flow"></div>
+              <div class="project-card__body"><h3>Monitors wearable sensor data</h3><p>An ESP32 prototype for heart rate, SpO₂, motion, and safety workflows.</p></div>
+            </a>
+            <a class="card project-card span-4" href="/projects/track-field-training-app">
+              <div class="project-card__visual"><img src="img/track-field.svg" width="1600" height="900" alt="System flow for the track and field training application" loading="lazy" data-source="client" data-subject="project system flow"></div>
+              <div class="project-card__body"><h3>Organizes track training</h3><p>A cross-platform athlete-and-coach system with privacy-scoped access and four training domains.</p></div>
+            </a>
+            <a class="card project-card span-4" href="/projects/personal-job-intelligence-platform">
+              <div class="project-card__visual"><img src="img/job-intelligence.svg" width="1600" height="900" alt="System flow for the personal job intelligence platform" loading="lazy" data-source="client" data-subject="project system flow"></div>
+              <div class="project-card__body"><h3>Matches roles to evidence</h3><p>An evidence-grounded Django workflow for discovery, matching, and human review.</p></div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section statement" id="method" data-moment="word-highlight" aria-label="Working method">
+        <div class="wrap">
+          <p class="t-label">Working method</p>
+          <p class="mo-wh__text">Hardware integration, signal acquisition, software, and data analysis have to work as <strong>one system</strong> before a prototype becomes a useful tool.</p>
+        </div>
+      </section>
+
+      <section class="section" id="background" style="--hm: 2" aria-labelledby="background-h">
+        <div class="wrap">
+          <div class="section-head">
+            <h2 id="background-h">Engineering background</h2>
+            <p>B.S. Electrical Engineering, M.S. Biomedical Engineering candidate, Computer Science minor, and Villanova Track &amp; Field student-athlete.</p>
+          </div>
+          <div class="grid">
+            <figure class="photo-frame span-6"><img src="img/track-rain.jpg" width="1800" height="1200" alt="Amiri Prescod running a relay in the rain for Villanova" loading="lazy" data-source="client" data-subject="track and field competition"></figure>
+            <figure class="photo-frame span-6 start-7"><img src="img/track-ready.jpg" width="1800" height="1200" alt="Amiri Prescod applauding beside the track in a Villanova uniform" loading="lazy" data-source="client" data-subject="track and field"></figure>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer closing" id="contact" aria-labelledby="close-h">
+      <div class="wrap">
+        <div class="closing__cta close--photo">
+          <div class="section-head--split">
+            <div>
+              <h2 id="close-h">Review the full project record</h2>
+              <p class="t-lead">Twelve projects document the system, the implementation, the current status, and the work still ahead.</p>
+            </div>
+            <a class="btn btn--primary" href="/projects">See projects<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+          </div>
+          <div class="close__media"><img src="img/track-race.jpg" width="1800" height="1200" alt="Amiri Prescod sprinting for Villanova in a relay race" loading="lazy" data-source="client" data-subject="track and field competition"></div>
+        </div>
+        <div class="closing__links">
+          <div class="grid">
+            <div class="span-4 stack-4">
+              <a class="nav__logo" href="#top">Amiri Prescod</a>
+              <p class="footer__lede">Embedded, biomedical, and software systems.</p>
+            </div>
+            <div class="span-2 footer__col"><h3>Systems</h3><ul><li><a href="#systems">Capabilities</a></li><li><a href="#method">Method</a></li></ul></div>
+            <div class="span-2 footer__col"><h3>Work</h3><ul><li><a href="#work">Selected projects</a></li><li><a href="/projects">All projects</a></li></ul></div>
+            <div class="span-2 footer__col"><h3>Background</h3><ul><li><a href="#background">Education</a></li><li><a href="/track">Track</a></li></ul></div>
+            <div class="span-2 footer__col"><h3>Links</h3><ul><li><a href="/APrescod_Resume1.pdf">Résumé</a></li><li><a href="https://github.com/aprescod12">GitHub</a></li></ul></div>
+          </div>
+          <div class="footer__legal">
+            <span>&copy; 2026 Amiri Prescod</span>
+            <div class="socials"><a href="https://www.linkedin.com/in/amiri-prescod/">LinkedIn</a></div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="assets/system.js"></script>
+    <script type="module" src="assets/motion/motion.js"></script>
+    <script type="module" src="assets/layout/layout.js"></script>
+  </body>
+</html>

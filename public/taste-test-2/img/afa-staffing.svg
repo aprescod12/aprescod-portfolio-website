@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="900" viewBox="0 0 1536 900" role="img" aria-labelledby="title desc">
+  <title id="title">AFA event staffing platform system flow</title>
+  <desc id="desc">A system diagram showing student and supervisor workflows flowing through Django staffing rules to PostgreSQL, Redis, Celery, notifications, and reporting services.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#090f1c"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#000" flood-opacity="0.28"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L12,6 L0,12 z" fill="#94a3b8"/>
+    </marker>
+    <style>
+      .title { font: 700 42px Inter, ui-sans-serif, system-ui, sans-serif; fill: #f8fafc; }
+      .subtitle { font: 400 20px Inter, ui-sans-serif, system-ui, sans-serif; fill: #94a3b8; }
+      .section { font: 700 18px Inter, ui-sans-serif, system-ui, sans-serif; letter-spacing: 1.4px; }
+      .boxTitle { font: 700 21px Inter, ui-sans-serif, system-ui, sans-serif; fill: #f8fafc; }
+      .body { font: 400 17px Inter, ui-sans-serif, system-ui, sans-serif; fill: #cbd5e1; }
+      .small { font: 400 15px Inter, ui-sans-serif, system-ui, sans-serif; fill: #94a3b8; }
+      .flow { font: 600 16px Inter, ui-sans-serif, system-ui, sans-serif; fill: #e2e8f0; }
+    </style>
+  </defs>
+
+  <rect width="1536" height="900" rx="34" fill="url(#bg)"/>
+  <circle cx="1400" cy="70" r="210" fill="#2563eb" opacity="0.08"/>
+  <circle cx="120" cy="835" r="250" fill="#22c55e" opacity="0.05"/>
+
+  <text x="80" y="82" class="title">AFA Event Staffing Platform</text>
+  <text x="80" y="122" class="subtitle">Institutional workflow from shift release to staffing, attendance, and reporting</text>
+
+  <g filter="url(#shadow)">
+    <rect x="70" y="180" width="360" height="500" rx="28" fill="#0f172a" stroke="#3b82f6" stroke-width="2"/>
+  </g>
+  <text x="105" y="225" class="section" fill="#60a5fa">STUDENT EXPERIENCE</text>
+
+  <rect x="105" y="270" width="290" height="82" rx="16" fill="#13233d" stroke="#315f9e"/>
+  <text x="130" y="303" class="boxTitle">Shift discovery</text>
+  <text x="130" y="330" class="small">Release batches and eligible shifts</text>
+
+  <rect x="105" y="374" width="290" height="100" rx="16" fill="#13233d" stroke="#315f9e"/>
+  <text x="130" y="408" class="boxTitle">Signup &amp; waitlist</text>
+  <text x="130" y="435" class="small">Register, drop, join, and leave</text>
+  <text x="130" y="458" class="small">with conflict-safe validation</text>
+
+  <rect x="105" y="496" width="290" height="100" rx="16" fill="#13233d" stroke="#315f9e"/>
+  <text x="130" y="530" class="boxTitle">Schedule &amp; alerts</text>
+  <text x="130" y="557" class="small">Personal calendar and reminders</text>
+  <text x="130" y="580" class="small">In-app and email preferences</text>
+
+  <g filter="url(#shadow)">
+    <rect x="588" y="180" width="360" height="500" rx="28" fill="#17152a" stroke="#8b5cf6" stroke-width="2"/>
+  </g>
+  <text x="623" y="225" class="section" fill="#c084fc">DJANGO STAFFING ENGINE</text>
+
+  <rect x="623" y="270" width="290" height="92" rx="16" fill="#21183a" stroke="#7c3aed"/>
+  <text x="648" y="304" class="boxTitle">Access controls</text>
+  <text x="648" y="333" class="small">Student and supervisor roles</text>
+
+  <rect x="623" y="384" width="290" height="118" rx="16" fill="#21183a" stroke="#7c3aed"/>
+  <text x="648" y="418" class="boxTitle">Staffing rules</text>
+  <text x="648" y="447" class="small">Capacity and time conflicts</text>
+  <text x="648" y="470" class="small">Restricted and open signup</text>
+  <text x="648" y="493" class="small">FIFO waitlist promotion</text>
+
+  <rect x="623" y="524" width="290" height="118" rx="16" fill="#21183a" stroke="#7c3aed"/>
+  <text x="648" y="558" class="boxTitle">Operational records</text>
+  <text x="648" y="587" class="small">Assignments and attendance</text>
+  <text x="648" y="610" class="small">Notifications and audit history</text>
+  <text x="648" y="633" class="small">Exports and reporting queries</text>
+
+  <g filter="url(#shadow)">
+    <rect x="1106" y="180" width="360" height="500" rx="28" fill="#0d1f1a" stroke="#22c55e" stroke-width="2"/>
+  </g>
+  <text x="1141" y="225" class="section" fill="#4ade80">SUPERVISOR OPERATIONS</text>
+
+  <rect x="1141" y="270" width="290" height="92" rx="16" fill="#102a22" stroke="#249f62"/>
+  <text x="1166" y="304" class="boxTitle">Event management</text>
+  <text x="1166" y="333" class="small">Batches, events, and named shifts</text>
+
+  <rect x="1141" y="384" width="290" height="100" rx="16" fill="#102a22" stroke="#249f62"/>
+  <text x="1166" y="418" class="boxTitle">Staffing oversight</text>
+  <text x="1166" y="447" class="small">Dashboards, rosters, assignments</text>
+  <text x="1166" y="470" class="small">Cancellations and reopenings</text>
+
+  <rect x="1141" y="506" width="290" height="100" rx="16" fill="#102a22" stroke="#249f62"/>
+  <text x="1166" y="540" class="boxTitle">Attendance &amp; reports</text>
+  <text x="1166" y="569" class="small">Historical records and notes</text>
+  <text x="1166" y="592" class="small">CSV exports and printed rosters</text>
+
+  <line x1="430" y1="430" x2="583" y2="430" stroke="#94a3b8" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="948" y1="430" x2="1101" y2="430" stroke="#94a3b8" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="461" y="402" class="flow">Validated actions</text>
+  <text x="980" y="402" class="flow">Managed workflows</text>
+
+  <rect x="190" y="750" width="1156" height="104" rx="22" fill="#111827" stroke="#334155"/>
+  <text x="225" y="789" class="section" fill="#94a3b8">PRODUCTION-ORIENTED SERVICES</text>
+
+  <rect x="225" y="812" width="210" height="28" rx="12" fill="#172033"/>
+  <text x="249" y="832" class="small">PostgreSQL database</text>
+
+  <rect x="463" y="812" width="178" height="28" rx="12" fill="#172033"/>
+  <text x="492" y="832" class="small">Redis broker</text>
+
+  <rect x="669" y="812" width="210" height="28" rx="12" fill="#172033"/>
+  <text x="700" y="832" class="small">Celery &amp; Beat</text>
+
+  <rect x="907" y="812" width="190" height="28" rx="12" fill="#172033"/>
+  <text x="937" y="832" class="small">Email delivery</text>
+
+  <rect x="1125" y="812" width="186" height="28" rx="12" fill="#172033"/>
+  <text x="1149" y="832" class="small">Docker &amp; CI</text>
+
+  <line x1="768" y1="680" x2="768" y2="745" stroke="#a78bfa" stroke-width="3" marker-end="url(#arrow)"/>
+</svg>

@@ -28,11 +28,12 @@ function navLinkClass(active: boolean, mobile = false) {
 
 export default function Navbar() {
   const pathname = usePathname();
-  const [menuOpen, setMenuOpen] = useState(false);
 
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [pathname]);
+  return <NavbarForPath key={pathname} pathname={pathname} />;
+}
+
+function NavbarForPath({ pathname }: { pathname: string }) {
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     if (!menuOpen) return;
