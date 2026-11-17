@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="900" viewBox="0 0 1536 900" role="img" aria-labelledby="title desc">
+  <title id="title">Personal Job Intelligence Platform system flow</title>
+  <desc id="desc">A system diagram showing versioned candidate evidence, approved ATS discovery sources, controlled job processing, deterministic matching, human review, and application tracking. Greenhouse discovery is implemented; Lever onboarding is implemented while full Lever execution, Project Relevance, and Coordinator orchestration remain roadmap work.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#090f1c"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#000" flood-opacity="0.28"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L12,6 L0,12 z" fill="#94a3b8"/>
+    </marker>
+    <style>
+      .title { font: 700 42px Inter, ui-sans-serif, system-ui, sans-serif; fill: #f8fafc; }
+      .subtitle { font: 400 20px Inter, ui-sans-serif, system-ui, sans-serif; fill: #94a3b8; }
+      .section { font: 700 17px Inter, ui-sans-serif, system-ui, sans-serif; letter-spacing: 1.4px; }
+      .boxTitle { font: 700 20px Inter, ui-sans-serif, system-ui, sans-serif; fill: #f8fafc; }
+      .small { font: 400 14px Inter, ui-sans-serif, system-ui, sans-serif; fill: #94a3b8; }
+      .flow { font: 600 15px Inter, ui-sans-serif, system-ui, sans-serif; fill: #e2e8f0; }
+      .roadmap { font: 600 15px Inter, ui-sans-serif, system-ui, sans-serif; fill: #ddd6fe; }
+    </style>
+  </defs>
+
+  <rect width="1536" height="900" rx="34" fill="url(#bg)"/>
+  <circle cx="1390" cy="70" r="220" fill="#2563eb" opacity="0.08"/>
+  <circle cx="130" cy="835" r="250" fill="#8b5cf6" opacity="0.07"/>
+
+  <text x="80" y="78" class="title">Personal Job Intelligence Platform</text>
+  <text x="80" y="118" class="subtitle">Evidence-grounded candidate data, controlled discovery, explainable evaluation, and human review</text>
+
+  <g filter="url(#shadow)">
+    <rect x="60" y="170" width="390" height="540" rx="28" fill="#0f172a" stroke="#3b82f6" stroke-width="2"/>
+  </g>
+  <text x="94" y="214" class="section" fill="#60a5fa">CONTROLLED INPUTS</text>
+
+  <rect x="94" y="252" width="322" height="104" rx="16" fill="#13233d" stroke="#315f9e"/>
+  <text x="118" y="284" class="boxTitle">Résumé evidence</text>
+  <text x="118" y="312" class="small">PDF · DOCX · TXT versions</text>
+  <text x="118" y="334" class="small">Fingerprints, source history, local text</text>
+
+  <rect x="94" y="378" width="322" height="104" rx="16" fill="#13233d" stroke="#315f9e"/>
+  <text x="118" y="410" class="boxTitle">Career strategy</text>
+  <text x="118" y="438" class="small">Target roles, industries, locations</text>
+  <text x="118" y="460" class="small">Preferences and hard constraints</text>
+
+  <rect x="94" y="504" width="322" height="160" rx="16" fill="#13233d" stroke="#315f9e"/>
+  <text x="118" y="536" class="boxTitle">Approved job sources</text>
+  <text x="118" y="564" class="small">Manual listing intake</text>
+  <text x="118" y="586" class="small">Greenhouse multi-board discovery</text>
+  <text x="118" y="608" class="small">Lever adapter + source onboarding</text>
+  <text x="118" y="630" class="small">Ashby detection only</text>
+  <text x="118" y="652" class="small">Bounded public read-only network calls</text>
+
+  <g filter="url(#shadow)">
+    <rect x="565" y="170" width="430" height="540" rx="28" fill="#111827" stroke="#22c55e" stroke-width="2"/>
+  </g>
+  <text x="600" y="214" class="section" fill="#4ade80">IMPLEMENTED DJANGO WORKFLOW</text>
+
+  <rect x="600" y="252" width="360" height="102" rx="16" fill="#102a22" stroke="#249f62"/>
+  <text x="624" y="284" class="boxTitle">Extract, ground &amp; approve</text>
+  <text x="624" y="312" class="small">Deterministic parsing + optional OpenAI</text>
+  <text x="624" y="334" class="small">Claim evidence + explicit activation</text>
+
+  <rect x="600" y="376" width="360" height="116" rx="16" fill="#102a22" stroke="#249f62"/>
+  <text x="624" y="408" class="boxTitle">Discover &amp; prioritize</text>
+  <text x="624" y="436" class="small">Approved sources + execution previews</text>
+  <text x="624" y="458" class="small">Strong / Adjacent relevance classification</text>
+  <text x="624" y="480" class="small">Duplicate + disappeared-listing controls</text>
+
+  <rect x="600" y="514" width="360" height="150" rx="16" fill="#102a22" stroke="#249f62"/>
+  <text x="624" y="546" class="boxTitle">Process, evaluate &amp; track</text>
+  <text x="624" y="574" class="small">Human-selected job processing</text>
+  <text x="624" y="596" class="small">Structured required / preferred evidence</text>
+  <text x="624" y="618" class="small">Deterministic weighted matcher + blockers</text>
+  <text x="624" y="640" class="small">Versioned runs + application pipeline</text>
+
+  <g filter="url(#shadow)">
+    <rect x="1110" y="170" width="366" height="540" rx="28" fill="#17152a" stroke="#8b5cf6" stroke-width="2"/>
+  </g>
+  <text x="1144" y="214" class="section" fill="#c084fc">REVIEWABLE OUTPUTS</text>
+
+  <rect x="1144" y="252" width="298" height="104" rx="16" fill="#21183a" stroke="#7c3aed"/>
+  <text x="1168" y="284" class="boxTitle">Candidate snapshots</text>
+  <text x="1168" y="312" class="small">Approved résumé claims and lineage</text>
+  <text x="1168" y="334" class="small">Explicit active version</text>
+
+  <rect x="1144" y="378" width="298" height="124" rx="16" fill="#21183a" stroke="#7c3aed"/>
+  <text x="1168" y="410" class="boxTitle">Priority discovery inbox</text>
+  <text x="1168" y="438" class="small">Strong and Adjacent opportunities</text>
+  <text x="1168" y="460" class="small">Provider provenance + source attempts</text>
+  <text x="1168" y="482" class="small">Human handoff to processing</text>
+
+  <rect x="1144" y="524" width="298" height="140" rx="16" fill="#21183a" stroke="#7c3aed"/>
+  <text x="1168" y="556" class="boxTitle">Match + application state</text>
+  <text x="1168" y="584" class="small">Score, strengths, gaps, blockers</text>
+  <text x="1168" y="606" class="small">Listing reliability and deadlines</text>
+  <text x="1168" y="628" class="small">Status, next actions, reevaluation history</text>
+
+  <line x1="450" y1="438" x2="560" y2="438" stroke="#94a3b8" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="995" y1="438" x2="1105" y2="438" stroke="#94a3b8" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="474" y="412" class="flow">Validated inputs</text>
+  <text x="1018" y="412" class="flow">Auditable results</text>
+
+  <rect x="80" y="756" width="1376" height="104" rx="24" fill="#151329" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="9 8"/>
+  <text x="112" y="791" class="section" fill="#c084fc">SEVEN-AGENT ARCHITECTURE · CURRENT BOUNDARY</text>
+  <text x="112" y="824" class="roadmap">Implemented foundations:</text>
+  <text x="300" y="824" class="small">Candidate Profile · Job Discovery · Job Processing · Job Evaluation · Presentation / Tracking</text>
+  <text x="112" y="848" class="roadmap">Roadmap:</text>
+  <text x="195" y="848" class="small">Project Relevance &amp; Development · full Coordinator · full Lever execution · production hardening</text>
+</svg>
